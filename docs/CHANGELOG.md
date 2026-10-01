@@ -1,5 +1,25 @@
 # Change log
 
+## 0.1.3 — second English translation batch — 2026-10-01
+
+- Added 80 reviewed menu/system messages (rows 81–160), bringing the cumulative
+  translation to 160 of 793 inventoried game entries (20.2%). Examined eight
+  neighboring records for context and expanded the glossary to 33 terms.
+- Confirmed native price, timer, alarm, card-insertion and purchased-save
+  composition. Corrected stop-confirmation direction and timer agreement;
+  retained explicit source-omission and mixed-language runtime-label flags.
+- Repacked both complete batches into their 6,999-byte shared bank using
+  6,062 bytes, retargeting 164 pointers, including both shared insertion aliases.
+- Extended native validation to 320 message draws, ten composed card messages,
+  three price confirmations and the three existing block-count warnings.
+  Preserved exact 0.1.2 executable reproduction and existing-track verification.
+- Added cumulative build/version selection, source-bound review evidence,
+  full-track/descriptor checks and the Retro Trans Tools 0.1.3 patch release.
+- Verified ten modified raw sectors, valid EDC/ECC, unchanged bytes elsewhere
+  and all 17 GDI references. Original disc tracks remain untouched.
+- Actual BIOS font metrics, screen fit and emulator/hardware playtesting remain
+  unverified. Remaining port labels and timer units are queued for later slices.
+
 ## 0.1.2 — first English translation batch — 2026-10-01
 
 - Translated and meaning-reviewed the first 80 system/shop UI messages, with

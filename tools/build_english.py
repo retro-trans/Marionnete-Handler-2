@@ -1,4 +1,4 @@
-"""Build the first English UI batch on top of VWF, defaulting to a read-only plan.
+"""Build cumulative English UI batches on top of VWF, defaulting to a read-only plan.
 
 Repack one verified, contiguous message bank and retarget every verified
 absolute reference. Text is not truncated to individual original slots.
@@ -18,8 +18,29 @@ from inspect_disc_text import Disc, ROOT
 from build_vwf import BASE, SOURCE_SHA256, WIDTH_TABLE, patched_conversion, plan as vwf_plan, write_track, gdi
 from cdrom_sector import regenerate
 
-VERSION = '0.1.2'
-BATCH = ROOT / 'work' / 'translation' / 'en' / 'ui_batch_001.json'
+VERSION = '0.1.3'
+RELEASE_BATCHES = {'0.1.2': 1, '0.1.3': 2}
+
+
+def load_batches(version):
+    batches = []
+    for number in range(1, RELEASE_BATCHES[version] + 1):
+        path = ROOT / 'work' / 'translation' / 'en' / ('ui_batch_{:03d}.json'.format(number))
+        batch = json.loads(path.read_text(encoding='utf-8'))
+        expected_version = ('0.1.2', '0.1.3')[number - 1]
+        if (batch['version'] != expected_version or batch['language'] != 'en'
+                or batch['source_program_sha256'] != SOURCE_SHA256):
+            raise ValueError('Unsupported translation version, language or source')
+        if (len(batch['translations']) != 80 or batch['slice']['first_row'] != (number - 1) * 80 + 1
+                or batch['slice']['last_row'] != number * 80):
+            raise ValueError('Expected consecutive reviewed 80-row menu slices')
+        batches.append((path, batch))
+    return batches
+
+
+def inventory_path(version):
+    name = 'english_batch_001_inventory.json' if version == '0.1.2' else 'english_' + version + '_inventory.json'
+    return ROOT / 'work' / 'ui' / name
 
 
 def digest(value):
@@ -32,17 +53,14 @@ def source_rows():
                   key=lambda r: r['file_offset'])
 
 
-def plan(original):
-    batch = json.loads(BATCH.read_text(encoding='utf-8'))
-    if batch['version'] != VERSION or batch['language'] != 'en' or batch['source_program_sha256'] != SOURCE_SHA256:
-        raise ValueError('Unsupported translation version, language or source')
-    targets = batch['translations']
+def plan(original, version=VERSION):
+    batches = load_batches(version)
+    targets = [text for _, batch in batches for text in batch['translations']]
+    notes = {key: note for _, batch in batches for key, note in batch['notes'].items()}
     glossary = json.loads((ROOT / 'work' / 'glossary' / 'en.json').read_text(encoding='utf-8'))
     rows = source_rows()
-    selected = rows[:80]
-    if len(targets) != 80 or batch['slice']['first_row'] != 1 or batch['slice']['last_row'] != 80:
-        raise ValueError('Expected exactly the first 80 menu message records')
-    start, end = selected[0]['file_offset'], rows[80]['file_offset']
+    selected = rows[:len(targets)]
+    start, end = selected[0]['file_offset'], rows[len(targets)]['file_offset']
     cursor = start
     for row in selected:
         if row['file_offset'] != cursor:
@@ -104,24 +122,26 @@ def plan(original):
                          'line_characters': [len(line) for line in text.split('\n')],
                          'source_line_characters': [len(line) for line in source.split('\n')],
                          'layout_status': 'Needs actual cached-font metrics and in-game popup verification',
-                         'review_note': batch['notes'].get(str(ordinal))})
+                         'review_note': notes.get(str(ordinal))})
     if len(packed) > end - start:
         raise ValueError('Full translations exceed this shared UI bank; add storage relocation, do not truncate text')
     patched[start:end] = packed + b'\x00' * (end - start - len(packed))
-    report = {'version': VERSION, 'language': 'en', 'translated_game_entries': 80,
+    report = {'version': version, 'language': 'en', 'translated_game_entries': len(targets),
               'inventoried_game_entries': 793, 'network_entries_translated': 0,
-              'batch_source_sha256': digest(BATCH.read_bytes()),
+              'batches': [{'file': path.name, 'sha256': digest(path.read_bytes()),
+                           'slice': batch['slice'], 'meaning_review': batch['review']}
+                          for path, batch in batches],
               'source_program_sha256': digest(original), 'target_program_sha256': digest(patched),
               'program_bytes': len(patched), 'bank': {'start': start, 'end': end,
               'available': end - start, 'used': len(packed), 'individual_slot_limits': False},
               'retargeted_pointer_locations': sum(len(b['pointer_locations']) for b in bindings),
-              'meaning_review': batch['review'], 'vwf': vwf_report,
+              'vwf': vwf_report,
               'layout': {'source_observed_max_line_characters': max(max(b['source_line_characters']) for b in bindings),
                          'english_max_line_characters': max(max(b['line_characters']) for b in bindings),
                          'english_max_small_font_line_width_px': max(max(b['small_font_line_widths_px']) for b in bindings),
                          'approved_ui_character_limit': None,
                          'note': 'Observed lengths describe this batch, not a verified textbox limit. Small-font pixel widths are exact native metrics; this popup uses cached-font mode 1, whose BIOS advances require runtime measurement.'},
-              'bindings': bindings, 'limitations': ['Only the first 80 system/shop messages are translated.',
+              'bindings': bindings, 'limitations': ['Only the first {} menu/system/shop messages are translated.'.format(len(targets)),
               'No dialogue, browser messages or texture text translated.',
               'Cached-font advances and popup boundaries require emulator/hardware verification.',
               'Source omission/equipment-context flags remain in the translation batch.']}
@@ -179,8 +199,8 @@ def prepare_native_cache(target):
 def validate_draw(target, report):
     from validate_vwf import CPU
     template, widths, codes, frames = prepare_native_cache(target)
-    batch = json.loads(BATCH.read_text(encoding='utf-8'))
-    required = set(''.join(batch['translations'])) - {'\n'}
+    texts = [text for _, batch in load_batches(report['version']) for text in batch['translations']]
+    required = set(''.join(texts)) - {'\n'}
     missing = sorted(char for char in required if patched_conversion(ord(char)) not in codes)
     # The original converter's ASCII space is deliberately absent; native draw
     # and measure both provide a blank 20-pixel fallback for a missing glyph.
@@ -207,6 +227,7 @@ def validate_draw(target, report):
             assert cpu.r[15] == 0x8cf00000
             assert cpu.read_float(0x8c34e0c8) == 40.0 + 22 * (binding['line_count'] - 1)
             checked += 1
+        print('Native dispatch checked: {} messages in font mode {}'.format(len(report['bindings']), font), flush=True)
     # Execute the actual prefix -> numeric formatter -> suffix call sequence.
     for count in (3, 38, 100):
         cpu = setup()
@@ -226,8 +247,76 @@ def validate_draw(target, report):
         expected_x = 50.0 + sum(widths[ord(c)] for c in str(count) + suffix)
         assert cpu.f[0] == expected_x and cpu.read_float(0x8c34e0c8) == 62.0
         assert cpu.r[15] == 0x8cf00000
+    composed_cards = 0
+    composed_prices = 0
+    if len(texts) >= 160:
+        # Caller inspection confirms two different destination banks: one-line
+        # purchase labels (155-162), and two-line insertion labels (163-170).
+        # Exercise both translated and still-Japanese destinations, including
+        # row119's second pointer alias, through native string dispatch.
+        code_widths = {code: template.read(0x8c34de28 + i, 1) for i, code in enumerate(codes)}
+
+        def line_width(line):
+            total = 0
+            for char in line:
+                encoded = char.encode('cp932')
+                code = patched_conversion(encoded[0]) if len(encoded) == 1 else (encoded[0] << 8) | encoded[1]
+                total += code_widths.get(code, 20)
+            return total
+
+        def draw_parts(pointers):
+            cpu = setup()
+            cpu.write(0x8c13d75c, 1)
+            cpu.write_float(0x8c34e0c0, 50.0)
+            cpu.write_float(0x8c34e0c4, 50.0)
+            cpu.write_float(0x8c34e0c8, 40.0)
+            cpu.write_float(0x8c13d758, 1.0)
+            assembled = ''
+            for pointer in pointers:
+                offset = pointer - BASE
+                assembled += target[offset:target.index(b'\x00', offset)].decode('cp932')
+                cpu.r[4] = pointer
+                cpu.run(BASE + 0x6090, limit=1000000)
+            lines = assembled.split('\n')
+            assert cpu.read_float(0x8c34e0c8) == 40.0 + 22 * (len(lines) - 1)
+            assert cpu.f[0] == 50.0 + line_width(lines[-1])
+            assert cpu.r[15] == 0x8cf00000
+
+        for row in (118, 121, 142, 153):
+            prefix = BASE + report['bindings'][row - 1]['target_file_offset']
+            # Both original absolute references to the shared insertion suffix.
+            for destination, suffix_reference in zip((0, 7), report['bindings'][118]['pointer_locations']):
+                label = struct.unpack_from('<I', target, 0x12e908 + 4 * destination)[0]
+                suffix = struct.unpack_from('<I', target, suffix_reference)[0]
+                draw_parts((prefix, label, suffix))
+                composed_cards += 1
+        for destination in (0, 7):
+            label = struct.unpack_from('<I', target, 0x12e8e8 + 4 * destination)[0]
+            draw_parts((BASE + report['bindings'][143]['target_file_offset'], label,
+                        BASE + report['bindings'][144]['target_file_offset']))
+            composed_cards += 1
+        for price in (1, 100, 99999):
+            cpu = setup()
+            cpu.write(0x8c13d75c, 1)
+            cpu.write_float(0x8c34e0c0, 50.0)
+            cpu.write_float(0x8c34e0c4, 50.0)
+            cpu.write_float(0x8c34e0c8, 40.0)
+            cpu.write_float(0x8c13d758, 1.0)
+            cpu.r[4], cpu.f[4] = price, -1.0
+            cpu.run(BASE + 0x5c1c)
+            # Currency mode -1 prints only the integer, before row100's unit.
+            formatted_price = format(price, ',')
+            rendered = bytes(cpu.read(0x8c34e114 + i, 1) for i in range(len(cpu.vertices)))[::-1]
+            assert rendered.decode('ascii') == formatted_price
+            assert cpu.f[0] == 50.0 + line_width(formatted_price)
+            cpu.r[4] = BASE + report['bindings'][99]['target_file_offset']
+            cpu.run(BASE + 0x6090, limit=1000000)
+            assert cpu.f[0] == 50.0 + line_width(texts[99].split('\n')[-1])
+            assert cpu.read_float(0x8c34e0c8) == 62.0 and cpu.r[15] == 0x8cf00000
+            composed_prices += 1
     return {'actual_machine_code_draw_cases': checked, 'fonts': [1, 4],
             'composed_block_warning_cases': 3,
+            'composed_memory_card_cases': composed_cards, 'composed_price_cases': composed_prices,
             'default_native_cache_frames': frames, 'default_native_cache_glyphs': len(codes),
             'required_visible_characters_loaded': len(required) - 1,
             'space_behavior': 'Original cache-miss blank fallback, 20 pixels in both draw and measure',
@@ -239,9 +328,11 @@ def validate_draw(target, report):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--version', default=VERSION, choices=sorted(RELEASE_BATCHES))
     actions = parser.add_mutually_exclusive_group()
     actions.add_argument('--build', action='store_true')
     actions.add_argument('--verify-existing', action='store_true', help='Read back the existing build without changing tracks')
+    actions.add_argument('--plan-only', action='store_true', help='Inspect bindings and samples without running native drawing checks')
     parser.add_argument('--report', action='store_true', help='Save updated validation evidence with --verify-existing')
     args = parser.parse_args()
     if args.report and not args.verify_existing:
@@ -249,13 +340,28 @@ def main():
     disc = Disc()
     entry = next(e for e in disc.files if e['path'] == '/1ST_READ.BIN')
     original = disc.read(entry['lba'], entry['size'])
-    target, report = plan(original)
-    report['validation'] = validate_draw(target, report)
+    version = args.version
+    batches = load_batches(version)
+    target, report = plan(original, version)
+    folder = ROOT / 'work' / 'output' / ('english-' + version)
+    previous_report = folder / 'PATCH-REPORT.json'
+    # Track verification checks the exact planned bytes. Reuse the native-code
+    # evidence for that same program instead of rerunning unchanged draw cases.
+    if args.verify_existing and previous_report.is_file():
+        previous = json.loads(previous_report.read_text(encoding='utf-8'))
+        matching_batches = previous.get('batches') == report['batches']
+        if version == '0.1.2' and 'batches' not in previous:
+            matching_batches = previous.get('batch_source_sha256') == report['batches'][0]['sha256']
+        if (previous['target_program_sha256'] != report['target_program_sha256']
+                or not matching_batches):
+            raise ValueError('Existing build does not match this translation revision')
+        report['validation'] = previous['validation']
+    elif not args.plan_only:
+        report['validation'] = validate_draw(target, report)
     print(json.dumps({key: value for key, value in report.items() if key not in ('bindings', 'vwf')}, indent=2))
-    batch = json.loads(BATCH.read_text(encoding='utf-8'))
-    for binding in report['bindings'][:3]:
-        print('Sample:', binding['id'], '=>', repr(batch['translations'][binding['row'] - 1]))
-    folder = ROOT / 'work' / 'output' / ('english-' + VERSION)
+    texts = [text for _, batch in batches for text in batch['translations']]
+    for binding in report['bindings'][-80:-77]:
+        print('Sample:', binding['id'], '=>', repr(texts[binding['row'] - 1]))
     if args.verify_existing:
         track = next(folder.glob('*.bin'))
         track_start, _, source_track = next(t for t in disc.tracks if t[0] <= entry['lba'] < t[1])
@@ -301,16 +407,16 @@ def main():
         report['validation']['gdi_tracks_verified'] = 17
         print('Existing build verified:', len(changes), 'changed sectors; all other track bytes unchanged; 17 GDI references verified.')
         if args.report:
-            for path in (folder / 'PATCH-REPORT.json', ROOT / 'work' / 'ui' / 'english_batch_001_inventory.json'):
+            for path in (folder / 'PATCH-REPORT.json', inventory_path(version)):
                 path.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
         return
     if not args.build:
         print('Dry run only; no disc or reports written.')
         return
-    if batch['status'] != 'meaning_reviewed_pending_ui_playtest':
+    if any(batch['status'] != 'meaning_reviewed_pending_ui_playtest' for _, batch in batches):
         raise ValueError('Complete meaning review before creating a test build')
     folder.mkdir(parents=True, exist_ok=False)
-    track = folder / ('Marionette Handler 2 (Japan) (Track 17) English ' + VERSION + '.bin')
+    track = folder / ('Marionette Handler 2 (Japan) (Track 17) English ' + version + '.bin')
     report['modified_sectors'] = write_track(disc, entry, original, target, track)
     # Read back the complete executable payload from the generated raw track.
     track_start = next(t[0] for t in disc.tracks if t[0] <= entry['lba'] < t[1])
@@ -320,7 +426,7 @@ def main():
     if payload != target:
         raise ValueError('Patched executable read-back failed')
     report['target_track_sha256'] = digest(raw)
-    name = 'Marionette Handler 2 English ' + VERSION
+    name = 'Marionette Handler 2 English ' + version
     gdi(disc, track, folder / (name + '.gdi'))
     cue = next(ROOT.glob('*.cue')).read_text(encoding='utf-8')
     for source in sorted(ROOT.glob('*Track*.bin')):
@@ -328,7 +434,7 @@ def main():
         filename = Path(os.path.relpath(str(path), str(folder))).as_posix()
         cue = cue.replace('"' + source.name + '"', '"' + filename + '"')
     (folder / (name + '.cue')).write_text(cue, encoding='utf-8')
-    for path in (folder / 'PATCH-REPORT.json', ROOT / 'work' / 'ui' / 'english_batch_001_inventory.json'):
+    for path in (folder / 'PATCH-REPORT.json', inventory_path(version)):
         path.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print('English test build:', folder)
 

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.2",
+  "version": "0.1.3",
   "language": "en",
   "policy": "Use approved spellings. Apply meaning-review fixes before terminology validation. Do not infer character gender or expand unknown acronyms.",
   "research": {
@@ -8,7 +8,7 @@
     "characters": [],
     "locations": [],
     "character_fields_required": ["name", "nickname", "gender", "personality", "position", "sources"],
-    "scope": "The first 80 messages contain system, shop and equipment terms; no named person or location requires a character record. Research character records before translating any later occurrence."
+    "scope": "The first 160 messages contain system, shop, equipment and hardware terms; no named person or location requires a character record. Research character records before translating any later occurrence."
   },
   "terms": [
     {"source": "マリオネット", "target": "Marionette", "type": "robot", "evidence_row": 3, "status": "approved"},
@@ -36,7 +36,14 @@
     {"source": "アーマー", "target": "Armor", "type": "part", "evidence_row": 76, "status": "approved"},
     {"source": "メインウェポン", "target": "Main Weapon", "type": "weapon_category", "evidence_row": 77, "status": "approved"},
     {"source": "サブウェポン", "target": "Sub Weapon", "type": "weapon_category", "evidence_row": 78, "status": "approved"},
-    {"source": "オプション", "target": "Option", "type": "equipment_category", "evidence_row": 79, "status": "approved"}
+    {"source": "オプション", "target": "Option", "type": "equipment_category", "evidence_row": 79, "status": "approved"},
+    {"source": "ＭＡＲＣＳ", "target": "MARCS", "type": "system_name", "evidence_row": 91, "status": "approved", "note": "Use the source's short system name here; do not add V2 where omitted."},
+    {"source": "プログラムチップ", "target": "Program Chip", "plural": "Program Chips", "type": "programming", "evidence_row": 89, "status": "approved"},
+    {"source": "クラス", "target": "class", "type": "progression", "evidence_row": 87, "status": "approved"},
+    {"source": "コントローラー", "target": "controller", "type": "hardware", "evidence_row": 113, "status": "approved"},
+    {"source": "スタートボタン", "target": "Start button", "type": "hardware", "evidence_row": 111, "status": "approved"},
+    {"source": "ポート", "target": "Port", "type": "hardware", "evidence_row": 155, "status": "approved"},
+    {"source": "拡張ソケット", "target": "Expansion Socket", "type": "hardware", "evidence_row": 155, "status": "approved"}
   ],
-  "evidence": "Source terms are short UI elements read directly from /1ST_READ.BIN; row numbers refer to ui_batch_001.json. The official developer page establishes game identity only, not English term spellings. English terms are project translations of disc text."
+  "evidence": "Source terms are short UI elements read directly from /1ST_READ.BIN; row numbers refer to menu inventory order (batch 001 rows 1-80, batch 002 rows 81-160). The official developer page establishes game identity only, not English term spellings. English terms are project translations of disc text."
 }

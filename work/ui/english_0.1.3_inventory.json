@@ -1,0 +1,4478 @@
+{
+  "version": "0.1.3",
+  "language": "en",
+  "translated_game_entries": 160,
+  "inventoried_game_entries": 793,
+  "network_entries_translated": 0,
+  "batches": [
+    {
+      "file": "ui_batch_001.json",
+      "sha256": "2e2746b8d9e96516ce9cf56a22bc53543894a52b8341a72402a8fb7218c602be",
+      "slice": {
+        "first_row": 1,
+        "last_row": 80,
+        "rows_in_slice": 80,
+        "context_rows_examined": [
+          81,
+          82,
+          83,
+          84
+        ]
+      },
+      "meaning_review": {
+        "rows_examined": 84,
+        "rows_in_slice": 80,
+        "necessary_meaning_fixes": 0,
+        "control_composition_verified": true
+      }
+    },
+    {
+      "file": "ui_batch_002.json",
+      "sha256": "0c8d09e0b38f1ec3bd68893e79affeb636c3508976a6cbf8d0a2835bf0fee454",
+      "slice": {
+        "first_row": 81,
+        "last_row": 160,
+        "rows_in_slice": 80,
+        "context_rows_examined": [
+          77,
+          78,
+          79,
+          80,
+          161,
+          162,
+          163,
+          164
+        ]
+      },
+      "meaning_review": {
+        "rows_examined": 88,
+        "rows_in_slice": 80,
+        "necessary_meaning_fixes": 2,
+        "control_composition_verified": true,
+        "method": "Independent source comparison and native caller inspection; primary direction check confirmed by reviewer.",
+        "composed_callers_file_offsets": {
+          "price": "0x5b24e-0x5b268",
+          "elapsed_timer": "0x4c674-0x4c67a",
+          "alarm_time": "0x4c71c-0x4c722",
+          "insertion_118": "0x51cc6-0x51ce4",
+          "insertion_121": "0x516f2-0x51712",
+          "insertion_142": "0x5189c-0x518be",
+          "insertion_153": "0x51d12-0x51d32",
+          "purchased_save": "0x5b036-0x5b058"
+        }
+      }
+    }
+  ],
+  "source_program_sha256": "4526090cb90840370518beb404fe1ec45c6aa20ef0247c46134573a595a969bf",
+  "target_program_sha256": "7a70a663a1810de4fdb0979ad3f22b810d240314eab9ebc286f266dcec9ea470",
+  "program_bytes": 1650382,
+  "bank": {
+    "start": 1245335,
+    "end": 1252334,
+    "available": 6999,
+    "used": 6062,
+    "individual_slot_limits": false
+  },
+  "retargeted_pointer_locations": 164,
+  "vwf": {
+    "version": "0.1.1",
+    "source_program_sha256": "4526090cb90840370518beb404fe1ec45c6aa20ef0247c46134573a595a969bf",
+    "target_program_sha256": "b6d5d4e1892a1058a07449aedab7b13fcc9fb988af2122dbae18dd23d81f4880",
+    "program_bytes": 1650382,
+    "code_space_available": 360,
+    "code_space_used": 332,
+    "integer_helper": 20572,
+    "decimal_helper": 20624,
+    "scope": "Native proportional cached font modes 1/4 and integer/decimal readouts; existing modes 0/2/3 and control parsing retained",
+    "changes": [
+      {
+        "file_offset": 20344,
+        "bytes": 360,
+        "purpose": "Checked table converter plus proportional integer/decimal measurement helpers",
+        "before_sha256": "8c91774ac49f0695e731d10dda11fac9a8ebef39560f15bb5b957d353367d0a3",
+        "after_sha256": "9bfd8b42e607663040b06e5ffef8c27b485541aecafaaa5d2139899eaed76f61"
+      },
+      {
+        "file_offset": 23770,
+        "bytes": 6,
+        "purpose": "Measure numeric readout with the same cached glyph widths used to draw it",
+        "before_sha256": "27a234dd23639b92766a887b5366dd50c3ced45a3f706958bd864a5f314a4dea",
+        "after_sha256": "0920674722c8ec5e55be5d51ff74a803a1086a2cc1e7558b72a08bda8039c657"
+      },
+      {
+        "file_offset": 23968,
+        "bytes": 4,
+        "purpose": "Measurement helper address",
+        "before_sha256": "140efb356462f70dd1c7f1dfb10bcc07d0f14d439043fb9e9d50f4d7be71ea96",
+        "after_sha256": "e934b28c831498e9f5d96a8fc1be96118e3fd7f5cea9911fe87767ca54321587"
+      },
+      {
+        "file_offset": 24298,
+        "bytes": 6,
+        "purpose": "Measure numeric readout with the same cached glyph widths used to draw it",
+        "before_sha256": "ea6bd1d18d99e6be93ac40ff3f12244ab7c6e3276acd4f6315823dd355af7e53",
+        "after_sha256": "8b7d37e652b396e3ac9c707e6c2cf215cc39f4ccbd4cfec22c3ad8c24087522f"
+      },
+      {
+        "file_offset": 24512,
+        "bytes": 4,
+        "purpose": "Measurement helper address",
+        "before_sha256": "140efb356462f70dd1c7f1dfb10bcc07d0f14d439043fb9e9d50f4d7be71ea96",
+        "after_sha256": "41dc051a9988276424c998f5bf088b2ea5d1fa0ea3f370153040fee906436a7c"
+      },
+      {
+        "file_offset": 23992,
+        "bytes": 4,
+        "purpose": "Use proportional cached renderer for numeric/fixed-font text",
+        "before_sha256": "61bc8a4861e377f00540f20497aa0c6508a4b97ceb559eb37646ce2bf25f0d7d",
+        "after_sha256": "639607b1e676d31e2e4a45292947afd8b9393cd48a1f4c2c91c6fa3981600ac4"
+      },
+      {
+        "file_offset": 24536,
+        "bytes": 4,
+        "purpose": "Use proportional cached renderer for numeric/fixed-font text",
+        "before_sha256": "61bc8a4861e377f00540f20497aa0c6508a4b97ceb559eb37646ce2bf25f0d7d",
+        "after_sha256": "639607b1e676d31e2e4a45292947afd8b9393cd48a1f4c2c91c6fa3981600ac4"
+      },
+      {
+        "file_offset": 25500,
+        "bytes": 4,
+        "purpose": "Use proportional cached renderer for numeric/fixed-font text",
+        "before_sha256": "61bc8a4861e377f00540f20497aa0c6508a4b97ceb559eb37646ce2bf25f0d7d",
+        "after_sha256": "639607b1e676d31e2e4a45292947afd8b9393cd48a1f4c2c91c6fa3981600ac4"
+      }
+    ]
+  },
+  "layout": {
+    "source_observed_max_line_characters": 20,
+    "english_max_line_characters": 41,
+    "english_max_small_font_line_width_px": 348,
+    "approved_ui_character_limit": null,
+    "note": "Observed lengths describe this batch, not a verified textbox limit. Small-font pixel widths are exact native metrics; this popup uses cached-font mode 1, whose BIOS advances require runtime measurement."
+  },
+  "bindings": [
+    {
+      "row": 1,
+      "id": "/1ST_READ.BIN:00130097",
+      "source_sha256": "57046181cffa55e3841de01e863775d344b786bc668f4c2a27456d4a7dc4c19e",
+      "source_file_offset": 1245335,
+      "target_file_offset": 1245335,
+      "target_bytes": 38,
+      "target_sha256": "9c9eb4a17c6584ac9bd6bbd2223f3940b0391003970511d371ca72aeae955ea7",
+      "pointer_locations": [
+        1238640
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        315
+      ],
+      "line_characters": [
+        38
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The reinforced item is omitted in the source and depends on the active equipment screen. Passive English preserves that omission."
+    },
+    {
+      "row": 2,
+      "id": "/1ST_READ.BIN:001300b0",
+      "source_sha256": "0f098992fd4b8096ecff3e6491230fd0d1e50fd861738757878559ce66e9f187",
+      "source_file_offset": 1245360,
+      "target_file_offset": 1245374,
+      "target_bytes": 42,
+      "target_sha256": "7185424b2a696fa61c1b0e561a3c83237719d56bbbc8b2a5f0dfbe6508d870ce",
+      "pointer_locations": [
+        1238644
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        169,
+        190
+      ],
+      "line_characters": [
+        20,
+        21
+      ],
+      "source_line_characters": [
+        14,
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 3,
+      "id": "/1ST_READ.BIN:001300ea",
+      "source_sha256": "18080eb55aea23b7d905513101df62244d4d8e141bac14dfeda992a04d920a19",
+      "source_file_offset": 1245418,
+      "target_file_offset": 1245417,
+      "target_bytes": 32,
+      "target_sha256": "892e268bf04716406b3776b7fd484618e06ac234f57f40be31cc80f0e583efd2",
+      "pointer_locations": [
+        1238648
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        164,
+        97
+      ],
+      "line_characters": [
+        19,
+        12
+      ],
+      "source_line_characters": [
+        16,
+        6
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 4,
+      "id": "/1ST_READ.BIN:00130118",
+      "source_sha256": "ddbb85f169b88e0f397c1beec1ea315cd3dc9f2af8e0d6fe2049c9f45c995f1c",
+      "source_file_offset": 1245464,
+      "target_file_offset": 1245450,
+      "target_bytes": 41,
+      "target_sha256": "b840f67c841cc59fb8773b6f2928ba14d753deba298aa9ff1a9630fe3a98b593",
+      "pointer_locations": [
+        1238652
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        338
+      ],
+      "line_characters": [
+        41
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The item being lightened is omitted in the source and depends on the active equipment screen. Passive English preserves that omission."
+    },
+    {
+      "row": 5,
+      "id": "/1ST_READ.BIN:00130133",
+      "source_sha256": "c0848836a48a57e408b079ffdbc9f9a1495d534bcddd2699a95b612733cf5adc",
+      "source_file_offset": 1245491,
+      "target_file_offset": 1245492,
+      "target_bytes": 45,
+      "target_sha256": "6188aff9ef89445668788404cf0ca76cceeefce0f2d77a8ff6f10914b2176b2e",
+      "pointer_locations": [
+        1238656
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        234,
+        167
+      ],
+      "line_characters": [
+        25,
+        19
+      ],
+      "source_line_characters": [
+        14,
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 6,
+      "id": "/1ST_READ.BIN:00130165",
+      "source_sha256": "c5add64c7819375760007c608b70b3bf191fefa3de0a310fc63c1f3815b6c42a",
+      "source_file_offset": 1245541,
+      "target_file_offset": 1245538,
+      "target_bytes": 36,
+      "target_sha256": "88c42692c664b621345b6edc74b9535232afb675db77e0339d280e4d610b8f42",
+      "pointer_locations": [
+        1238660
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        151,
+        133
+      ],
+      "line_characters": [
+        19,
+        16
+      ],
+      "source_line_characters": [
+        14,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 7,
+      "id": "/1ST_READ.BIN:001301a1",
+      "source_sha256": "8633d1a0faeff6a156e719ba8dee9ebcbdf25db022fd2f5dcffe73567b27d4b2",
+      "source_file_offset": 1245601,
+      "target_file_offset": 1245575,
+      "target_bytes": 38,
+      "target_sha256": "f537eb25d9ce8b57685b92cecf32091e041ca0c282e5bb1b3b68af86ba0c0958",
+      "pointer_locations": [
+        1238664
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        147,
+        152
+      ],
+      "line_characters": [
+        19,
+        18
+      ],
+      "source_line_characters": [
+        11,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 8,
+      "id": "/1ST_READ.BIN:001301d1",
+      "source_sha256": "fed82023c5af3445281d2e2303450c4873145d55689a6b97db472e330f6f965d",
+      "source_file_offset": 1245649,
+      "target_file_offset": 1245614,
+      "target_bytes": 58,
+      "target_sha256": "214c18261819676612f5f4082d802344ecbf3551d67d91bff379399454665ca7",
+      "pointer_locations": [
+        1238668
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        246,
+        243
+      ],
+      "line_characters": [
+        29,
+        28
+      ],
+      "source_line_characters": [
+        17,
+        5
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 9,
+      "id": "/1ST_READ.BIN:001301ff",
+      "source_sha256": "a2c4db0903d294081660fcd9892a9da1a649e3ca3282c2e383b28e4e20b6be7d",
+      "source_file_offset": 1245695,
+      "target_file_offset": 1245673,
+      "target_bytes": 12,
+      "target_sha256": "f5230b7225bfd497cc358169af86f1c28135d39002fae9cd923a853e81742c26",
+      "pointer_locations": [
+        1238672
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        96
+      ],
+      "line_characters": [
+        12
+      ],
+      "source_line_characters": [
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 10,
+      "id": "/1ST_READ.BIN:00130216",
+      "source_sha256": "8be2f7028f4bf5d7b3d0780acb563f596665345e5224eba551258e7f211ac771",
+      "source_file_offset": 1245718,
+      "target_file_offset": 1245686,
+      "target_bytes": 12,
+      "target_sha256": "bf9da501570d0abcd1934425d682012d8b46180073ce9172409c73050d7a5d0f",
+      "pointer_locations": [
+        1238676
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        94
+      ],
+      "line_characters": [
+        12
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 11,
+      "id": "/1ST_READ.BIN:0013022f",
+      "source_sha256": "c1a9d139d800dc8b3dd791eb9e07b9c9989fd75fec539c2b620934f51f174075",
+      "source_file_offset": 1245743,
+      "target_file_offset": 1245699,
+      "target_bytes": 12,
+      "target_sha256": "19b9455ce71a631f52e74d6fc358e95b9f35ab9a933aaf2fb159d97f1246983c",
+      "pointer_locations": [
+        1238680
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        96
+      ],
+      "line_characters": [
+        12
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 12,
+      "id": "/1ST_READ.BIN:0013024c",
+      "source_sha256": "fff4d1e245cc0bbd900feac43149c8cd0f8e2cf1e5bee519653e41cd2e78c792",
+      "source_file_offset": 1245772,
+      "target_file_offset": 1245712,
+      "target_bytes": 12,
+      "target_sha256": "f68f7d93984ddbc11de10849844f72895cd107a6508fb91feec9ccf233564567",
+      "pointer_locations": [
+        1238684
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        97
+      ],
+      "line_characters": [
+        12
+      ],
+      "source_line_characters": [
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 13,
+      "id": "/1ST_READ.BIN:00130261",
+      "source_sha256": "fa15a3796df0856a239db3bb6cef311e769b6e02e658e051610947c525ff95d4",
+      "source_file_offset": 1245793,
+      "target_file_offset": 1245725,
+      "target_bytes": 16,
+      "target_sha256": "ddafbae113b7f9e1f518ecd838f2967779fc9da1a9af61b7e25b66b497ad5249",
+      "pointer_locations": [
+        1238688
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        120
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 14,
+      "id": "/1ST_READ.BIN:00130276",
+      "source_sha256": "4c1ada3f5f2e039e86787acecd4e7e2997e076d21fee62ac074e3e6fd8273b1d",
+      "source_file_offset": 1245814,
+      "target_file_offset": 1245742,
+      "target_bytes": 17,
+      "target_sha256": "316b86fae91090a39bd5d822863e0e6a172ff04cbf7e7a2cff9fa6a20b962c2c",
+      "pointer_locations": [
+        1238692
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        137
+      ],
+      "line_characters": [
+        17
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 15,
+      "id": "/1ST_READ.BIN:0013028f",
+      "source_sha256": "76adcbffcc6c70aaa1a22e939047fdf7647b4f9a11bc3ab178a7d7f6d1723e64",
+      "source_file_offset": 1245839,
+      "target_file_offset": 1245760,
+      "target_bytes": 57,
+      "target_sha256": "6b7fc1670a4d1d63c58d17751c02a89edf6f5f33725790940ef91206678ec154",
+      "pointer_locations": [
+        1238696
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        265,
+        227
+      ],
+      "line_characters": [
+        29,
+        27
+      ],
+      "source_line_characters": [
+        15,
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 16,
+      "id": "/1ST_READ.BIN:001302cb",
+      "source_sha256": "53a2deb307109f72826bc1ffa1b5e3e82e7250d9f974f85ab6783b5a447bbd85",
+      "source_file_offset": 1245899,
+      "target_file_offset": 1245818,
+      "target_bytes": 58,
+      "target_sha256": "0f7f0ee7aef3c85920e90dc2e6e1806841de85fe802d5a8c44929c651db969b0",
+      "pointer_locations": [
+        1238700
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        269,
+        222,
+        0
+      ],
+      "line_characters": [
+        31,
+        25,
+        0
+      ],
+      "source_line_characters": [
+        15,
+        17,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 17,
+      "id": "/1ST_READ.BIN:0013030e",
+      "source_sha256": "0a36358c9a8a36d938fc318be1c42efdad1d93bf0fd7daafc69bb047f32f5b72",
+      "source_file_offset": 1245966,
+      "target_file_offset": 1245877,
+      "target_bytes": 42,
+      "target_sha256": "978bab1344df16faca123862d7c312e3f5af51d0929a6faf5c24e5e919d42250",
+      "pointer_locations": [
+        1238704
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        177,
+        159
+      ],
+      "line_characters": [
+        22,
+        19
+      ],
+      "source_line_characters": [
+        12,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 18,
+      "id": "/1ST_READ.BIN:00130342",
+      "source_sha256": "c7429b58a562fb119e963fec90cb59aafdd5fbffa38acab6e70ce53d6af345a5",
+      "source_file_offset": 1246018,
+      "target_file_offset": 1245920,
+      "target_bytes": 33,
+      "target_sha256": "b6b9f26b2a50a81f53d7416ce966b0f85fff906c7dfd1d235925df3f62fc1997",
+      "pointer_locations": [
+        1238708
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        135,
+        118
+      ],
+      "line_characters": [
+        17,
+        15
+      ],
+      "source_line_characters": [
+        13,
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 19,
+      "id": "/1ST_READ.BIN:0013036c",
+      "source_sha256": "51708e27d4e2c03d72230d3332cb27fd68b5100255d8b22470a48b3de8c14a82",
+      "source_file_offset": 1246060,
+      "target_file_offset": 1245954,
+      "target_bytes": 49,
+      "target_sha256": "64f6fa42432a5afac6c5419a19aeb76a27979ce89dd7d1e167a1dc45b3b3d1bf",
+      "pointer_locations": [
+        1238712
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        239,
+        159
+      ],
+      "line_characters": [
+        29,
+        19
+      ],
+      "source_line_characters": [
+        15,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 20,
+      "id": "/1ST_READ.BIN:001303a4",
+      "source_sha256": "0f177cf3d2385aecd1ebac2f6751927207a09543346c4af16186323d336e924a",
+      "source_file_offset": 1246116,
+      "target_file_offset": 1246004,
+      "target_bytes": 19,
+      "target_sha256": "5c3e07c6204796ddd978eb1ebe10994e63f745fc3ccff755e348cf4b6bc0d4a9",
+      "pointer_locations": [
+        1238716
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        151
+      ],
+      "line_characters": [
+        19
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 21,
+      "id": "/1ST_READ.BIN:001303c1",
+      "source_sha256": "d50828bf5dcb3e80efd26d11735ec6f3b81387dc47aef51124b97df8a74712c7",
+      "source_file_offset": 1246145,
+      "target_file_offset": 1246024,
+      "target_bytes": 13,
+      "target_sha256": "747f48a98d3005ee46c323f9ffd9aefa79c6b44267830f872bd3f206708ce009",
+      "pointer_locations": [
+        1238720,
+        1238904
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        98
+      ],
+      "line_characters": [
+        13
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 22,
+      "id": "/1ST_READ.BIN:001303da",
+      "source_sha256": "59ff9051e9d16757980cd51eb3e09c0cc37c2a36b3f464d0137b91cd6031beca",
+      "source_file_offset": 1246170,
+      "target_file_offset": 1246038,
+      "target_bytes": 16,
+      "target_sha256": "0e3964945778f9d2fa0353a101d58ce7863a478845b85ffba2b7f1629139a374",
+      "pointer_locations": [
+        1238724,
+        1238872
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        142
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 23,
+      "id": "/1ST_READ.BIN:001303f3",
+      "source_sha256": "08e1b1d9ac370c4d36747d53aa5883fd33837cbdfa19d8e8a5cc39f1572b7374",
+      "source_file_offset": 1246195,
+      "target_file_offset": 1246055,
+      "target_bytes": 17,
+      "target_sha256": "a6ca1d3987d15f1d84885a0247448461fd323bdd914c5a4609016369ddf1a4d4",
+      "pointer_locations": [
+        1238728
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        155
+      ],
+      "line_characters": [
+        17
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 24,
+      "id": "/1ST_READ.BIN:0013040e",
+      "source_sha256": "dfa241d230912ba3099d6a292c0846bd9398796fc913abf24c4a504e435151bc",
+      "source_file_offset": 1246222,
+      "target_file_offset": 1246073,
+      "target_bytes": 25,
+      "target_sha256": "d2dc4c3c8761bf8ecde22b5d5ef08f8c7e4827c5bcd6585b78297239a1fd6f5a",
+      "pointer_locations": [
+        1238732
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        113,
+        83
+      ],
+      "line_characters": [
+        14,
+        10
+      ],
+      "source_line_characters": [
+        13,
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 25,
+      "id": "/1ST_READ.BIN:00130438",
+      "source_sha256": "3c1d1b67004b77f5e35b587ffcf95fe1d7d60d7a8971d638a7cb058658df0ca6",
+      "source_file_offset": 1246264,
+      "target_file_offset": 1246099,
+      "target_bytes": 56,
+      "target_sha256": "84d9e7aba3c6a8909d4383c53216149a2c6ae15ffe7de20f7b806fe1f51280ce",
+      "pointer_locations": [
+        1238736
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        255,
+        207
+      ],
+      "line_characters": [
+        30,
+        25
+      ],
+      "source_line_characters": [
+        13,
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 26,
+      "id": "/1ST_READ.BIN:00130470",
+      "source_sha256": "343a67ab4fca9e8c927835ad05d5db69c37d77cfdc99f12a80ad5c2b401a6eb5",
+      "source_file_offset": 1246320,
+      "target_file_offset": 1246156,
+      "target_bytes": 53,
+      "target_sha256": "db2867ed0b3c7dd8b9d248595211859fb3e59cc14da494aba050783faba68ba4",
+      "pointer_locations": [
+        1238740
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        258,
+        170
+      ],
+      "line_characters": [
+        31,
+        21
+      ],
+      "source_line_characters": [
+        13,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 27,
+      "id": "/1ST_READ.BIN:001304aa",
+      "source_sha256": "0df94a3e3b35e02a4c10eedd1156a9dde6aede3c1495a3c063148bb893577d66",
+      "source_file_offset": 1246378,
+      "target_file_offset": 1246210,
+      "target_bytes": 45,
+      "target_sha256": "3f01d1043e96009ff7e5f942970afd378a9d5d67c4ddbe630e81385a7afdbdce",
+      "pointer_locations": [
+        1238744
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        184,
+        201
+      ],
+      "line_characters": [
+        20,
+        24
+      ],
+      "source_line_characters": [
+        15,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 28,
+      "id": "/1ST_READ.BIN:001304e2",
+      "source_sha256": "f4e9a110814de9a9f7467ed5be0ce1a9b7826cf5e2b443c27ebe807ec98d3759",
+      "source_file_offset": 1246434,
+      "target_file_offset": 1246256,
+      "target_bytes": 37,
+      "target_sha256": "0e9a8cb8aadd9e20dfdaa792b0755ec2f7e58d0bf3f96af813d79fb3ff4311d9",
+      "pointer_locations": [
+        1238748
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        161,
+        152
+      ],
+      "line_characters": [
+        18,
+        18
+      ],
+      "source_line_characters": [
+        13,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 29,
+      "id": "/1ST_READ.BIN:00130518",
+      "source_sha256": "4e75bfb5e53fa18f2f72a3c416daa87f615fd75919fee6976db1cca8a38e515d",
+      "source_file_offset": 1246488,
+      "target_file_offset": 1246294,
+      "target_bytes": 26,
+      "target_sha256": "b5f32cafc71c7fefb8fa13825c420955221c30608e904297cde257557509a421",
+      "pointer_locations": [
+        1238752
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        114,
+        91
+      ],
+      "line_characters": [
+        13,
+        12
+      ],
+      "source_line_characters": [
+        12,
+        5
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 30,
+      "id": "/1ST_READ.BIN:0013053c",
+      "source_sha256": "ee052b6e0730da296bc792ab50e4cb983140d1c713ba3bdcc283f676fdc49772",
+      "source_file_offset": 1246524,
+      "target_file_offset": 1246321,
+      "target_bytes": 18,
+      "target_sha256": "6c271de84f5554f54324671adc77ee2b27a5d1f7cde6a6eda0a05d0b11fe4448",
+      "pointer_locations": [
+        1238756
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        151
+      ],
+      "line_characters": [
+        18
+      ],
+      "source_line_characters": [
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 31,
+      "id": "/1ST_READ.BIN:0013055b",
+      "source_sha256": "fd73dc49cccb6e4ad9e8c4676dc00b649745b9f1fdab76dfe39859fb60d6537e",
+      "source_file_offset": 1246555,
+      "target_file_offset": 1246340,
+      "target_bytes": 20,
+      "target_sha256": "a26b0f1f118e7fe96213faf4c0073adf2a4e726c6e3fe3a10de677692ecba1a6",
+      "pointer_locations": [
+        1238760
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        174
+      ],
+      "line_characters": [
+        20
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 32,
+      "id": "/1ST_READ.BIN:00130578",
+      "source_sha256": "51f2251a7e8a94f2a74c48e358b62c39b2d9537f646744160303efacac2b227b",
+      "source_file_offset": 1246584,
+      "target_file_offset": 1246361,
+      "target_bytes": 33,
+      "target_sha256": "0100b608dda55c4266bdb1b422fa2452d1b37b7b151e30ba2b4b31ef2ef403dd",
+      "pointer_locations": [
+        1238764
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        161,
+        114
+      ],
+      "line_characters": [
+        18,
+        14
+      ],
+      "source_line_characters": [
+        13,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 33,
+      "id": "/1ST_READ.BIN:001305ae",
+      "source_sha256": "f4bb57b401948c63e51aae9286e7d330739d4e777d6e015b21ad0b79451a363d",
+      "source_file_offset": 1246638,
+      "target_file_offset": 1246395,
+      "target_bytes": 37,
+      "target_sha256": "52c82fb450effe2d164758cea642c2c14021894b4a4677e1cde69f9128504b81",
+      "pointer_locations": [
+        1238768
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        307
+      ],
+      "line_characters": [
+        37
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 34,
+      "id": "/1ST_READ.BIN:001305c9",
+      "source_sha256": "cbf00463a39df91f16e3dcc02335bcc376dc502373f415aad036595583d191ab",
+      "source_file_offset": 1246665,
+      "target_file_offset": 1246433,
+      "target_bytes": 38,
+      "target_sha256": "2fee1f14128a4cc9a582b4c2a0b3d13857db2155f2569d53a87a88ab72484138",
+      "pointer_locations": [
+        1238772
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        194,
+        98,
+        0
+      ],
+      "line_characters": [
+        23,
+        13,
+        0
+      ],
+      "source_line_characters": [
+        15,
+        13,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 35,
+      "id": "/1ST_READ.BIN:00130604",
+      "source_sha256": "24536d6cae1b006d452ee0423e9916c96e1cce2ad7293defe0ec8d6692ab09bc",
+      "source_file_offset": 1246724,
+      "target_file_offset": 1246472,
+      "target_bytes": 58,
+      "target_sha256": "5cff3cc972a1437c5f80de471a29c67094b63fc928a6983c2762e33e128473b4",
+      "pointer_locations": [
+        1238776
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        265,
+        237
+      ],
+      "line_characters": [
+        29,
+        28
+      ],
+      "source_line_characters": [
+        15,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 36,
+      "id": "/1ST_READ.BIN:00130642",
+      "source_sha256": "333cb05217cdfc01e0df8b164e941f6b7e0cef63bb2a36006aad637db087d0f6",
+      "source_file_offset": 1246786,
+      "target_file_offset": 1246531,
+      "target_bytes": 60,
+      "target_sha256": "9e07b5b7714a4ceda8fd1e8c4d946acfb3b6b852726e0b59a73496a86e94f447",
+      "pointer_locations": [
+        1238780
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        287,
+        237
+      ],
+      "line_characters": [
+        30,
+        29
+      ],
+      "source_line_characters": [
+        14,
+        16
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 37,
+      "id": "/1ST_READ.BIN:00130680",
+      "source_sha256": "d9d858cf2652b455df33b34e95670cbe5a35e927dd898f444350b24d617e082d",
+      "source_file_offset": 1246848,
+      "target_file_offset": 1246592,
+      "target_bytes": 21,
+      "target_sha256": "4d359d087f3006d98b259f653748abc273b518718f64513d1fe0e5e898de0951",
+      "pointer_locations": [
+        1238784
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        186
+      ],
+      "line_characters": [
+        21
+      ],
+      "source_line_characters": [
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 38,
+      "id": "/1ST_READ.BIN:0013069f",
+      "source_sha256": "519fe14896d4aa4ee9935bfaefe328fd9081d64d3b727f6f71f8c7350c0259d9",
+      "source_file_offset": 1246879,
+      "target_file_offset": 1246614,
+      "target_bytes": 28,
+      "target_sha256": "f88f45782b796e9a916367b616cd320508860145aed5ae709d97348869f39a69",
+      "pointer_locations": [
+        1238788
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        240
+      ],
+      "line_characters": [
+        28
+      ],
+      "source_line_characters": [
+        17
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 39,
+      "id": "/1ST_READ.BIN:001306c2",
+      "source_sha256": "96fe06cac613f26a44dad9e358761abdc07fbf139cafe6394f90a053d9e2721b",
+      "source_file_offset": 1246914,
+      "target_file_offset": 1246643,
+      "target_bytes": 25,
+      "target_sha256": "abe1d4db80539b29a929867a66e1d98fb3a09a0b6f2972254ab0234b75b07558",
+      "pointer_locations": [
+        1238792
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        220
+      ],
+      "line_characters": [
+        25
+      ],
+      "source_line_characters": [
+        16
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 40,
+      "id": "/1ST_READ.BIN:001306e3",
+      "source_sha256": "a0fde3efd49ed4446a528d692ec6a1a08abda1d302150600f91d55ff9427eed3",
+      "source_file_offset": 1246947,
+      "target_file_offset": 1246669,
+      "target_bytes": 22,
+      "target_sha256": "1659c3e5b55db753a7b19279b3a427c216944560880e2a95aef69a296bf63974",
+      "pointer_locations": [
+        1238796
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        198,
+        0
+      ],
+      "line_characters": [
+        21,
+        0
+      ],
+      "source_line_characters": [
+        13,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "First half of a composed free-block warning; keep the newline before the runtime number."
+    },
+    {
+      "row": 41,
+      "id": "/1ST_READ.BIN:001306ff",
+      "source_sha256": "3b8132a7592382992378bc3b69868aa69b0b0cded0c7ddd98abed311d30a9946",
+      "source_file_offset": 1246975,
+      "target_file_offset": 1246692,
+      "target_bytes": 18,
+      "target_sha256": "0db7c80495bc053e82319eef6b3cd8d695caf569676577e82b48c24ed04a80df",
+      "pointer_locations": [
+        1238800
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        155
+      ],
+      "line_characters": [
+        18
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Suffix after the runtime block count. Preserve the leading space."
+    },
+    {
+      "row": 42,
+      "id": "/1ST_READ.BIN:00130718",
+      "source_sha256": "19239bce6e6c7b17fa902928477b6ed03f6a0aeb771583bbc1df789899ea3d12",
+      "source_file_offset": 1247000,
+      "target_file_offset": 1246711,
+      "target_bytes": 46,
+      "target_sha256": "576fdd40d20fe49f4128ce7d69f174b88ba14c72fd43bed77e3f8378fa5f24c8",
+      "pointer_locations": [
+        1238804
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        152,
+        231
+      ],
+      "line_characters": [
+        17,
+        28
+      ],
+      "source_line_characters": [
+        14,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 43,
+      "id": "/1ST_READ.BIN:00130746",
+      "source_sha256": "0ab2e8093656b1d1788ed537c5bc8dc7316ace4cf8436dec0c182dcc36cae0c9",
+      "source_file_offset": 1247046,
+      "target_file_offset": 1246758,
+      "target_bytes": 51,
+      "target_sha256": "ec56f959bf08f7dc3f0a5bf1db3c786e887e62313e40b2f6d67e5e570c76e33f",
+      "pointer_locations": [
+        1238808
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        127,
+        162,
+        145
+      ],
+      "line_characters": [
+        14,
+        19,
+        16
+      ],
+      "source_line_characters": [
+        8,
+        14,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "VM executable means the memory-unit program, not a desktop virtual machine."
+    },
+    {
+      "row": 44,
+      "id": "/1ST_READ.BIN:0013077d",
+      "source_sha256": "ab58121c36f2d0cb767b3fab89a8d8f4af819cd55de8f26469de2dbaaf493333",
+      "source_file_offset": 1247101,
+      "target_file_offset": 1246810,
+      "target_bytes": 39,
+      "target_sha256": "dfe6c68d28b256a036b65d7d96d881162f247755ea65fcf02ce1cd4422581809",
+      "pointer_locations": [
+        1238812
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        348
+      ],
+      "line_characters": [
+        39
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 45,
+      "id": "/1ST_READ.BIN:0013079a",
+      "source_sha256": "349ef582cac9dc4f4ef1a3dc5242aca90dc80457b58221b6d00c489e8a51658a",
+      "source_file_offset": 1247130,
+      "target_file_offset": 1246850,
+      "target_bytes": 23,
+      "target_sha256": "f0fc099c51103b97ee8a1685f909df60232e762c526e8709b4923ab2c2fc2740",
+      "pointer_locations": [
+        1238816
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        196
+      ],
+      "line_characters": [
+        23
+      ],
+      "source_line_characters": [
+        16
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 46,
+      "id": "/1ST_READ.BIN:001307bb",
+      "source_sha256": "5b075776e33803510a263b33e72006fb2a39e12fc052578f30ff35d9024031cd",
+      "source_file_offset": 1247163,
+      "target_file_offset": 1246874,
+      "target_bytes": 80,
+      "target_sha256": "c5c658e67252cc77008a03fb0c6eccc7825d84dac21bafbf3d42f904f9250cc3",
+      "pointer_locations": [
+        1238820
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        273,
+        229,
+        159
+      ],
+      "line_characters": [
+        32,
+        27,
+        19
+      ],
+      "source_line_characters": [
+        5,
+        16,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 47,
+      "id": "/1ST_READ.BIN:00130800",
+      "source_sha256": "dd684571f9063292547972520b04b169a84af22b68103bf1c3b6583012f9588d",
+      "source_file_offset": 1247232,
+      "target_file_offset": 1246955,
+      "target_bytes": 80,
+      "target_sha256": "7ec1fec5aa4656fc9a8eec3db00f69e79f26159a00b9bcafa0eb64af71cc8781",
+      "pointer_locations": [
+        1238824
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        278,
+        229,
+        159
+      ],
+      "line_characters": [
+        32,
+        27,
+        19
+      ],
+      "source_line_characters": [
+        4,
+        16,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 48,
+      "id": "/1ST_READ.BIN:00130843",
+      "source_sha256": "30cf3a0fcc8212b3a19281eb1696388894f9a84ce25de5f43414556c91dfa508",
+      "source_file_offset": 1247299,
+      "target_file_offset": 1247036,
+      "target_bytes": 55,
+      "target_sha256": "cb7ff7a0dce4d6df24dff6460e52848e83d6f1c3274540ba8d7b2c2fe9a46e68",
+      "pointer_locations": [
+        1238828
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        263,
+        208
+      ],
+      "line_characters": [
+        30,
+        24
+      ],
+      "source_line_characters": [
+        11,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 49,
+      "id": "/1ST_READ.BIN:00130879",
+      "source_sha256": "66502596b63ebbc3f7d6b4ece215c069204acca746f9e99758523ab47f6f8866",
+      "source_file_offset": 1247353,
+      "target_file_offset": 1247092,
+      "target_bytes": 55,
+      "target_sha256": "79595cdaa4ea82fc628281a30a6111f96513d97e24c5396899f47eb622bfb6f2",
+      "pointer_locations": [
+        1238832
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        181,
+        286
+      ],
+      "line_characters": [
+        22,
+        32
+      ],
+      "source_line_characters": [
+        9,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 50,
+      "id": "/1ST_READ.BIN:001308a5",
+      "source_sha256": "5883030f3a3214160905c3a4e2586f34e1f5a616ea17e371e973da067b2687fa",
+      "source_file_offset": 1247397,
+      "target_file_offset": 1247148,
+      "target_bytes": 37,
+      "target_sha256": "438338873aeba8cd22cec81d57a2d288bf5aebe262b6e3b21060f3baf3391dd3",
+      "pointer_locations": [
+        1238836
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        146,
+        166
+      ],
+      "line_characters": [
+        16,
+        20
+      ],
+      "source_line_characters": [
+        14,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 51,
+      "id": "/1ST_READ.BIN:001308cb",
+      "source_sha256": "0be41fc1ba14af02637ce022007d5bf6685231c458be47fd008a4e69b9feec96",
+      "source_file_offset": 1247435,
+      "target_file_offset": 1247186,
+      "target_bytes": 40,
+      "target_sha256": "255dde855dc5f8639e7d00153dfd62b2369bb0df648bbf5a366a5975dcf76d2c",
+      "pointer_locations": [
+        1238840
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        177,
+        142
+      ],
+      "line_characters": [
+        21,
+        18
+      ],
+      "source_line_characters": [
+        12,
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 52,
+      "id": "/1ST_READ.BIN:001308f3",
+      "source_sha256": "957115653f45e647b556326f174b3a5c2ce3f6fd18b14b58420d8e0543e025b0",
+      "source_file_offset": 1247475,
+      "target_file_offset": 1247227,
+      "target_bytes": 37,
+      "target_sha256": "d2b652c447948ffe5f4307cc2c35039f0fc4f533178567d14affccec7a1a86c2",
+      "pointer_locations": [
+        1238844
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        183,
+        130
+      ],
+      "line_characters": [
+        21,
+        15
+      ],
+      "source_line_characters": [
+        8,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Prize-money data is a game-specific record; retain data rather than inventing an award action."
+    },
+    {
+      "row": 53,
+      "id": "/1ST_READ.BIN:00130915",
+      "source_sha256": "ec2fd1bd8e723b653d6e22c4c74871696d19692efd3041ef2ba507e4cdd3ca45",
+      "source_file_offset": 1247509,
+      "target_file_offset": 1247265,
+      "target_bytes": 55,
+      "target_sha256": "d467d47ce1f4da07436c375d17dfd553fe1ca23e1969b2676f1e4babbac787eb",
+      "pointer_locations": [
+        1238848
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        181,
+        208,
+        55
+      ],
+      "line_characters": [
+        22,
+        24,
+        7
+      ],
+      "source_line_characters": [
+        9,
+        14,
+        5
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 54,
+      "id": "/1ST_READ.BIN:00130950",
+      "source_sha256": "6e2f63abfa20c10e974cbe0f7bddd5a680eab3a47624098dc971769b54b249b8",
+      "source_file_offset": 1247568,
+      "target_file_offset": 1247321,
+      "target_bytes": 25,
+      "target_sha256": "67edb90fa97e854e4922dcb23df3a499c24425f87c8016ec8ec138c04e3693ca",
+      "pointer_locations": [
+        1238852
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        216
+      ],
+      "line_characters": [
+        25
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 55,
+      "id": "/1ST_READ.BIN:0013096d",
+      "source_sha256": "e2b1939e8018ea7b8a54eaad919306c13895153456744f95a229156816d1d073",
+      "source_file_offset": 1247597,
+      "target_file_offset": 1247347,
+      "target_bytes": 57,
+      "target_sha256": "e38c21b00766c70fe908b20fbea020b316fd50f3464c3a20f25f34c00f4dd193",
+      "pointer_locations": [
+        1238856
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        181,
+        149,
+        133
+      ],
+      "line_characters": [
+        22,
+        17,
+        16
+      ],
+      "source_line_characters": [
+        9,
+        12,
+        6
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Opponent-specific overweight restriction; verify which unit exceeds the limit in-game."
+    },
+    {
+      "row": 56,
+      "id": "/1ST_READ.BIN:001309a6",
+      "source_sha256": "74f0f091df3abf9ab297038ad87d808671bd9494d5c557af7a9046756f3e6555",
+      "source_file_offset": 1247654,
+      "target_file_offset": 1247405,
+      "target_bytes": 67,
+      "target_sha256": "710d21c74c4f6b15d9dfda153ac4a52e8338ff248fcd3e10cedb99c2763f978a",
+      "pointer_locations": [
+        1238860
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        181,
+        194,
+        184
+      ],
+      "line_characters": [
+        22,
+        22,
+        21
+      ],
+      "source_line_characters": [
+        9,
+        11,
+        6
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 57,
+      "id": "/1ST_READ.BIN:001309dd",
+      "source_sha256": "1a4dd98180cfa2e9c633567e70f28df0cd585d0ce1b4303d9035c68f2c470b52",
+      "source_file_offset": 1247709,
+      "target_file_offset": 1247473,
+      "target_bytes": 73,
+      "target_sha256": "55f8dc44908990e0dbfc523eae94c89e568db756d9966477bfa71177743fe4f8",
+      "pointer_locations": [
+        1238864
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        274,
+        198,
+        129
+      ],
+      "line_characters": [
+        32,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        15,
+        14,
+        6
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Armor compatibility: the source unit/body term does not establish whether the restriction is model-specific. Verify another model on the equipment screen."
+    },
+    {
+      "row": 58,
+      "id": "/1ST_READ.BIN:00130a26",
+      "source_sha256": "01d78527ec490fdd76baab902e2c1d9a28b0155ad40c113a5f127e31f12acf18",
+      "source_file_offset": 1247782,
+      "target_file_offset": 1247547,
+      "target_bytes": 38,
+      "target_sha256": "6a67e24b0c1d6d9947ec9cddb74c6dea5d01f5906b5fa34a14aee9f4b4cbb83d",
+      "pointer_locations": [
+        1238868
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        131,
+        229
+      ],
+      "line_characters": [
+        12,
+        25
+      ],
+      "source_line_characters": [
+        10,
+        20
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "MARCS V2 is the system name; preserve it without inventing an acronym expansion."
+    },
+    {
+      "row": 59,
+      "id": "/1ST_READ.BIN:00130a64",
+      "source_sha256": "74013195303156af3a649e24f09c040f0c3aa45bdebdde32793b00d00e6598c6",
+      "source_file_offset": 1247844,
+      "target_file_offset": 1247586,
+      "target_bytes": 53,
+      "target_sha256": "434f53461e4b8db294d11fdce4c8cedf7c864465de745bc5bfbef884b3e107ae",
+      "pointer_locations": [
+        1238876
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        155,
+        296
+      ],
+      "line_characters": [
+        17,
+        35
+      ],
+      "source_line_characters": [
+        13,
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 60,
+      "id": "/1ST_READ.BIN:00130a9c",
+      "source_sha256": "a48e12c8e49fed753959aeb747a14dba373fd4c09b4397660e5bcfd73ee07f54",
+      "source_file_offset": 1247900,
+      "target_file_offset": 1247640,
+      "target_bytes": 21,
+      "target_sha256": "ecb4e95e9ebca18dfa75b21a33c5002bb3ef9390bedec291f5fc1ce25a13fa6b",
+      "pointer_locations": [
+        1238880,
+        1238968
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        178
+      ],
+      "line_characters": [
+        21
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 61,
+      "id": "/1ST_READ.BIN:00130ab9",
+      "source_sha256": "d70203631759a54ea3ec397a121e957be9392de35bd37527fdcca71c745ebcbe",
+      "source_file_offset": 1247929,
+      "target_file_offset": 1247662,
+      "target_bytes": 15,
+      "target_sha256": "4113bde82827f30da31eed19ce8cb4814c943b0352ff59c72c1976f534c03231",
+      "pointer_locations": [
+        1238884
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        128
+      ],
+      "line_characters": [
+        15
+      ],
+      "source_line_characters": [
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 62,
+      "id": "/1ST_READ.BIN:00130ad0",
+      "source_sha256": "d0015f85a0a4a86e6d30c854654c0415c9e1e8c149e01f54be9c6af5bc024f15",
+      "source_file_offset": 1247952,
+      "target_file_offset": 1247678,
+      "target_bytes": 17,
+      "target_sha256": "dfb6497f2ef4a44b5dd4a7763afc0d810fd3a8d97e4a14501e1b16b725234bc3",
+      "pointer_locations": [
+        1238888
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        153
+      ],
+      "line_characters": [
+        17
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 63,
+      "id": "/1ST_READ.BIN:00130aed",
+      "source_sha256": "2d5798a9e10b7a9f6b0a22a9d3cdbbfd005241a3870d3b61bac531620c00ac7f",
+      "source_file_offset": 1247981,
+      "target_file_offset": 1247696,
+      "target_bytes": 10,
+      "target_sha256": "0acd9c0dddffffb66154f2175e2821e56fd4d3520fec0b24ba230a5886b8fb3b",
+      "pointer_locations": [
+        1238892
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        83
+      ],
+      "line_characters": [
+        10
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 64,
+      "id": "/1ST_READ.BIN:00130b08",
+      "source_sha256": "8d2075946b3de52be64d1887f7c78fbe6e8b1098d75ac95d55aff82c23ec7d3e",
+      "source_file_offset": 1248008,
+      "target_file_offset": 1247707,
+      "target_bytes": 10,
+      "target_sha256": "c205a5da7cf994b87f2dc344f5e9202c604aff00102b329b84ef3918250919ac",
+      "pointer_locations": [
+        1238896
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        85
+      ],
+      "line_characters": [
+        10
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 65,
+      "id": "/1ST_READ.BIN:00130b23",
+      "source_sha256": "e1658e49e1eb285871f6d51199a5b6c52d5167da9a895710dd2b2cf235e2d023",
+      "source_file_offset": 1248035,
+      "target_file_offset": 1247718,
+      "target_bytes": 19,
+      "target_sha256": "68dd120e05a47bd5db44d5202592f8c0592a6ae7e00f8a1e03b68a477a792778",
+      "pointer_locations": [
+        1238900
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        156
+      ],
+      "line_characters": [
+        19
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 66,
+      "id": "/1ST_READ.BIN:00130b40",
+      "source_sha256": "a13965cc2c3c36433a9e1d04d6fdf2e7497b505b15e695df2883fdd26ecdc210",
+      "source_file_offset": 1248064,
+      "target_file_offset": 1247738,
+      "target_bytes": 41,
+      "target_sha256": "a25cf9ab8c742fbd56cd83a1d9c77809b95d02a9567ed7605b41cd0242a8ffb0",
+      "pointer_locations": [
+        1238908
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        164,
+        182
+      ],
+      "line_characters": [
+        18,
+        22
+      ],
+      "source_line_characters": [
+        13,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 67,
+      "id": "/1ST_READ.BIN:00130b64",
+      "source_sha256": "c75ab051aa54d993a99e0b48f7742be90611027a527533c8a7d0987fd017ceb1",
+      "source_file_offset": 1248100,
+      "target_file_offset": 1247780,
+      "target_bytes": 17,
+      "target_sha256": "2ca0fde69a130e234321a5cf9f370212ad878320d52ef952334444bd322d4cbb",
+      "pointer_locations": [
+        1238912
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        151
+      ],
+      "line_characters": [
+        17
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 68,
+      "id": "/1ST_READ.BIN:00130b7d",
+      "source_sha256": "8ddfe274eacaae608287ad2769c3c92854ad0a07e3e1517c7ccb15fb4accf35e",
+      "source_file_offset": 1248125,
+      "target_file_offset": 1247798,
+      "target_bytes": 18,
+      "target_sha256": "398af119a66cde5ace44149d669a55e672a1bbc58695b9a39fce2edbd503a5c1",
+      "pointer_locations": [
+        1238916
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        155
+      ],
+      "line_characters": [
+        18
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 69,
+      "id": "/1ST_READ.BIN:00130b98",
+      "source_sha256": "3917ad59b59005500b07d6fb05e08d993333cc8505cbde507944fbc6342ba8a5",
+      "source_file_offset": 1248152,
+      "target_file_offset": 1247817,
+      "target_bytes": 16,
+      "target_sha256": "0bb95a9c90eb109e7d414954083e921f457c366e330117e74c5360fdbe041cf1",
+      "pointer_locations": [
+        1238920
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        139
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 70,
+      "id": "/1ST_READ.BIN:00130bb1",
+      "source_sha256": "ae22090e81b43900b512a5fba2125de4fe23aa9762222db43afdb5d2fcf40f29",
+      "source_file_offset": 1248177,
+      "target_file_offset": 1247834,
+      "target_bytes": 21,
+      "target_sha256": "3d036ec725b2b659c21b2e0d5ce2842a76db6ed3afc04addc9283c1498b0274c",
+      "pointer_locations": [
+        1238924
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        185
+      ],
+      "line_characters": [
+        21
+      ],
+      "source_line_characters": [
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 71,
+      "id": "/1ST_READ.BIN:00130bd0",
+      "source_sha256": "631b7c5771f143f9a5eb6ab5b50797c062be913f9da8a07734952f8d9a6b42d7",
+      "source_file_offset": 1248208,
+      "target_file_offset": 1247856,
+      "target_bytes": 19,
+      "target_sha256": "e8a9a67529025d6c04e9a6b59afa80fc0b845f1df7d549c881b30090cf8e0299",
+      "pointer_locations": [
+        1238928
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        161
+      ],
+      "line_characters": [
+        19
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 72,
+      "id": "/1ST_READ.BIN:00130beb",
+      "source_sha256": "bf7ef7d5e1fd394b3dd0b0c7052e8c541efcd7e0885238415ffa88ddbb845656",
+      "source_file_offset": 1248235,
+      "target_file_offset": 1247876,
+      "target_bytes": 17,
+      "target_sha256": "52b94de8fa67e171eb0f09c11f19a337bdd7adba122952ec8eaf536fb687b6fb",
+      "pointer_locations": [
+        1238932
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        152
+      ],
+      "line_characters": [
+        17
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 73,
+      "id": "/1ST_READ.BIN:00130c04",
+      "source_sha256": "9728a45db1908f24e83f39a0f58c90e50254861fce897bb72df2e1668264de5a",
+      "source_file_offset": 1248260,
+      "target_file_offset": 1247894,
+      "target_bytes": 20,
+      "target_sha256": "69fc10bc3b8c34b8ba15932f9bad9144d15b7932ca2b678e82c2f0c1cf578b8f",
+      "pointer_locations": [
+        1238936
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        177
+      ],
+      "line_characters": [
+        20
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 74,
+      "id": "/1ST_READ.BIN:00130c21",
+      "source_sha256": "331e2d29396bc17706eee345cb21709ba341f7fffbcf997ee0c9d4cba7159b78",
+      "source_file_offset": 1248289,
+      "target_file_offset": 1247915,
+      "target_bytes": 16,
+      "target_sha256": "25d2517b91162cebc67a0fbb6749acf1bf6673452c42fd43177f678abe5ba995",
+      "pointer_locations": [
+        1238940
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        139
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 75,
+      "id": "/1ST_READ.BIN:00130c3a",
+      "source_sha256": "c2f71218cc2f1ae43de8361b5c087dfb976c537ef4ede478534a5259fc285187",
+      "source_file_offset": 1248314,
+      "target_file_offset": 1247932,
+      "target_bytes": 16,
+      "target_sha256": "62729c59b38de96f3d4afd020afceffc823bb54b3174f6f75d861cd442c78080",
+      "pointer_locations": [
+        1238944
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        139
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 76,
+      "id": "/1ST_READ.BIN:00130c53",
+      "source_sha256": "c1fdc07b91bb3ca3294e1dca60f7a36e2bce1f800463375d533e63a5df04e1f1",
+      "source_file_offset": 1248339,
+      "target_file_offset": 1247949,
+      "target_bytes": 16,
+      "target_sha256": "035f4ca95ed8a417d93336db0adfd8a5b1f0c2eeee463885ce7038021177fb8e",
+      "pointer_locations": [
+        1238948
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        143
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 77,
+      "id": "/1ST_READ.BIN:00130c6c",
+      "source_sha256": "eec328f53daa4b52a48d5dedc0dcb5e1dd4856cb8ed1ff6b8e982fec5a473f78",
+      "source_file_offset": 1248364,
+      "target_file_offset": 1247966,
+      "target_bytes": 22,
+      "target_sha256": "dc021e3b7d4f67ebc396a8da0791db83411bff7ab9c336e7b131716279b78a00",
+      "pointer_locations": [
+        1238952
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        195
+      ],
+      "line_characters": [
+        22
+      ],
+      "source_line_characters": [
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 78,
+      "id": "/1ST_READ.BIN:00130c8b",
+      "source_sha256": "b34e468f961b54625230a2ad1e61f40d0697fe11286943332b9d0906134428f0",
+      "source_file_offset": 1248395,
+      "target_file_offset": 1247989,
+      "target_bytes": 21,
+      "target_sha256": "593bb9acd7eaded416a3eac879f3befc877e09da4bac3f648d9d61181bb774d9",
+      "pointer_locations": [
+        1238956
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        190
+      ],
+      "line_characters": [
+        21
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 79,
+      "id": "/1ST_READ.BIN:00130ca8",
+      "source_sha256": "b560268a08dba0feab2111409255fb569d77465a0a60050e9a7a5906e5901c0f",
+      "source_file_offset": 1248424,
+      "target_file_offset": 1248011,
+      "target_bytes": 17,
+      "target_sha256": "5be209371ddda3493ea4030d7e76b0fb08d9a1cfafccb8c40ed8b1b77aa0edd9",
+      "pointer_locations": [
+        1238960
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        145
+      ],
+      "line_characters": [
+        17
+      ],
+      "source_line_characters": [
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Option is the equipment category; retain the category name."
+    },
+    {
+      "row": 80,
+      "id": "/1ST_READ.BIN:00130cc3",
+      "source_sha256": "4250f30952f5bd60575fd129a087eff2555e34486eb86ece424c4733bf67dc99",
+      "source_file_offset": 1248451,
+      "target_file_offset": 1248029,
+      "target_bytes": 29,
+      "target_sha256": "e85731e5445660651deeb01bb08b048c3fd7f4391855a814939ceeccbc0a92b6",
+      "pointer_locations": [
+        1238964
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        165,
+        71
+      ],
+      "line_characters": [
+        19,
+        9
+      ],
+      "source_line_characters": [
+        15,
+        5
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 81,
+      "id": "/1ST_READ.BIN:00130ced",
+      "source_sha256": "5c94fbe72548f4a0e2a27783188ffa9468c23a35219be034dae7985724ba4e05",
+      "source_file_offset": 1248493,
+      "target_file_offset": 1248059,
+      "target_bytes": 48,
+      "target_sha256": "ce164abdbf2718fa476d09291ecac3cf2c5a431a3cd7a9f69309dc8f7baf78bf",
+      "pointer_locations": [
+        1238972
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        114,
+        287
+      ],
+      "line_characters": [
+        13,
+        34
+      ],
+      "source_line_characters": [
+        9,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 82,
+      "id": "/1ST_READ.BIN:00130d1f",
+      "source_sha256": "1d100c07a9008399a60dce095c0e6f3f54d4be2e4b6b69b94c46205d20c7afd7",
+      "source_file_offset": 1248543,
+      "target_file_offset": 1248108,
+      "target_bytes": 28,
+      "target_sha256": "b08a30b2860a9cb9d4fbe4ff2e6312f7fa95ff771f1715eac95d0922325be129",
+      "pointer_locations": [
+        1238976
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        83,
+        154
+      ],
+      "line_characters": [
+        9,
+        18
+      ],
+      "source_line_characters": [
+        7,
+        19
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 83,
+      "id": "/1ST_READ.BIN:00130d55",
+      "source_sha256": "c377f2bf16a20caff6ef0146375c53d54105662bffa3deb40a8cd4d9dc391b19",
+      "source_file_offset": 1248597,
+      "target_file_offset": 1248137,
+      "target_bytes": 51,
+      "target_sha256": "de584ebf1097ab43016853e191499bdb8dd23389890231332085aebda6e0cce8",
+      "pointer_locations": [
+        1238980
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        194,
+        207
+      ],
+      "line_characters": [
+        24,
+        26
+      ],
+      "source_line_characters": [
+        16,
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 84,
+      "id": "/1ST_READ.BIN:00130d8b",
+      "source_sha256": "efeb6d30cc00368c73fcde32fc1587ca1c3db695c44e712ac74ca4838e1b2cc4",
+      "source_file_offset": 1248651,
+      "target_file_offset": 1248189,
+      "target_bytes": 34,
+      "target_sha256": "8b5a2c917ded19512de1311d7f2a047cf1ec6440b3440ff5e5fc57681d0ce602",
+      "pointer_locations": [
+        1238984
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        0,
+        282
+      ],
+      "line_characters": [
+        0,
+        33
+      ],
+      "source_line_characters": [
+        0,
+        16
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 85,
+      "id": "/1ST_READ.BIN:00130dad",
+      "source_sha256": "c004c7acead74ea0b2f98082625e1adb72f050f463704f388072722bd55f1577",
+      "source_file_offset": 1248685,
+      "target_file_offset": 1248224,
+      "target_bytes": 49,
+      "target_sha256": "78d1dd08e576ab008f4b1db0630543c10ef0a984f24e7033f75f9e8b26b337c2",
+      "pointer_locations": [
+        1238988
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        203,
+        210
+      ],
+      "line_characters": [
+        24,
+        24
+      ],
+      "source_line_characters": [
+        15,
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 86,
+      "id": "/1ST_READ.BIN:00130de9",
+      "source_sha256": "70163ae19e9906cf38efa90188da63f3ae52c710d99c5d5fd14fad45c116ab34",
+      "source_file_offset": 1248745,
+      "target_file_offset": 1248274,
+      "target_bytes": 66,
+      "target_sha256": "6249642e74ba2774a80b5038ccf85251a31e9d3113efb5c6ff57c2510a1f0eff",
+      "pointer_locations": [
+        1238992
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        235,
+        315
+      ],
+      "line_characters": [
+        29,
+        36
+      ],
+      "source_line_characters": [
+        15,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The brightness of the configured color triggers a five-minute screen-saver delay; this is not a five-minute screen-saver duration."
+    },
+    {
+      "row": 87,
+      "id": "/1ST_READ.BIN:00130e27",
+      "source_sha256": "a504d6501d347e651bdc72962fc9096f8473a7a1c697794e7c30df5a166f7e54",
+      "source_file_offset": 1248807,
+      "target_file_offset": 1248341,
+      "target_bytes": 16,
+      "target_sha256": "82548aa6284b8f7dd8e5119c43403adf3caf5f2239f54d30cf228b646eadf54c",
+      "pointer_locations": [
+        1238996
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        129
+      ],
+      "line_characters": [
+        16
+      ],
+      "source_line_characters": [
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The source does not name whose class has increased. The status label preserves that omission pending the class screen."
+    },
+    {
+      "row": 88,
+      "id": "/1ST_READ.BIN:00130e3e",
+      "source_sha256": "2e4f179e62c4c16fff7c5f0508870b04c2875ac1f81072d0371403f673231d67",
+      "source_file_offset": 1248830,
+      "target_file_offset": 1248358,
+      "target_bytes": 22,
+      "target_sha256": "3518fd454349df139300249048bb020cc66d1df56228c277319fdc156196c2c1",
+      "pointer_locations": [
+        1239000
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        188
+      ],
+      "line_characters": [
+        22
+      ],
+      "source_line_characters": [
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The item needing no repair is omitted in the source. Passive English preserves that omission."
+    },
+    {
+      "row": 89,
+      "id": "/1ST_READ.BIN:00130e5d",
+      "source_sha256": "a912eaf45fa23b0ca39c5beca092ee164f36a8828eaf8794d620029df9f904f5",
+      "source_file_offset": 1248861,
+      "target_file_offset": 1248381,
+      "target_bytes": 36,
+      "target_sha256": "09d6fce9633b59cecb3a0d0a521df221c0618f9e51413d31330781dde0acfb81",
+      "pointer_locations": [
+        1239004
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        214,
+        89
+      ],
+      "line_characters": [
+        25,
+        10
+      ],
+      "source_line_characters": [
+        14,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 90,
+      "id": "/1ST_READ.BIN:00130e8b",
+      "source_sha256": "d5b44ebf595bf6d0373db9730418a21ef5d472ddc63695a3c8c2176a31ed18be",
+      "source_file_offset": 1248907,
+      "target_file_offset": 1248418,
+      "target_bytes": 37,
+      "target_sha256": "dd71ad8e540599a950b4be52cad75606019705073915b2a6614599d2532ceef9",
+      "pointer_locations": [
+        1239008
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        214,
+        99
+      ],
+      "line_characters": [
+        25,
+        11
+      ],
+      "source_line_characters": [
+        14,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 91,
+      "id": "/1ST_READ.BIN:00130ebb",
+      "source_sha256": "481acc55af9df8e9ac7a00cd5db8d921a415a14171147307023e06678796e882",
+      "source_file_offset": 1248955,
+      "target_file_offset": 1248456,
+      "target_bytes": 18,
+      "target_sha256": "c76156e81c5ff2e2f099772442943476790c08d63eef2dd116786bbb11e9a251",
+      "pointer_locations": [
+        1239012
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        171
+      ],
+      "line_characters": [
+        18
+      ],
+      "source_line_characters": [
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The returning subject is omitted in the source; retain the generic status rather than name a person or Marionette."
+    },
+    {
+      "row": 92,
+      "id": "/1ST_READ.BIN:00130eda",
+      "source_sha256": "fd871283b57644f7a51ce5c78109d21ad5bd1a6bdc96ea96ec2e7b4a1c38bf9f",
+      "source_file_offset": 1248986,
+      "target_file_offset": 1248475,
+      "target_bytes": 31,
+      "target_sha256": "de983c62c966be32555179fbb2ae5f213c7ef75aeaa2b2905c1df6279576f3eb",
+      "pointer_locations": [
+        1239016
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        268
+      ],
+      "line_characters": [
+        31
+      ],
+      "source_line_characters": [
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 93,
+      "id": "/1ST_READ.BIN:00130ef1",
+      "source_sha256": "2f3124f24b485b821daacc9963918b124cd0aa785e7249b9374551bf5230e550",
+      "source_file_offset": 1249009,
+      "target_file_offset": 1248507,
+      "target_bytes": 22,
+      "target_sha256": "7a956d68b0387c3374d5d3b962f6e7a04094450cf5510064b01da0ac6ab04663",
+      "pointer_locations": [
+        1239020
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        86,
+        93
+      ],
+      "line_characters": [
+        10,
+        11
+      ],
+      "source_line_characters": [
+        16,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 94,
+      "id": "/1ST_READ.BIN:00130f1b",
+      "source_sha256": "c8940e7f5e6d7c7493a16732d208c7df725ca5bb1bd2cf085c92f8d989b49c22",
+      "source_file_offset": 1249051,
+      "target_file_offset": 1248530,
+      "target_bytes": 16,
+      "target_sha256": "98d48877692c99896456bae5a1908b934ebb319188dbbf1a5c27497b508cd97b",
+      "pointer_locations": [
+        1239024
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        86,
+        33
+      ],
+      "line_characters": [
+        10,
+        5
+      ],
+      "source_line_characters": [
+        14,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 95,
+      "id": "/1ST_READ.BIN:00130f41",
+      "source_sha256": "e347e3080d5484d4010aa9858e1c4962526378fd89c03dfb67b25a2a73011833",
+      "source_file_offset": 1249089,
+      "target_file_offset": 1248547,
+      "target_bytes": 44,
+      "target_sha256": "9b53a958f7233cde460e2696dc70d66c9a4aced526c7c36acdf175afe1f9d0e0",
+      "pointer_locations": [
+        1239028
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        211,
+        147
+      ],
+      "line_characters": [
+        26,
+        17
+      ],
+      "source_line_characters": [
+        15,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 96,
+      "id": "/1ST_READ.BIN:00130f7b",
+      "source_sha256": "e01bf37580e8c38da83de25958f3eca2096797ea4f0be2585e106e27520202b4",
+      "source_file_offset": 1249147,
+      "target_file_offset": 1248592,
+      "target_bytes": 42,
+      "target_sha256": "85f9207849beb8d3bcab0e66ffcad84f04b85a2634fd584149ee6cb0a9802a53",
+      "pointer_locations": [
+        1239032
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        211,
+        137
+      ],
+      "line_characters": [
+        26,
+        15
+      ],
+      "source_line_characters": [
+        15,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 97,
+      "id": "/1ST_READ.BIN:00130fb5",
+      "source_sha256": "d914910fb08526049b7d51476afcf42a0dfa745d1a2a2d1a5a6628d7de6f3728",
+      "source_file_offset": 1249205,
+      "target_file_offset": 1248635,
+      "target_bytes": 48,
+      "target_sha256": "6c928308453fed1308cdf05839e921ac7739ba396f25cc1453287a1148dea3b2",
+      "pointer_locations": [
+        1239036
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        211,
+        188
+      ],
+      "line_characters": [
+        26,
+        21
+      ],
+      "source_line_characters": [
+        15,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 98,
+      "id": "/1ST_READ.BIN:00130ff3",
+      "source_sha256": "7de2e17fa9e34aa0ed51ef2f2ef42ccbfcb4c11ba2b725611a7c852b85c248b4",
+      "source_file_offset": 1249267,
+      "target_file_offset": 1248684,
+      "target_bytes": 36,
+      "target_sha256": "3ce763a0d7a3d2ba2351fa42bce21626e75b5fdc36b1428f5af9280514fd3555",
+      "pointer_locations": [
+        1239040
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        228,
+        93
+      ],
+      "line_characters": [
+        26,
+        9
+      ],
+      "source_line_characters": [
+        14,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 99,
+      "id": "/1ST_READ.BIN:0013102b",
+      "source_sha256": "bcd438984a10c97f8fba20b428243f6e9bb162afeebbc8ba9ab70c4fdcd246c2",
+      "source_file_offset": 1249323,
+      "target_file_offset": 1248721,
+      "target_bytes": 83,
+      "target_sha256": "f48ffc51b9df2a0997bac5ba720b68dafda20cb5046ff99c4a3416a9a6fb9b05",
+      "pointer_locations": [
+        1239044
+      ],
+      "line_count": 4,
+      "small_font_line_widths_px": [
+        238,
+        201,
+        185,
+        77
+      ],
+      "line_characters": [
+        26,
+        24,
+        21,
+        9
+      ],
+      "source_line_characters": [
+        14,
+        12,
+        13,
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 100,
+      "id": "/1ST_READ.BIN:0013108b",
+      "source_sha256": "305aa2f9504b34115a2329c9b6e99fa2ead450e8ea0a4d306106911aa63984fa",
+      "source_file_offset": 1249419,
+      "target_file_offset": 1248805,
+      "target_bytes": 17,
+      "target_sha256": "58f6920cd5304f2d733e20130d80a225c91ae4332f141e94d2395a294ded43ca",
+      "pointer_locations": [
+        1239048
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        41,
+        99
+      ],
+      "line_characters": [
+        5,
+        11
+      ],
+      "source_line_characters": [
+        7,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Suffix after a live price; leading space separates the number from yen. The caller uses numeric mode -1, which adds no currency symbol."
+    },
+    {
+      "row": 101,
+      "id": "/1ST_READ.BIN:001310ab",
+      "source_sha256": "13d6a2d8e7f55fb3e7cb41bcacabfbe87bfa61cf487441d9803b673966251976",
+      "source_file_offset": 1249451,
+      "target_file_offset": 1248823,
+      "target_bytes": 67,
+      "target_sha256": "08f3feb220365c0553a35c594f11013bd351917f2d6c4cbcb5c15abc74585df0",
+      "pointer_locations": [
+        1239052
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        213,
+        177,
+        173
+      ],
+      "line_characters": [
+        24,
+        20,
+        21
+      ],
+      "source_line_characters": [
+        15,
+        14,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 102,
+      "id": "/1ST_READ.BIN:00131102",
+      "source_sha256": "1c70d8b1639ad85ab1bd6fcdbc532cde6443f21951754b6cc8de1db278531b61",
+      "source_file_offset": 1249538,
+      "target_file_offset": 1248891,
+      "target_bytes": 25,
+      "target_sha256": "80882e373ec0a38174466d021097417c65c82aa6690b844ba5009f5964f92bf4",
+      "pointer_locations": [
+        1239056
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        52,
+        145
+      ],
+      "line_characters": [
+        6,
+        18
+      ],
+      "source_line_characters": [
+        12,
+        5
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 103,
+      "id": "/1ST_READ.BIN:00131126",
+      "source_sha256": "8497daeb16a3971fca7f8f93019da33c1f0029817179c2955db15a32dea7af46",
+      "source_file_offset": 1249574,
+      "target_file_offset": 1248917,
+      "target_bytes": 31,
+      "target_sha256": "d7f7bac9a6b7b60a24a4c97fd3fab4a724f9af48a8e0ba7290550da8f7a5f716",
+      "pointer_locations": [
+        1239060
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        195,
+        77
+      ],
+      "line_characters": [
+        21,
+        9
+      ],
+      "source_line_characters": [
+        14,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 104,
+      "id": "/1ST_READ.BIN:0013114c",
+      "source_sha256": "862ff776546cb05b3049deeb8933cfc744dacf41de25f03dbd7941045341ce76",
+      "source_file_offset": 1249612,
+      "target_file_offset": 1248949,
+      "target_bytes": 60,
+      "target_sha256": "668a3cec1e8954ca2fc3ea0c51f48dab932d4ac71b5b6516a95773ffc2e384a0",
+      "pointer_locations": [
+        1239064
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        239,
+        195,
+        77
+      ],
+      "line_characters": [
+        28,
+        21,
+        9
+      ],
+      "source_line_characters": [
+        13,
+        14,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 105,
+      "id": "/1ST_READ.BIN:0013118d",
+      "source_sha256": "318359b0f483f8f207d15a78d5719b7554474b58f42705886a7b0b40e66a3fff",
+      "source_file_offset": 1249677,
+      "target_file_offset": 1249010,
+      "target_bytes": 22,
+      "target_sha256": "e4e980072138a3cfafe63c846ab5824d3dee30f24b1ec76f74c9e08149638e64",
+      "pointer_locations": [
+        1239068
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        191
+      ],
+      "line_characters": [
+        22
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 106,
+      "id": "/1ST_READ.BIN:001311a6",
+      "source_sha256": "711dabf829754746863d24a15bbdd7041d1a3d8caa94790071dc1152b7f86354",
+      "source_file_offset": 1249702,
+      "target_file_offset": 1249033,
+      "target_bytes": 90,
+      "target_sha256": "30668ec6cbfe96276ff2a3e94669f36b5eabf19ab735e1d7dbdd16a5b23626db",
+      "pointer_locations": [
+        1239072
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        292,
+        243,
+        232
+      ],
+      "line_characters": [
+        34,
+        28,
+        26
+      ],
+      "source_line_characters": [
+        17,
+        5,
+        15
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 107,
+      "id": "/1ST_READ.BIN:001311f3",
+      "source_sha256": "1048848559cd889715025dfc505406c8465bb159bf42b6d4eef2ed80f0694477",
+      "source_file_offset": 1249779,
+      "target_file_offset": 1249124,
+      "target_bytes": 90,
+      "target_sha256": "d5bacae22931c3a7fdd82de6fe72fe5207d4d87308a45f7c698b84381cc4ee34",
+      "pointer_locations": [
+        1239076
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        297,
+        243,
+        237
+      ],
+      "line_characters": [
+        34,
+        28,
+        26
+      ],
+      "source_line_characters": [
+        16,
+        5,
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 108,
+      "id": "/1ST_READ.BIN:0013123c",
+      "source_sha256": "f0b06ffbeea2487305eabbba1c2b57ed438f64c8e8935f34b979073c2e228a50",
+      "source_file_offset": 1249852,
+      "target_file_offset": 1249215,
+      "target_bytes": 82,
+      "target_sha256": "e17d09b37331d6bbc6376d23b151e99609fb8b023a3304533dc6db7f152ea141",
+      "pointer_locations": [
+        1239080
+      ],
+      "line_count": 4,
+      "small_font_line_widths_px": [
+        238,
+        191,
+        185,
+        77
+      ],
+      "line_characters": [
+        26,
+        23,
+        21,
+        9
+      ],
+      "source_line_characters": [
+        13,
+        16,
+        9,
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 109,
+      "id": "/1ST_READ.BIN:0013129a",
+      "source_sha256": "af78b2ed6a23e8aca5f2dd73dc5374ca84f8fc63d3330e8f27307e0ccb4463eb",
+      "source_file_offset": 1249946,
+      "target_file_offset": 1249298,
+      "target_bytes": 42,
+      "target_sha256": "a10ec9de060ab068f54dcf8f436545a63ab16fcc1ad8b7a2841c295338dee797",
+      "pointer_locations": [
+        1239084
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        226,
+        112
+      ],
+      "line_characters": [
+        29,
+        12
+      ],
+      "source_line_characters": [
+        13,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Confirm stopping, which causes disqualification; do not ask ambiguously whether to continue the battle."
+    },
+    {
+      "row": 110,
+      "id": "/1ST_READ.BIN:001312c6",
+      "source_sha256": "0fa3969d84e4f9c91ac614aaddd2bea13b1cf6bbfe5dc610e6b886ae60e590c5",
+      "source_file_offset": 1249990,
+      "target_file_offset": 1249341,
+      "target_bytes": 25,
+      "target_sha256": "5d4b980244ae78a9d8342b5318075322125d17f5017c8aaee8d5fa4d4e96c678",
+      "pointer_locations": [
+        1239088
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        202
+      ],
+      "line_characters": [
+        25
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 111,
+      "id": "/1ST_READ.BIN:001312e3",
+      "source_sha256": "57ebadcaf5d8dd3e471978909069f2b50400b29e372f970630e95477898003f8",
+      "source_file_offset": 1250019,
+      "target_file_offset": 1249367,
+      "target_bytes": 21,
+      "target_sha256": "198f0f35cb148cc6c89d658a57e19d26e0163945cdfea3ce731348c799e4afa5",
+      "pointer_locations": [
+        1239092
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        179,
+        0
+      ],
+      "line_characters": [
+        20,
+        0
+      ],
+      "source_line_characters": [
+        10,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 112,
+      "id": "/1ST_READ.BIN:001312f9",
+      "source_sha256": "6d558327b1aed8fefd4b3dd3d0d4a0530344c564d7a2cdd750db0de3cb42d4be",
+      "source_file_offset": 1250041,
+      "target_file_offset": 1249389,
+      "target_bytes": 27,
+      "target_sha256": "329c383d11746229ae0e5999d50babf98e18bff43c5807d741dfe5d7436e6c0b",
+      "pointer_locations": [
+        1239096
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        234
+      ],
+      "line_characters": [
+        27
+      ],
+      "source_line_characters": [
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 113,
+      "id": "/1ST_READ.BIN:00131310",
+      "source_sha256": "2b9951c32f04d51be07383bf357b480f9a5361d9cd363875f625e5b6d48d4fd9",
+      "source_file_offset": 1250064,
+      "target_file_offset": 1249417,
+      "target_bytes": 68,
+      "target_sha256": "2d11da17234406b2f6951800c18f36d736170e1de5d70ccdc9faae15902708fd",
+      "pointer_locations": [
+        1239100
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        252,
+        191,
+        117
+      ],
+      "line_characters": [
+        31,
+        21,
+        14
+      ],
+      "source_line_characters": [
+        15,
+        15,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 114,
+      "id": "/1ST_READ.BIN:00131357",
+      "source_sha256": "6138753bd9d5c1c8ea1e03edc9ada798db0d1b5013164e3cee0b2adc994673bf",
+      "source_file_offset": 1250135,
+      "target_file_offset": 1249486,
+      "target_bytes": 9,
+      "target_sha256": "2f05e1c5331dc3e94a73f902369ad1bea9485893c1c9960c630516cf706cf20a",
+      "pointer_locations": [
+        1239104
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        71
+      ],
+      "line_characters": [
+        9
+      ],
+      "source_line_characters": [
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Suffix following the elapsed-time readout; preserve its leading space. Neutral elapsed avoids singular/plural disagreement. Runtime hour/minute unit snippets remain Japanese outside this slice."
+    },
+    {
+      "row": 115,
+      "id": "/1ST_READ.BIN:00131366",
+      "source_sha256": "68a852f5cbd07c45fcbb4ecd7d116f335fbf55f6eba44ad81219270aac48b3c5",
+      "source_file_offset": 1250150,
+      "target_file_offset": 1249496,
+      "target_bytes": 18,
+      "target_sha256": "d49f967f34b881b46af830efedf10fd99de592a436d2f2a564192760def5b377",
+      "pointer_locations": [
+        1239108
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        158
+      ],
+      "line_characters": [
+        18
+      ],
+      "source_line_characters": [
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Suffix following the clock-time readout in the alarm branch; the caller confirms this is a reached alarm time. Runtime hour/minute unit snippets remain Japanese outside this slice."
+    },
+    {
+      "row": 116,
+      "id": "/1ST_READ.BIN:00131375",
+      "source_sha256": "798e8109a53741194cb8742daeacd577cf56670372cb84f434feed1d822a63f9",
+      "source_file_offset": 1250165,
+      "target_file_offset": 1249515,
+      "target_bytes": 31,
+      "target_sha256": "a1d15859f2adfe0aa69a9185fa9f757726ba24d3fbe34aca0c37d9e1f1906fac",
+      "pointer_locations": [
+        1239112
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        146,
+        96
+      ],
+      "line_characters": [
+        18,
+        12
+      ],
+      "source_line_characters": [
+        12,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 117,
+      "id": "/1ST_READ.BIN:001313a7",
+      "source_sha256": "bd7460d072bea6a3259a3f1c9f85a65ec7a00a739e236cbd2c822d4e94f3fb7a",
+      "source_file_offset": 1250215,
+      "target_file_offset": 1249547,
+      "target_bytes": 25,
+      "target_sha256": "d1bf087f91b73cbe502b2c5b6bb7e1140cb1dfde4bd71a47698b245ed16113f6",
+      "pointer_locations": [
+        1239116
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        106,
+        110
+      ],
+      "line_characters": [
+        12,
+        12
+      ],
+      "source_line_characters": [
+        14,
+        4
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 118,
+      "id": "/1ST_READ.BIN:001313cd",
+      "source_sha256": "743b77aea4436368d8e9805ade5f7a64a7a3de993db13635bd9a007d2d3f5995",
+      "source_file_offset": 1250253,
+      "target_file_offset": 1249573,
+      "target_bytes": 54,
+      "target_sha256": "81b3ac621a535ac6ed1f0eced95df47fcb64f94ee2cdbea79d28f939f0eb8179",
+      "pointer_locations": [
+        1239120
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        288,
+        171
+      ],
+      "line_characters": [
+        33,
+        20
+      ],
+      "source_line_characters": [
+        14,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Insertion prefix followed by a live port/socket label and row 119. Leading insertion instruction moves the Japanese suffix meaning into this prefix."
+    },
+    {
+      "row": 119,
+      "id": "/1ST_READ.BIN:001313fb",
+      "source_sha256": "60efb008ba33269878a502cce7e2c8cb1f3b39195335010870f0f73d2a0fcb30",
+      "source_file_offset": 1250299,
+      "target_file_offset": 1249628,
+      "target_bytes": 1,
+      "target_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "pointer_locations": [
+        1239124,
+        1239200
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        4
+      ],
+      "line_characters": [
+        1
+      ],
+      "source_line_characters": [
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Both pointer aliases and all four insertion callers verified: the instruction is carried by translated prefixes 118, 121, 142 and 153. Runtime destination labels 163-170 remain Japanese outside this slice."
+    },
+    {
+      "row": 120,
+      "id": "/1ST_READ.BIN:0013140e",
+      "source_sha256": "abba70e740e184e65048e5367d5fc325ad3d9d2ad0168ef6ee927023e46dec3f",
+      "source_file_offset": 1250318,
+      "target_file_offset": 1249630,
+      "target_bytes": 63,
+      "target_sha256": "b5fc478e5bd0af2dae0a4785f4123dcced2e710d459f211ad3b83788f326d605",
+      "pointer_locations": [
+        1239128
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        187,
+        207,
+        146
+      ],
+      "line_characters": [
+        22,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        15,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 121,
+      "id": "/1ST_READ.BIN:00131459",
+      "source_sha256": "3e7b3fb942ce55c7c4e1fc64703d4742802747b926dcce5e3258c25fb61642b7",
+      "source_file_offset": 1250393,
+      "target_file_offset": 1249694,
+      "target_bytes": 49,
+      "target_sha256": "c9793255205fddf9c02a3efdd4a4afde3cf449ef019b65c5ffd118f9cd4020bf",
+      "pointer_locations": [
+        1239132
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        288,
+        129
+      ],
+      "line_characters": [
+        33,
+        15
+      ],
+      "source_line_characters": [
+        13,
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Insertion prefix for the memory card containing existing user data, not a new save destination."
+    },
+    {
+      "row": 122,
+      "id": "/1ST_READ.BIN:00131489",
+      "source_sha256": "860e076fd014ae6687fb5a7d4c280fd938ad059498cd05eb1d13bf4a16be3c9b",
+      "source_file_offset": 1250441,
+      "target_file_offset": 1249744,
+      "target_bytes": 58,
+      "target_sha256": "c317892a4bf364dc763cc88760876e50160ed7dc9262c867be0e40b9bc0fd893",
+      "pointer_locations": [
+        1239136
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        145,
+        207,
+        146
+      ],
+      "line_characters": [
+        17,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        12,
+        14,
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 123,
+      "id": "/1ST_READ.BIN:001314d6",
+      "source_sha256": "371f7610e9dc95aa23fab6359e849f1d3e7b780243d419973df98a83c6978225",
+      "source_file_offset": 1250518,
+      "target_file_offset": 1249803,
+      "target_bytes": 37,
+      "target_sha256": "9ebe2ab8ec4c05123f2539f4b2b1379feb0ad7817dde921ca63d25e2059da35a",
+      "pointer_locations": [
+        1239140
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        205,
+        96
+      ],
+      "line_characters": [
+        24,
+        12
+      ],
+      "source_line_characters": [
+        14,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 124,
+      "id": "/1ST_READ.BIN:0013150c",
+      "source_sha256": "3c5df34dc2e17c35b60a6e506255ccb2cd63578d47184f3e7d57d2172c58de5e",
+      "source_file_offset": 1250572,
+      "target_file_offset": 1249841,
+      "target_bytes": 64,
+      "target_sha256": "e183fc137ebd93e12822529f2105cbf9ce8a8541237556e27540c87cf301c52c",
+      "pointer_locations": [
+        1239144
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        196,
+        207,
+        146
+      ],
+      "line_characters": [
+        23,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        16,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 125,
+      "id": "/1ST_READ.BIN:00131559",
+      "source_sha256": "b5d19c8e4d35358cebca59566d4017bca29ca0bf434701afe7889819860bba38",
+      "source_file_offset": 1250649,
+      "target_file_offset": 1249906,
+      "target_bytes": 65,
+      "target_sha256": "4df9a9c4d11f1d0e87e6b57dc4f31842b26f2c57f7b3b1f6f3a843a3b894fb86",
+      "pointer_locations": [
+        1239148
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        198,
+        207,
+        146
+      ],
+      "line_characters": [
+        24,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        15,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 126,
+      "id": "/1ST_READ.BIN:001315a4",
+      "source_sha256": "709dc6bef8d1a7484a76bcef35f9c9c3b3ba0e881dc3ea28adf48dcc7f3d70d6",
+      "source_file_offset": 1250724,
+      "target_file_offset": 1249972,
+      "target_bytes": 63,
+      "target_sha256": "c247ba7ebc57901227ace29c43b738b0309c71cda7831b5df2d1606cc770ab4d",
+      "pointer_locations": [
+        1239152
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        188,
+        207,
+        146
+      ],
+      "line_characters": [
+        22,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        15,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 127,
+      "id": "/1ST_READ.BIN:001315ef",
+      "source_sha256": "fa0193e3682207b047ec0f297e1c79789cf7b44cdcd6d4799337b88ce52d2d32",
+      "source_file_offset": 1250799,
+      "target_file_offset": 1250036,
+      "target_bytes": 64,
+      "target_sha256": "d37f2a78b974e167a91517a6ddfc8be92f7703673b86373bd5d270f52c9c2b5a",
+      "pointer_locations": [
+        1239156
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        203,
+        207,
+        146
+      ],
+      "line_characters": [
+        23,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        13,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 128,
+      "id": "/1ST_READ.BIN:00131636",
+      "source_sha256": "60da709b5e4878e5503b0d5f619cf746e4c333ad06fc31d4563a815dbbd9b97f",
+      "source_file_offset": 1250870,
+      "target_file_offset": 1250101,
+      "target_bytes": 67,
+      "target_sha256": "93d71019afdbe452e5cd4c07f8db6f34e370c190a61b2b187713117764911ad2",
+      "pointer_locations": [
+        1239160
+      ],
+      "line_count": 4,
+      "small_font_line_widths_px": [
+        159,
+        141,
+        134,
+        102
+      ],
+      "line_characters": [
+        20,
+        16,
+        16,
+        12
+      ],
+      "source_line_characters": [
+        11,
+        9,
+        8,
+        7
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Select two through sixteen participating Marionettes in the left window."
+    },
+    {
+      "row": 129,
+      "id": "/1ST_READ.BIN:00131680",
+      "source_sha256": "f39c069ec960f14f8b7fd6fee349b9ebc53d90e42a1e5444460e0fd3b15a247d",
+      "source_file_offset": 1250944,
+      "target_file_offset": 1250169,
+      "target_bytes": 33,
+      "target_sha256": "e03c51a35a785315fb9f80567d80172dc91128004048267c4bca1ee468d0f414",
+      "pointer_locations": [
+        1239164
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        144,
+        143
+      ],
+      "line_characters": [
+        15,
+        17
+      ],
+      "source_line_characters": [
+        8,
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 130,
+      "id": "/1ST_READ.BIN:001316a8",
+      "source_sha256": "0d5c2729b47c76d0bc0c8baec8f7dfe2042e54549c9b76e81014a91dced8c885",
+      "source_file_offset": 1250984,
+      "target_file_offset": 1250203,
+      "target_bytes": 27,
+      "target_sha256": "1bcea03e375e971a082493d848e95d8b3d4c46b82b557b29647d63c001aaba02",
+      "pointer_locations": [
+        1239168
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        135,
+        90
+      ],
+      "line_characters": [
+        14,
+        12
+      ],
+      "source_line_characters": [
+        8,
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 131,
+      "id": "/1ST_READ.BIN:001316d2",
+      "source_sha256": "18fd691ca01c75625b6b9b41065590eb76af94fe26629caaa94466aa43200ae4",
+      "source_file_offset": 1251026,
+      "target_file_offset": 1250231,
+      "target_bytes": 22,
+      "target_sha256": "da0e59dfd35f270d29183d52b31273224981deff2bde1a7fd080ae57016a7b30",
+      "pointer_locations": [
+        1239172
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        74,
+        96
+      ],
+      "line_characters": [
+        9,
+        12
+      ],
+      "source_line_characters": [
+        8,
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The object being checked is omitted in the source; retain the generic progress status."
+    },
+    {
+      "row": 132,
+      "id": "/1ST_READ.BIN:001316f8",
+      "source_sha256": "1c8c0607a4b0e616d7d40866aa778de3d8d4a528393b5d24a0cf1aad3a41deb0",
+      "source_file_offset": 1251064,
+      "target_file_offset": 1250254,
+      "target_bytes": 8,
+      "target_sha256": "5118ec56d3b0c4c6df6071f28023a35c9fb4c544d2c463bd02537aaeea3a706f",
+      "pointer_locations": [
+        1239176
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        68
+      ],
+      "line_characters": [
+        8
+      ],
+      "source_line_characters": [
+        10
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 133,
+      "id": "/1ST_READ.BIN:0013170d",
+      "source_sha256": "f620ea2e52a6d320fe3a25be9760644429e7bc22fdfacf7c47f7c7eb48fd97d4",
+      "source_file_offset": 1251085,
+      "target_file_offset": 1250263,
+      "target_bytes": 26,
+      "target_sha256": "eb32d8e6997220fc9a98b923afdd78e4a334b78b1b163309692f02cd69cc3d41",
+      "pointer_locations": [
+        1239180
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        122,
+        96
+      ],
+      "line_characters": [
+        14,
+        11
+      ],
+      "source_line_characters": [
+        7,
+        13
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 134,
+      "id": "/1ST_READ.BIN:00131737",
+      "source_sha256": "eac04e53a79eb31e3c2e3940ff4482b85ab77d38a367d7777e921194de1f9eeb",
+      "source_file_offset": 1251127,
+      "target_file_offset": 1250290,
+      "target_bytes": 58,
+      "target_sha256": "fede8a9f337584963c046bba1980e51c5a67c665f8e97ce02ecde1a67f4fa49c",
+      "pointer_locations": [
+        1239184
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        136,
+        207,
+        146
+      ],
+      "line_characters": [
+        17,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        14,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 135,
+      "id": "/1ST_READ.BIN:00131780",
+      "source_sha256": "15b08f5e5f60aacc0b99b4c577294e3bce9fcab25d12f377190b156ee999bd2d",
+      "source_file_offset": 1251200,
+      "target_file_offset": 1250349,
+      "target_bytes": 59,
+      "target_sha256": "eca6aad961abcb94ecedaa05080132c8045b4dcfe31ea51129e40a2d65d6ee68",
+      "pointer_locations": [
+        1239188
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        138,
+        207,
+        146
+      ],
+      "line_characters": [
+        18,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        13,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 136,
+      "id": "/1ST_READ.BIN:001317c7",
+      "source_sha256": "c9f589913b958a982cf7bb74f210aae4ee33f4060568fb753afd39e50e64f760",
+      "source_file_offset": 1251271,
+      "target_file_offset": 1250409,
+      "target_bytes": 57,
+      "target_sha256": "c92c2803f047d55e48475ba257a47f967cce4723363c26b01a646c499c49a644",
+      "pointer_locations": [
+        1239192
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        128,
+        207,
+        146
+      ],
+      "line_characters": [
+        16,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        13,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 137,
+      "id": "/1ST_READ.BIN:0013180e",
+      "source_sha256": "1786ea0c5a5884e02d60f3e478c34791e6ba9e9d5c2e8e4ecfc20aba30fc41f2",
+      "source_file_offset": 1251342,
+      "target_file_offset": 1250467,
+      "target_bytes": 65,
+      "target_sha256": "9301abbab2005ce27670a02f914f48a6df3c528d45659f2578c0e117dc5af354",
+      "pointer_locations": [
+        1239196
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        294,
+        262
+      ],
+      "line_characters": [
+        32,
+        32
+      ],
+      "source_line_characters": [
+        19,
+        16
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 138,
+      "id": "/1ST_READ.BIN:00131856",
+      "source_sha256": "ca851b12222cb0c9638be132592918732c824a9b944af0215452d5acc034760c",
+      "source_file_offset": 1251414,
+      "target_file_offset": 1250533,
+      "target_bytes": 30,
+      "target_sha256": "21a493575ef534e17da87928568e1be00dad46f6c151580f92bb987c3b212b84",
+      "pointer_locations": [
+        1239204
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        269
+      ],
+      "line_characters": [
+        30
+      ],
+      "source_line_characters": [
+        20
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 139,
+      "id": "/1ST_READ.BIN:0013187f",
+      "source_sha256": "2f1242b890131cd185f76822745f6928f0f485d7ddef5bd7743771fad1057bac",
+      "source_file_offset": 1251455,
+      "target_file_offset": 1250564,
+      "target_bytes": 18,
+      "target_sha256": "c38c1e14767ae39928da7f17a123f52dbde067b66f5d584b2f0385c7f5431851",
+      "pointer_locations": [
+        1239208
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        152
+      ],
+      "line_characters": [
+        18
+      ],
+      "source_line_characters": [
+        17
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 140,
+      "id": "/1ST_READ.BIN:001318a2",
+      "source_sha256": "9f3be6826d09aadccea1da0aee3337215ddc651472fb098ad78c8935b522370d",
+      "source_file_offset": 1251490,
+      "target_file_offset": 1250583,
+      "target_bytes": 61,
+      "target_sha256": "2d3efa48b190634aceffe9150e9dbbb44893f95b417b35c102ebbad7fa3433dc",
+      "pointer_locations": [
+        1239212
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        258,
+        266
+      ],
+      "line_characters": [
+        28,
+        32
+      ],
+      "source_line_characters": [
+        18,
+        18
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 141,
+      "id": "/1ST_READ.BIN:001318ec",
+      "source_sha256": "a4c63f92e2827a3c22417593165c995255b759774eb67e630f3da0201e45a048",
+      "source_file_offset": 1251564,
+      "target_file_offset": 1250645,
+      "target_bytes": 60,
+      "target_sha256": "1e2a5655683bc7792b358fb651cea00149c025834dae3b5776ab438efa7fb595",
+      "pointer_locations": [
+        1239216
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        161,
+        207,
+        146
+      ],
+      "line_characters": [
+        19,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        12,
+        14,
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 142,
+      "id": "/1ST_READ.BIN:00131939",
+      "source_sha256": "c30f992f783c3d1a2b46551b0f0f41592ececbdc57cdfa81c6db56cc3a11cc0e",
+      "source_file_offset": 1251641,
+      "target_file_offset": 1250706,
+      "target_bytes": 49,
+      "target_sha256": "8d8197d1f91e29a31d625d1036c7c57aa055710a1347af3141412a804fd17225",
+      "pointer_locations": [
+        1239220
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        234,
+        188
+      ],
+      "line_characters": [
+        26,
+        22
+      ],
+      "source_line_characters": [
+        12,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Insertion prefix for a user-data save destination, followed by the live port/socket label and row 119."
+    },
+    {
+      "row": 143,
+      "id": "/1ST_READ.BIN:00131963",
+      "source_sha256": "05c949071c359dc1a6bd0c53b200f7dcb6116ebf52d12cc92c4d2a35ebf8cbae",
+      "source_file_offset": 1251683,
+      "target_file_offset": 1250756,
+      "target_bytes": 14,
+      "target_sha256": "2dfd888fdd5e8018cee8e77df36401239b12076875ff2ab829b1728d2d371774",
+      "pointer_locations": [
+        1239224
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        104
+      ],
+      "line_characters": [
+        14
+      ],
+      "source_line_characters": [
+        14
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 144,
+      "id": "/1ST_READ.BIN:00131980",
+      "source_sha256": "8a20f96adb9a49ef6bbc989e1ea57c1f918dd8a14230bc3ecd69a9f5e62905e6",
+      "source_file_offset": 1251712,
+      "target_file_offset": 1250771,
+      "target_bytes": 35,
+      "target_sha256": "8acd0cc43241cb0ae4555425d4e7982a173858ac37679ddb1a8cbb2beda19dfe",
+      "pointer_locations": [
+        1239228
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        304,
+        0
+      ],
+      "line_characters": [
+        34,
+        0
+      ],
+      "source_line_characters": [
+        16,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Purchased-Marionette save confirmation prefix, followed by one-line port/socket label 155-162 and row 145. Caller order verified; Port D labels 161/162 remain Japanese outside this slice."
+    },
+    {
+      "row": 145,
+      "id": "/1ST_READ.BIN:001319a2",
+      "source_sha256": "e95118411afb3647bb105faa37f11dc28b50f5ca2ed3752125ae9cba567702fc",
+      "source_file_offset": 1251746,
+      "target_file_offset": 1250807,
+      "target_bytes": 16,
+      "target_sha256": "e5055429a8011cdde01b9a68b6f0ff9b6cd36a281d4bb5008654dca22737e996",
+      "pointer_locations": [
+        1239232
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        12,
+        110,
+        0
+      ],
+      "line_characters": [
+        2,
+        12,
+        0
+      ],
+      "source_line_characters": [
+        1,
+        15,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Save-confirmation suffix; possessive attaches to the preceding runtime port/socket label. Keep both newlines."
+    },
+    {
+      "row": 146,
+      "id": "/1ST_READ.BIN:001319c5",
+      "source_sha256": "dd0136bfe94ce13b8b3f86e2cd3f28594daa74c9a97bb05458c9cf7211e98b15",
+      "source_file_offset": 1251781,
+      "target_file_offset": 1250824,
+      "target_bytes": 36,
+      "target_sha256": "9b4edcb95afccd02d037f62bb14c04d05570903af7c3d562b89a9b26cac4780c",
+      "pointer_locations": [
+        1239236
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        151,
+        126,
+        0
+      ],
+      "line_characters": [
+        17,
+        17,
+        0
+      ],
+      "source_line_characters": [
+        9,
+        7,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 147,
+      "id": "/1ST_READ.BIN:001319e8",
+      "source_sha256": "d41c0829e0faf8514eb6284ed7d6c774a436755e473cb13947750d6940098d38",
+      "source_file_offset": 1251816,
+      "target_file_offset": 1250861,
+      "target_bytes": 42,
+      "target_sha256": "887c9b93ab793e7573831a92204b61b2462442a1e3e537825d31c5a88b29734d",
+      "pointer_locations": [
+        1239240
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        190,
+        126,
+        0
+      ],
+      "line_characters": [
+        23,
+        17,
+        0
+      ],
+      "source_line_characters": [
+        9,
+        9,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 148,
+      "id": "/1ST_READ.BIN:00131a0f",
+      "source_sha256": "eea8cc707c26d2530225a7e660ab3560515b4bfc9abdfb36f44d08067e03e0e3",
+      "source_file_offset": 1251855,
+      "target_file_offset": 1250904,
+      "target_bytes": 61,
+      "target_sha256": "4cabd5b1cf8a7ce4b08a8c0777b306778154a18b1e3e22808ba24a9cdb22fd29",
+      "pointer_locations": [
+        1239244
+      ],
+      "line_count": 4,
+      "small_font_line_widths_px": [
+        196,
+        159,
+        122,
+        0
+      ],
+      "line_characters": [
+        23,
+        20,
+        15,
+        0
+      ],
+      "source_line_characters": [
+        12,
+        9,
+        5,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 149,
+      "id": "/1ST_READ.BIN:00131a47",
+      "source_sha256": "459719c8ff0623a7aa617fcbc56ee7fb4db66bf802a4ce4374462369c08e8fd1",
+      "source_file_offset": 1251911,
+      "target_file_offset": 1250966,
+      "target_bytes": 69,
+      "target_sha256": "1b82b3c22c689984f1a8896f93be41b7a1dba540b02d26c01dceb02fcbb40eb2",
+      "pointer_locations": [
+        1239248
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        241,
+        207,
+        146
+      ],
+      "line_characters": [
+        28,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        14,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The object being copied is omitted in the source. Retain the generic operation status pending the active file/Marionette context."
+    },
+    {
+      "row": 150,
+      "id": "/1ST_READ.BIN:00131a90",
+      "source_sha256": "60ac4d6124128c16bf6b568eea5b3c4da20de959c8df0a0cbaaa91d2e92a2fe7",
+      "source_file_offset": 1251984,
+      "target_file_offset": 1251036,
+      "target_bytes": 68,
+      "target_sha256": "5dc904408d0863194d6ed95d4d541478d1bbafb191e73b53921facb79e736997",
+      "pointer_locations": [
+        1239252
+      ],
+      "line_count": 3,
+      "small_font_line_widths_px": [
+        237,
+        207,
+        146
+      ],
+      "line_characters": [
+        27,
+        23,
+        16
+      ],
+      "source_line_characters": [
+        13,
+        12,
+        9
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The object being moved is omitted in the source. Retain the generic operation status pending the active file/Marionette context."
+    },
+    {
+      "row": 151,
+      "id": "/1ST_READ.BIN:00131ad7",
+      "source_sha256": "1c443d1587d6fd7a7b2ecce53c8d1107c743688d58985fa4ff963cd103bd210e",
+      "source_file_offset": 1252055,
+      "target_file_offset": 1251105,
+      "target_bytes": 31,
+      "target_sha256": "1c19e6048aae676d2aaa55c4532b3c4e1998744215b0c31990ebb7f2eb81caa0",
+      "pointer_locations": [
+        1239256
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        266,
+        0
+      ],
+      "line_characters": [
+        30,
+        0
+      ],
+      "source_line_characters": [
+        13,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 152,
+      "id": "/1ST_READ.BIN:00131af3",
+      "source_sha256": "9b626bd335490eab76ed5e1676d096ac40061a16b4574351ad36123bfa1e4d7e",
+      "source_file_offset": 1252083,
+      "target_file_offset": 1251137,
+      "target_bytes": 28,
+      "target_sha256": "7fb951ea9046d77d4129eda03e999f3d6da58db7b165f7f3ffe038799852c9e5",
+      "pointer_locations": [
+        1239260
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        235,
+        0
+      ],
+      "line_characters": [
+        27,
+        0
+      ],
+      "source_line_characters": [
+        14,
+        0
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 153,
+      "id": "/1ST_READ.BIN:00131b11",
+      "source_sha256": "bc41035e30ec5409c0971ea99fbdf9a283ee8c6de6bc09b9bcd2451c41b56814",
+      "source_file_offset": 1252113,
+      "target_file_offset": 1251166,
+      "target_bytes": 58,
+      "target_sha256": "72971eb881087196803d49b35e8ef7515eb019bc84acbf2a224395a8f711a4fe",
+      "pointer_locations": [
+        1239264
+      ],
+      "line_count": 2,
+      "small_font_line_widths_px": [
+        279,
+        224
+      ],
+      "line_characters": [
+        31,
+        26
+      ],
+      "source_line_characters": [
+        15,
+        8
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "Insertion prefix for saving the purchased Marionette, followed by a live port/socket label and row 119."
+    },
+    {
+      "row": 154,
+      "id": "/1ST_READ.BIN:00131b41",
+      "source_sha256": "d0a800ad86fae50bade07434e4de02f29eb837f6e3c445febb9c85db0896195e",
+      "source_file_offset": 1252161,
+      "target_file_offset": 1251225,
+      "target_bytes": 9,
+      "target_sha256": "3d69044d60132e93d7e1d051316c6689f62605acbb413878cd405eb2ed11519f",
+      "pointer_locations": [
+        1239268
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        76
+      ],
+      "line_characters": [
+        9
+      ],
+      "source_line_characters": [
+        11
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": "The stock category is omitted in the source; retain the generic status."
+    },
+    {
+      "row": 155,
+      "id": "/1ST_READ.BIN:00131b58",
+      "source_sha256": "8037b346ec3d970e05e10ed478008643435ace0b463ad90c588b29564b73c4cb",
+      "source_file_offset": 1252184,
+      "target_file_offset": 1251235,
+      "target_bytes": 26,
+      "target_sha256": "698990e57bf24ddb6a3247b2ec6a0c555701ff990b52727de94db0c5dc5ba094",
+      "pointer_locations": [
+        1239272
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        231
+      ],
+      "line_characters": [
+        26
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 156,
+      "id": "/1ST_READ.BIN:00131b71",
+      "source_sha256": "3247001de1a1eb10bf47b57a3ef55c3b2c49c48fb28c4a6dd155386fa78a229d",
+      "source_file_offset": 1252209,
+      "target_file_offset": 1251262,
+      "target_bytes": 26,
+      "target_sha256": "57a300d49c6e52f05f434358a0528c41360d282f51c55fe41a8da2c0ab448c23",
+      "pointer_locations": [
+        1239276
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        231
+      ],
+      "line_characters": [
+        26
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 157,
+      "id": "/1ST_READ.BIN:00131b8a",
+      "source_sha256": "f89b07d4071e888693d26529847a6725cdf851f31a069ba2c46d06cea4f0e002",
+      "source_file_offset": 1252234,
+      "target_file_offset": 1251289,
+      "target_bytes": 26,
+      "target_sha256": "d739eaa483d0804089a7fa32b5d06b9118bda24382d7896597f36d0a3f35c27d",
+      "pointer_locations": [
+        1239280
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        230
+      ],
+      "line_characters": [
+        26
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 158,
+      "id": "/1ST_READ.BIN:00131ba3",
+      "source_sha256": "4759c604bfcece665df222cf6e5e73e7f85c48ae8a4e38fef9fe42da6261567c",
+      "source_file_offset": 1252259,
+      "target_file_offset": 1251316,
+      "target_bytes": 26,
+      "target_sha256": "a86a25b3a10030c4ab8a9be459814f8e875f70829acc99881385c008f04733ea",
+      "pointer_locations": [
+        1239284
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        230
+      ],
+      "line_characters": [
+        26
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 159,
+      "id": "/1ST_READ.BIN:00131bbc",
+      "source_sha256": "4a84369597638a163d9f2ae19c6b7cc5971f679400dc09d5628d8feac8cf69f4",
+      "source_file_offset": 1252284,
+      "target_file_offset": 1251343,
+      "target_bytes": 26,
+      "target_sha256": "f9102c45a596954a68bce83e43b7cadffd09104dd6e1207d8a80821c1f6a45f7",
+      "pointer_locations": [
+        1239288
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        231
+      ],
+      "line_characters": [
+        26
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    },
+    {
+      "row": 160,
+      "id": "/1ST_READ.BIN:00131bd5",
+      "source_sha256": "ecedc9b151cd4a16a3cd2a3284c54386ac6f9a91d764e0fecc0b7e19f130e6b1",
+      "source_file_offset": 1252309,
+      "target_file_offset": 1251370,
+      "target_bytes": 26,
+      "target_sha256": "a6918c9fe7196b2c3e3c8ab6d4de6e7ecf1e9debfe8c5065bf039352114b2bdc",
+      "pointer_locations": [
+        1239292
+      ],
+      "line_count": 1,
+      "small_font_line_widths_px": [
+        231
+      ],
+      "line_characters": [
+        26
+      ],
+      "source_line_characters": [
+        12
+      ],
+      "layout_status": "Needs actual cached-font metrics and in-game popup verification",
+      "review_note": null
+    }
+  ],
+  "limitations": [
+    "Only the first 160 menu/system/shop messages are translated.",
+    "No dialogue, browser messages or texture text translated.",
+    "Cached-font advances and popup boundaries require emulator/hardware verification.",
+    "Source omission/equipment-context flags remain in the translation batch."
+  ],
+  "validation": {
+    "actual_machine_code_draw_cases": 320,
+    "fonts": [
+      1,
+      4
+    ],
+    "composed_block_warning_cases": 3,
+    "composed_memory_card_cases": 10,
+    "composed_price_cases": 3,
+    "default_native_cache_frames": 7,
+    "default_native_cache_glyphs": 613,
+    "required_visible_characters_loaded": 61,
+    "space_behavior": "Original cache-miss blank fallback, 20 pixels in both draw and measure",
+    "synthetic_cache": true,
+    "emulator_playtest": false,
+    "validated": [
+      "Every translated target read back through each original pointer",
+      "Only intended VWF, bank and pointer bytes changed",
+      "Newline/control-token preservation",
+      "Native string dispatch and stack preservation"
+    ],
+    "built_track_verified": true,
+    "gdi_tracks_verified": 17
+  },
+  "modified_sectors": [
+    {
+      "lba": 548203,
+      "track_offset": 46073328
+    },
+    {
+      "lba": 548204,
+      "track_offset": 46075680
+    },
+    {
+      "lba": 548205,
+      "track_offset": 46078032
+    },
+    {
+      "lba": 548206,
+      "track_offset": 46080384
+    },
+    {
+      "lba": 548798,
+      "track_offset": 47472768
+    },
+    {
+      "lba": 548799,
+      "track_offset": 47475120
+    },
+    {
+      "lba": 548802,
+      "track_offset": 47482176
+    },
+    {
+      "lba": 548803,
+      "track_offset": 47484528
+    },
+    {
+      "lba": 548804,
+      "track_offset": 47486880
+    },
+    {
+      "lba": 548805,
+      "track_offset": 47489232
+    }
+  ],
+  "source_track_sha256": "9d550b3a995f68a766f8ea9cdc87fe125441ea4f4a60184a8bf815e0a18809fc",
+  "target_track_sha256": "18eac0e9e22c56b2d77431b865224a88a5a75eb68928723f08e482033e8287bf"
+}
