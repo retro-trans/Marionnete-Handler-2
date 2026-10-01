@@ -17,6 +17,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--retro-trans-tools', type=Path, required=True)
     parser.add_argument('--build', action='store_true')
+    parser.add_argument('--version', default=VERSION)
+    parser.add_argument('--language', choices=['ja', 'en'])
+    parser.add_argument('--build-prefix', default='vwf', choices=['vwf', 'english'])
     args = parser.parse_args()
     sys.path.insert(0, str(args.retro_trans_tools.resolve()))
     from retro_trans.release import build_release, validate_directory
@@ -25,16 +28,23 @@ def main():
     # Scope trust to this known workspace per command, without global settings.
     git = ['git', '-c', 'safe.directory=' + ROOT.as_posix()]
     commit = subprocess.check_output(git + ['rev-parse', 'HEAD'], cwd=str(ROOT), text=True).strip()
-    build_folder = ROOT / 'work' / 'output' / ('vwf-' + VERSION)
+    version = args.version
+    english = args.build_prefix == 'english'
+    language = args.language or ('en' if english else 'ja')
+    if english and language != 'en':
+        raise ValueError('English test builds must have language en')
+    label = 'English' if english else 'VWF'
+    build_folder = ROOT / 'work' / 'output' / (args.build_prefix + '-' + version)
     source = next(ROOT.glob('*Track 17*.bin'))
     target = next(build_folder.glob('*.bin'))
-    config = {'game_id': 'marionette-handler-2-vwf', 'game_name': 'Marionette Handler 2 — VWF',
-              'platform': 'Dreamcast', 'version': VERSION, 'source_commit': commit,
-              'patches': [{'patch': 'Marionette-Handler-2-Japan-Track17-VWF-' + VERSION + '.xdelta',
-                           'edition': 'Japan / Track 17 raw MODE1/2352', 'language': 'ja',
+    config = {'game_id': 'marionette-handler-2' if english else 'marionette-handler-2-vwf',
+              'game_name': 'Marionette Handler 2 — ' + label,
+              'platform': 'Dreamcast', 'version': version, 'source_commit': commit,
+              'patches': [{'patch': 'Marionette-Handler-2-Japan-Track17-' + label + '-' + version + '.xdelta',
+                           'edition': 'Japan / Track 17 raw MODE1/2352', 'language': language,
                            'source_version': 'original', 'source_format': 'bin', 'target_format': 'bin',
                            'source': str(source), 'target': str(target)}]}
-    output = ROOT / 'work' / 'output' / ('release-' + VERSION)
+    output = ROOT / 'work' / 'output' / ('release-' + version)
     print(json.dumps({'config': config, 'output': str(output),
                       'source_sha256': sha256_file(source), 'target_sha256': sha256_file(target)}, indent=2))
     if not args.build:

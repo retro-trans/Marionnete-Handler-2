@@ -1,5 +1,20 @@
 # Change log
 
+## 0.1.2 — first English translation batch — 2026-10-01
+
+- Translated and meaning-reviewed the first 80 system/shop UI messages, with
+  four adjacent records examined for context. Added a 26-term English glossary.
+- Repacked the complete English strings into their shared UI bank and updated
+  83 verified pointers. Individual source slots do not limit these translations.
+- Retained VWF, newline/control behavior, live block counts, executable size
+  and all untranslated records. Confirmed the free-block warning shows a deficit.
+- Added 160 native string-dispatch checks and three composed numeric-warning
+  checks, actual default font-cache loading with simulated BIOS ink metrics,
+  original-hash and terminology guards, full-track/descriptor verification,
+  and Retro Trans Tools packaging for the English test release.
+- Recorded display-length measurements and remaining context/layout flags.
+  Actual cached-font fit and emulator/hardware playtesting remain unverified.
+
 ## 0.1.1 — VWF test patch — 2026-10-01
 
 - Enabled the existing proportional cached-font renderer for font mode 4 and

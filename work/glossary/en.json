@@ -1,0 +1,42 @@
+{
+  "version": "0.1.2",
+  "language": "en",
+  "policy": "Use approved spellings. Apply meaning-review fixes before terminology validation. Do not infer character gender or expand unknown acronyms.",
+  "research": {
+    "official_game_reference": "https://www.micronetclub.co.jp/games/index.htm",
+    "wiki_search_result": "No character or location reference wiki found for this batch. This is not evidence that none exists.",
+    "characters": [],
+    "locations": [],
+    "character_fields_required": ["name", "nickname", "gender", "personality", "position", "sources"],
+    "scope": "The first 80 messages contain system, shop and equipment terms; no named person or location requires a character record. Research character records before translating any later occurrence."
+  },
+  "terms": [
+    {"source": "マリオネット", "target": "Marionette", "type": "robot", "evidence_row": 3, "status": "approved"},
+    {"source": "マテリアル", "target": "material", "type": "resource", "evidence_row": 2, "status": "approved"},
+    {"source": "ショップ", "target": "shop", "type": "interface", "evidence_row": 2, "status": "approved"},
+    {"source": "Ｐカード", "target": "P-Card", "plural": "P-Cards", "type": "part", "evidence_row": 5, "status": "approved", "note": "Retain P without inventing an expansion."},
+    {"source": "パーツ", "target": "part", "plural": "parts", "type": "category", "evidence_row": 6, "status": "approved"},
+    {"source": "武装", "target": "weapons", "type": "category", "evidence_row": 31, "status": "approved"},
+    {"source": "メモリーカード", "target": "memory card", "adjective": "memory-card", "type": "hardware", "evidence_row": 15, "status": "approved"},
+    {"source": "ＶＭ実行ファイル", "target": "VM executable file", "type": "hardware", "evidence_row": 43, "status": "approved", "note": "Memory-unit program; preserve VM."},
+    {"source": "ユーザーデータ", "target": "user data", "type": "interface", "evidence_row": 24, "status": "approved"},
+    {"source": "ＭＡＲＣＳ　Ｖ２", "target": "MARCS V2", "type": "system_name", "evidence_row": 58, "status": "approved", "note": "No supported acronym expansion found; do not expand."},
+    {"source": "リペアーキット", "target": "Repair Kit", "plural": "Repair Kits", "type": "consumable", "evidence_row": 45, "status": "approved"},
+    {"source": "スタートチップ", "target": "Start Chip", "type": "programming", "evidence_row": 50, "status": "approved"},
+    {"source": "大会", "target": "tournament", "type": "competition", "evidence_row": 49, "status": "approved"},
+    {"source": "参加費用", "target": "entry fee", "type": "competition", "evidence_row": 33, "status": "approved"},
+    {"source": "バッテリー", "target": "Battery", "type": "part", "evidence_row": 68, "status": "approved"},
+    {"source": "モーター", "target": "Motor", "type": "part", "evidence_row": 69, "status": "approved"},
+    {"source": "バーナーセット", "target": "Burner Set", "type": "part", "evidence_row": 70, "status": "approved"},
+    {"source": "バランサー", "target": "Balancer", "type": "part", "evidence_row": 71, "status": "approved"},
+    {"source": "ダンパー", "target": "Damper", "type": "part", "evidence_row": 72, "status": "approved"},
+    {"source": "ダッシュギア", "target": "Dash Gear", "type": "part", "evidence_row": 73, "status": "approved"},
+    {"source": "ブレーキ", "target": "Brake", "type": "part", "evidence_row": 74, "status": "approved"},
+    {"source": "レーダー", "target": "Radar", "type": "part", "evidence_row": 75, "status": "approved"},
+    {"source": "アーマー", "target": "Armor", "type": "part", "evidence_row": 76, "status": "approved"},
+    {"source": "メインウェポン", "target": "Main Weapon", "type": "weapon_category", "evidence_row": 77, "status": "approved"},
+    {"source": "サブウェポン", "target": "Sub Weapon", "type": "weapon_category", "evidence_row": 78, "status": "approved"},
+    {"source": "オプション", "target": "Option", "type": "equipment_category", "evidence_row": 79, "status": "approved"}
+  ],
+  "evidence": "Source terms are short UI elements read directly from /1ST_READ.BIN; row numbers refer to ui_batch_001.json. The official developer page establishes game identity only, not English term spellings. English terms are project translations of disc text."
+}
