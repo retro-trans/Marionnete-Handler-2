@@ -1,4 +1,4 @@
-# Built-in higher-resolution font — 0.1.6
+# Built-in higher-resolution font — 0.1.7
 
 The user's chosen approach is a font in the game patch, with no Flycast texture
 replacement. The cumulative English test image keeps all 793 translations.
@@ -8,6 +8,13 @@ The large cached font now uses a 1024×1024 atlas instead of 512×512, with
 19-pixel sampling. The renderer still displays a 19-pixel quad and uses the
 same normalized texture coordinates. Bearings and advances are converted back
 to display pixels. Editable-name slots use the enlarged atlas's bottom row.
+
+0.1.7 samples each destination texel from the BIOS bitmap. The earlier forward
+plotter left empty rows when enlarged from 24 to 38 pixels, producing the
+user's thin/dotted menu labels in 0.1.6. The replacement fills every output
+pixel and clears old ink when a glyph changes. It preserves the BIOS typeface's
+natural weight, using solid bitmap strokes. Texture filtering may smooth the
+edges at the displayed size. This is a sampling correction, not a new typeface.
 
 This keeps the original BIOS bitmap typeface. Its source glyphs are 24×24;
 sampling into the larger atlas preserves more source detail than the previous
@@ -29,7 +36,7 @@ This is an experimental test build, not a verified gameplay release.
 The user's 0.1.5 blank-menu state confirmed the uncompressed 2 MiB texture
 failed initialization: the font had ink in RAM but zero hardware texture
 header words and status 0x60000. Subsequent uploads used destination zero.
-0.1.5 is known broken. The compressed 0.1.6 atlas requires less video memory
+0.1.5 is known broken. The compressed atlas introduced in 0.1.6 requires less video memory
 than the original font, and encoded writes are flushed before uploading.
 
 The original disc and earlier builds remain available. Build with
@@ -44,10 +51,16 @@ handling. It also runs the existing validation for all 793 messages, verifies
 the disc sectors and creates ordinary GDI/CUE files. Platform allocation,
 upload and BIOS bitmap inputs are simulated in the limited SH-4 harness;
 descriptor initialization and the VQ encoder execute actual instructions.
+The glyph checks compare every cached/editable destination pixel against the
+source bitmap and simulate the integer helpers' volatile-register clobbering.
+`tools/preview_hd_font.py --bios <dc_boot.bin>` compares the native 0.1.6 and
+0.1.7 generators; add `--write` to save the enlarged Latin-font preview in
+`work/ui/font-strokes-0.1.6-vs-0.1.7.png`. It is an atlas preview, not an emulator
+screenshot or a texture-replacement pack.
 
-Load `work/output/english-0.1.6/Marionette Handler 2 English 0.1.6.gdi` in
+Load `work/output/english-0.1.7/Marionette Handler 2 English 0.1.7.gdi` in
 Flycast to compare the same pause menu with 0.1.4. No texture pack, texture dump
 or custom-texture setting is required. Flycast's existing configuration is not
-modified. Boot this image from scratch: loading the 0.1.5 state restores its
-broken code and texture header. The Retro Trans Tools xdelta package applies to original Track 17,
+modified. Boot this image from scratch: loading an older state restores its
+old renderer. The Retro Trans Tools xdelta package applies to original Track 17,
 as with previous cumulative releases.

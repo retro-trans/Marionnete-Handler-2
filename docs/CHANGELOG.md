@@ -1,5 +1,24 @@
 # Change log
 
+## 0.1.7 — continuous higher-resolution font strokes
+
+- Replaced the BIOS glyph scaler's forward pixel plotting with inverse
+  sampling: every pixel in each 38×38 cached or 42×42 editable glyph is now
+  written. The previous routine left empty rows when enlarged above the
+  source bitmap size, making menu labels appear thin and dotted.
+- Retained the original BIOS typeface, displayed size, proportional metrics,
+  1024×1024 atlas, native VQ compression and all 793 English translations.
+  Glyphs use solid bitmap ink; Flycast's texture filtering controls smoothing.
+- Removed the obsolete pixel trampoline and generator code-pointer mutation.
+  The new generator reads the atlas pointer from its data global.
+- Verified every output pixel against the source bitmap for cached and
+  editable glyphs, cache edge placement, ink clearing on regeneration and
+  volatile-register clobbering by native integer helpers. Preserved encoder,
+  translation, raw-disc and Retro Trans Tools checks.
+- Added a comparison rendered through both native generators using the local
+  BIOS Latin font, and recorded the user's thin-font screenshot. Flycast
+  appearance and gameplay still need visual confirmation after a fresh boot.
+
 ## 0.1.6 — compressed higher-resolution font — 2026-10-01
 
 - Investigated the user's blank top menu using their Flycast save state.

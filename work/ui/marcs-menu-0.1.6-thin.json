@@ -1,0 +1,16 @@
+{
+  "screen": "MARCS menu",
+  "build": "0.1.6",
+  "build_basis": "Context follows testing 0.1.6; version is not shown on screen",
+  "reported_issue": "Menu font looks thin and dotted",
+  "screenshot": "marcs-menu-0.1.6-thin.png",
+  "dimensions": [
+    2560,
+    1369
+  ],
+  "coordinate_system": "Actual screenshot pixels",
+  "corrective_build": "0.1.7",
+  "cause": "Forward glyph plotting omitted output rows when enlarging the BIOS bitmap",
+  "comparison": "font-strokes-0.1.6-vs-0.1.7.png",
+  "comparison_source": "Native glyph output using local BIOS; not an emulator screenshot"
+}

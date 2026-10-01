@@ -17,7 +17,7 @@ from build_vwf import BASE, write_track, gdi
 from build_full_english import validate, verify_track
 from validate_vwf import CPU
 
-VERSION='0.1.6'
+VERSION='0.1.7'
 FONT_BYTES=0x200000
 VQ_BYTES=2048+1024*1024//4
 
@@ -84,7 +84,7 @@ def initialize(address,encoder=0x8c16dc04):
     a.emit(0x400b,0x0009,0x2008)
     a.branch(0x8900,'failed')
     a.emit(0x6503)
-    for dest in (0x8c2cd63c,BASE+0x75c8,BASE+0x77e4,BASE+0x86a8):
+    for dest in (0x8c2cd63c,BASE+0x75c8,BASE+0x77e4):
         a.load(1,dest)
         a.emit(0x2102)
     # Clear the full persistent atlas, including the 24-pixel right/bottom gap.
@@ -129,6 +129,81 @@ def metrics(address):
     a.load(0,0x8c34de28)
     a.emit(0x0654,0x000b,0x0009)
     return a.finish()
+
+
+def glyph(address,coordinate_address,metric_address):
+    """Fill every destination texel by reading its corresponding BIOS bit."""
+    a=Assembler(address)
+    for register in range(14,7,-1):
+        a.emit(0x2f06|(register<<4))
+    a.emit(0x4f22,0x7fe8,0x6e43,0x1f61,0x1f54)
+    # Locals: dimensions, index, min/max x, original code, source-row bit index.
+    a.load(0,256)
+    a.emit(0x3502)
+    a.branch(0x8b00,'editable')
+    a.emit(0xed26,0xe404,0x66f3)
+    a.load(0,0x8c159340)
+    a.emit(0x400b,0x0009,0xe404,0x55f4)
+    a.load(0,0x8c159088)
+    a.emit(0x400b,0x0009,0x6ce3,0x3c0c,0x54f1)
+    a.load(0,coordinate_address)
+    a.emit(0x400b,0x0009)
+    a.branch(0xa000,'position')
+    a.emit(0x0009)
+    a.label('editable')
+    a.emit(0xed2a,0xe406,0x66f3)
+    a.load(0,0x8c159340)
+    a.emit(0x400b,0x0009,0x6ce3,0x50f1,0xe12c,0x0017,0x001a)
+    a.load(1,600)
+    a.emit(0x301c)
+    a.load(1,960)
+    a.label('position')
+    a.emit(0x4118,0x4108,0x4100,0x4000)
+    a.load(2,0x8c2cd63c)
+    a.emit(0x6222,0x320c,0x321c,0x6b23,0x6af0,0x6aac,
+           0xe00e,0x1f02,0xe016,0x1f03,0xe900)
+    a.label('row')
+    a.emit(0xe001,0x03fc,0x633c,0x0397,0x041a,0x65d3)
+    a.load(0,0x8c0100fc)
+    a.emit(0x400b,0x0009,0x00a7,0x001a,0x1f05,0xe800)
+    a.label('column')
+    a.emit(0x08a7,0x041a,0x65d3)
+    a.load(0,0x8c0100fc)
+    a.emit(0x400b,0x0009,0x51f5,0x301c,0x6103,0xc907)
+    mask_marker=0xc010b17b
+    a.load(2,mask_marker)
+    a.emit(0x022c,0x4109,0x4101,0x31cc,0x6110,0x2129,0x2118)
+    a.branch(0x8900,'blank')
+    a.load(2,0xffff)
+    a.emit(0x50f2,0x3087)
+    a.branch(0x8b00,'maximum')
+    a.emit(0x1f82)
+    a.label('maximum')
+    a.emit(0x50f3,0x3807)
+    a.branch(0x8b00,'write')
+    a.emit(0x1f83)
+    a.branch(0xa000,'write')
+    a.emit(0x0009)
+    a.label('blank')
+    a.emit(0xe200)
+    a.label('write')
+    a.emit(0x6083,0x4000,0x0b25,0x7801,0x38d3)
+    a.branch(0x8b00,'column')
+    a.load(0,2048)
+    a.emit(0x3b0c,0x7901,0x39d3)
+    a.branch(0x8b00,'row')
+    a.emit(0x60d3,0x8826)
+    a.branch(0x8b00,'done')
+    a.emit(0x54f2,0x55f3,0x56f1)
+    a.load(0,metric_address)
+    a.emit(0x400b,0x0009)
+    a.label('done')
+    a.emit(0x7f18,0x4f26)
+    for register in range(8,15):
+        a.emit(0x60f6|(register<<8))
+    a.emit(0x000b,0x0009)
+    code=a.finish()
+    return code.replace(struct.pack('<I',mask_marker),struct.pack('<I',address+len(code)))+bytes(128>>i for i in range(8))
 
 
 def plan(original):
@@ -176,61 +251,14 @@ def plan(original):
     entry=0x7930
     hook=struct.pack('<4HI',pc_load(0,BASE+entry,BASE+entry+8),0x402b,0x0009,0x0009,BASE+helpers['initialize']['offset'])
     patch(entry,target[entry:entry+12],hook)
-    # Replace the two /25 coordinate expressions; BIOS pointer/dimensions follow.
-    entry=0x84b4
-    a=Assembler(BASE+entry)
-    a.emit(0x54f1)
-    a.load(0,BASE+helpers['coordinates']['offset'])
-    a.emit(0x400b,0x0009,0x1f03,0x1f12)
-    a.load(1,BASE+0x84d8)
-    a.emit(0x412b,0x0009)
-    blob=a.finish()
-    patch(entry,target[entry:0x84d8],blob+b'\x09\x00'*((0x84d8-entry-len(blob))//2))
-    word(0x84ee,0xed13,0xed26) # 19 -> 38; cached glyphs
-    word(0x84f8,0xe016,0xe02c) # 22 -> 44; live character slots
-    word(0x8516,0xed15,0xed2a) # 21 -> 42; live character slots
-    word(0x85c8,0x8813,0x8826)
-    word(0x863a,0x8813,0x8826)
-    literal(0x869c,300,600)
-    literal(0x86a0,480,960)
-    literal(0x86a4,1024,2048) # byte row pitch for glyph clearing
-    word(0x854e,0xe107,0xe10e) # metric seed extents also use doubled pixels
-    word(0x8556,0xe10b,0xe116)
-    # Shared pixel helper uses 512-pixel addressing: double it to 1024.
-    # Its two shifts are SHLL8 then SHLL2; prepend one shift in a trampoline.
-    # A separate trampoline keeps the original compare/pz branch intact.
-    # Allocate a small remaining fragment for the relocated prologue.
-    slot=None
-    for i,(start,end) in enumerate(free):
-        at=(start+3)&~3
-        trampoline=Assembler(BASE+at)
-        trampoline.emit(0x2fe6,0x2fd6,0x4f22,0x4600,0x4511)
-        trampoline.load(0,BASE+0x8418)
-        trampoline.emit(0x402b,0x0009)
-        data=trampoline.finish()
-        if at+len(data)<=end:
-            slot=(i,at,data);break
-    if slot is None:
-        raise ValueError('No pixel-helper trampoline space')
-    i,at,data=slot;b[at:at+len(data)]=data;free[i][0]=at+len(data);changes.append((at,at+len(data)))
-    # Preserve the original conditional branch at 8418; use a nearby literal
-    # in the coordinate block's verified unused padding.
-    word(0x8410,0x2fe6,pc_load(0,BASE+0x8410,BASE+0x84d0))
-    word(0x8412,0x2fd6,0x402b)
-    word(0x8414,0x4f22,0x0009)
-    word(0x8416,0x4511,0x0009)
-    patch(0x84d0,b'\x09\x00'*2,struct.pack('<I',BASE+at))
-    helpers['pixel']={'offset':at,'bytes':len(data)}
-    # Replace the cached bearing/width stores with a helper returning UI units.
-    entry=0x863e
-    a=Assembler(BASE+entry)
-    a.emit(0x54f5,0x55f4,0x56f1)
-    a.load(0,BASE+helpers['metrics']['offset'])
-    a.emit(0x400b,0x0009)
-    a.load(0,BASE+0x8672)
-    a.emit(0x402b,0x0009)
-    blob=a.finish()
-    patch(entry,target[entry:0x8672],blob+b'\x09\x00'*((0x8672-entry-len(blob))//2))
+    # Replace the original forward pixel plotting loop with inverse sampling.
+    # Reuse only its own verified code/literal span; keep executable size fixed.
+    entry=0x8494
+    blob=glyph(BASE+entry,BASE+helpers['coordinates']['offset'],
+               BASE+helpers['metrics']['offset'])
+    assert len(blob)<=0x86bc-entry
+    patch(entry,target[entry:0x86bc],blob+b'\x09\x00'*((0x86bc-entry-len(blob))//2))
+    helpers['glyph']={'offset':entry,'bytes':len(blob)}
     report.update(version=VERSION,target_program_sha256=digest(b),changed_regions=merged(changes))
     report['allocation']['remaining_fragment_bytes']=sum(z-a for a,z in free)
     report['allocation']['free_fragments']=free
@@ -242,6 +270,7 @@ def plan(original):
         'persistent_ram_added_bytes':FONT_BYTES,'temporary_upload_bytes':FONT_BYTES,
         'vram_texture_bytes':VQ_BYTES,'helpers':helpers,
         'compression':'native ARGB4444 VQ, fixed 256-entry codebook',
+        'sampling':'inverse nearest-neighbor; all destination pixels filled',
         'small_font':'unchanged 12-pixel font','texture_replacement':False,
         'allocation_failure':'font init returns failure and retries; no writes to original undersized buffer'}
     return bytes(b),report
@@ -319,7 +348,7 @@ def validate_font(original,target,report):
     assert cpu.read(0x8c2cd63c)==0x8c800000
     assert [cpu.read(0x8c34d6a4+i*4) for i in (1,4,5)]==[0x3020000,1024,1024]
     assert cpu.mem[0x400800:0x400000+VQ_BYTES]==bytes(VQ_BYTES-2048)
-    for offset in (0x75c8,0x77e4,0x86a8):
+    for offset in (0x75c8,0x77e4):
         assert cpu.read(BASE+offset)==0x8c800000
     print('Native font initialization: 1024x1024, cleared allocation, matched upload.',flush=True)
     # Real BIOS lookup is stubbed; real cache placement/resampling/pixel writer run.
@@ -327,6 +356,13 @@ def validate_font(original,target,report):
         size=32 if cpu.r[4]==6 else 24
         cpu.write(cpu.r[6],size,1);cpu.write(cpu.r[6]+1,size,1)
     cpu.stubs.update({0x8c159340:dimensions,0x8c159088:cpu.wait})
+    # Native integer helpers clobber r1-r3; do not hide register-lifetime bugs.
+    def integer_helper(modulo=False):
+        value=cpu.r[4]%cpu.r[5] if modulo else cpu.r[4]//cpu.r[5]
+        cpu.r[1:4]=[0xa1a1a1a1,0xb2b2b2b2,0xc3c3c3c3]
+        cpu.r[0]=value
+    cpu.stubs[0x8c0100fc]=integer_helper
+    cpu.stubs[0x8c010234]=lambda:integer_helper(True)
     bitmap=bytearray(72)
     for y in range(24):
         for x in range(24):
@@ -359,15 +395,38 @@ def validate_font(original,target,report):
         assert 0<=bearing<19 and 4<=advance<=23
         assert any(cpu.read(0x8c800000+(y*1024+x)*2,2)&0xf000
                    for y in range(y0,y0+39) for x in range(x0,x0+39))
+        assert len(writes)==38*38
+        for y in range(38):
+            for x in range(38):
+                bit=(y*24//38)*24+x*24//38
+                expected=0xffff if bitmap[bit//8]&(128>>(bit%8)) else 0
+                assert cpu.read(0x8c800000+((y0+y)*1024+x0+x)*2,2)==expected,(index,x,y)
         sampled.append({'index':index,'bearing':bearing,'advance':advance,'pixel_writes':len(writes)})
     print('Native glyph resampling: first/last columns and last cache slot stay in bounds.',flush=True)
+    # Regenerating a glyph must also erase its previous ink.
+    cpu.mem[0x700000:0x700048]=bytes(72)
+    cpu.r[4]=0x8c700000;cpu.r[5]=0x8260;cpu.r[6]=0;cpu.pr=0x8cfffffc
+    cpu.run(BASE+0x8494,limit=1000000)
+    assert all(cpu.read(0x8c800000+(y*1024+x)*2,2)==0 for y in range(38) for x in range(38))
     # The eight editable-name slots share this atlas's bottom row.
+    editable=bytearray(128)
+    for y in range(32):
+        for x in range(32):
+            if x==12 or y==20:
+                bit=y*32+x;editable[bit//8]|=128>>(bit%8)
+    cpu.mem[0x700000:0x700080]=editable
     writes.clear();cpu.r[4]=0x8c700000;cpu.r[5]=65;cpu.r[6]=7
     cpu.pr=0x8cfffffc;cpu.run(BASE+0x8494,limit=1000000)
     for address in writes:
         y,x=divmod((address-0x8c800000)//2,1024)
         assert 908<=x<=950 and 960<=y<=1002,(x,y)
     assert writes and cpu.r[15]==0x8cf00000
+    assert len(writes)==42*42
+    for y in range(42):
+        for x in range(42):
+            bit=(y*32//42)*32+x*32//42
+            expected=0xffff if editable[bit//8]&(128>>(bit%8)) else 0
+            assert cpu.read(0x8c800000+((960+y)*1024+908+x)*2,2)==expected,(x,y)
     # Exhaust every indexed coordinate without rendering every BIOS bitmap.
     coords=BASE+report['font']['helpers']['coordinates']['offset']
     for index in range(613):
@@ -381,10 +440,12 @@ def validate_font(original,target,report):
     failed.r[15]-=4;failed.write(failed.r[15],failed.pr)
     failed.run(helper)
     assert failed.r[0]==0 and failed.r[15]==0x8cf00000
-    assert failed.read(BASE+0x86a8)==0x8c2cd644
+    assert failed.read(0x8c2cd63c)==0
+    assert failed.mem[0x10000+0x8494:0x10000+0x86bc]==target[0x8494:0x86bc]
     return {'native_font_init':True,'cached_coordinate_cases':613,
         'native_resampling_cases':sampled,'allocation_failure_verified':True,
         'editable_name_slot_bounds_verified':True,
+        'all_destination_pixels_verified':True,'glyph_regeneration_clears_old_ink':True,
         'bios_bitmap_simulated':True,'actual_Flycast_playtest':False}
 
 
