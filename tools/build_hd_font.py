@@ -1,7 +1,7 @@
 """Built-in 2x cached font atlas, preserving the 0.1.4 English text.
 
-This retains the BIOS typeface, but samples it into 38-pixel glyphs rather
-than reducing it to 19 pixels. It is a ROM patch, not a Flycast texture pack.
+This embeds Bizin Gothic Bold in 38-pixel glyphs, with BIOS fallback.
+It is a ROM patch, not a Flycast texture pack.
 Default is a plan; --validate runs the limited native harness; --build writes.
 """
 import argparse
@@ -14,10 +14,11 @@ from inspect_disc_text import Disc, ROOT
 from full_english import plan as english_plan, digest, merged
 from sh4_patch import Assembler, pc_load
 from build_vwf import BASE, write_track, gdi
-from build_full_english import validate, verify_track
+from build_full_english import validate
 from validate_vwf import CPU
+import bizin_font
 
-VERSION='0.1.7'
+VERSION='0.1.8'
 FONT_BYTES=0x200000
 VQ_BYTES=2048+1024*1024//4
 
@@ -76,7 +77,7 @@ def vq_upload(address):
                          struct.pack('<I',address+len(first)))+struct.pack('<4H',0,0xdfff,0xefff,0xffff)+bytes([0]+[1]*13+[2,3])
 
 
-def initialize(address,encoder=0x8c16dc04):
+def initialize(address,encoder=0x8c16dc04,font_loader=None):
     a=Assembler(address)
     # Entered by JMP while the original font init's PR is already on its stack.
     a.load(4,FONT_BYTES)
@@ -93,6 +94,11 @@ def initialize(address,encoder=0x8c16dc04):
     a.label('clear')
     a.emit(0x2312,0x7304,0x4210)
     a.branch(0x8b00,'clear')
+    if font_loader:
+        a.load(0,font_loader)
+        a.emit(0x400b,0x0009)
+        a.load(0,0x8c2cd63c)
+        a.emit(0x6502)
     a.load(0,0x8c2cd640)
     a.emit(0x6402)
     a.load(6,1024)
@@ -131,13 +137,35 @@ def metrics(address):
     return a.finish()
 
 
-def glyph(address,coordinate_address,metric_address):
+def glyph(address,coordinate_address,metric_address,font_lookup=None):
     """Fill every destination texel by reading its corresponding BIOS bit."""
     a=Assembler(address)
     for register in range(14,7,-1):
         a.emit(0x2f06|(register<<4))
     a.emit(0x4f22,0x7fe8,0x6e43,0x1f61,0x1f54)
     # Locals: dimensions, index, min/max x, original code, source-row bit index.
+    if font_lookup:
+        a.emit(0x6453,0x55f1)
+        a.load(0,font_lookup)
+        a.emit(0x400b,0x0009,0x2008)
+        a.branch(0x8900,'bios')
+        a.emit(0x6c03,0x7c08)
+        a.load(0,0x2626)
+        a.emit(0x2f01,0x55f4)
+        a.load(0,256)
+        a.emit(0x3502)
+        a.branch(0x8b00,'custom_editable')
+        a.emit(0xed26,0x54f1)
+        a.load(0,coordinate_address)
+        a.emit(0x400b,0x0009)
+        a.branch(0xa000,'position')
+        a.emit(0x0009)
+        a.label('custom_editable')
+        a.emit(0xed2a)
+        a.branch(0xa000,'editable_position')
+        a.emit(0x0009)
+        a.label('bios')
+        a.emit(0x55f4)
     a.load(0,256)
     a.emit(0x3502)
     a.branch(0x8b00,'editable')
@@ -153,7 +181,9 @@ def glyph(address,coordinate_address,metric_address):
     a.label('editable')
     a.emit(0xed2a,0xe406,0x66f3)
     a.load(0,0x8c159340)
-    a.emit(0x400b,0x0009,0x6ce3,0x50f1,0xe12c,0x0017,0x001a)
+    a.emit(0x400b,0x0009,0x6ce3)
+    a.label('editable_position')
+    a.emit(0x50f1,0xe12c,0x0017,0x001a)
     a.load(1,600)
     a.emit(0x301c)
     a.load(1,960)
@@ -212,8 +242,9 @@ def plan(original):
     free=[list(s) for s in report['allocation']['free_fragments']]
     changes=list(report['changed_regions'])
     helpers={}
-    for name,build in [('vq_upload',vq_upload),
-                       ('initialize',lambda address:initialize(address,BASE+helpers['vq_upload']['offset'])),
+    for name,build in [('vq_upload',vq_upload),('bizin_loader',bizin_font.loader),
+                       ('bizin_lookup',bizin_font.lookup),
+                       ('initialize',lambda address:initialize(address,BASE+helpers['vq_upload']['offset'],BASE+helpers['bizin_loader']['offset'])),
                        ('coordinates',coordinates),('metrics',metrics)]:
         choices=[]
         for i,(start,end) in enumerate(free):
@@ -255,7 +286,7 @@ def plan(original):
     # Reuse only its own verified code/literal span; keep executable size fixed.
     entry=0x8494
     blob=glyph(BASE+entry,BASE+helpers['coordinates']['offset'],
-               BASE+helpers['metrics']['offset'])
+               BASE+helpers['metrics']['offset'],BASE+helpers['bizin_lookup']['offset'])
     assert len(blob)<=0x86bc-entry
     patch(entry,target[entry:0x86bc],blob+b'\x09\x00'*((0x86bc-entry-len(blob))//2))
     helpers['glyph']={'offset':entry,'bytes':len(blob)}
@@ -263,10 +294,11 @@ def plan(original):
     report['allocation']['remaining_fragment_bytes']=sum(z-a for a,z in free)
     report['allocation']['free_fragments']=free
     report['allocation']['font_helper_bytes']=sum(h['bytes'] for h in helpers.values())
-    report['font']={'type':'built_in_BIOS_supersampling','texture_before':[512,512],
+    report['font']={'type':'built_in_Bizin_Gothic_Bold','texture_before':[512,512],
         'texture_after':[1024,1024],'cached_cell_before':20,'cached_cell_after':40,
         'glyph_before':19,'glyph_after':38,'display_quad_pixels':19,
-        'original_source_font':'BIOS 24x24 bitmap; no new vector typeface',
+        'original_source_font':'Dreamcast BIOS bitmap',
+        'source_font':'Bizin Gothic Bold v0.0.4',
         'persistent_ram_added_bytes':FONT_BYTES,'temporary_upload_bytes':FONT_BYTES,
         'vram_texture_bytes':VQ_BYTES,'helpers':helpers,
         'compression':'native ARGB4444 VQ, fixed 256-entry codebook',
@@ -276,7 +308,7 @@ def plan(original):
     return bytes(b),report
 
 
-def validate_vq(target,report,atlas=None):
+def validate_vq(target,report,atlas=None,atlas_source='captured BIOS font'):
     cpu=CPU(target)
     # All 256 fixed codebook patterns, tiled through the complete input buffer.
     colors=(0,0xdfff,0xefff,0xffff)
@@ -317,13 +349,14 @@ def validate_vq(target,report,atlas=None):
     exact=decoded==twiddled
     if atlas is not None:
         assert exact,'Captured real font must survive compression without pixel changes'
-    print('Native VQ encoder: complete atlas round trip, '+('captured BIOS font' if atlas is not None else 'all 256 patterns')+'.',flush=True)
+    print('Native VQ encoder: complete atlas round trip, '+(atlas_source if atlas is not None else 'all 256 patterns')+'.',flush=True)
     return {'encoded_bytes':VQ_BYTES,'blocks_verified':262144,'pixels_identical':exact,
-            'captured_font':atlas is not None,'palette_alpha_levels':[0,13,14,15],
+            'captured_font':atlas is not None and atlas_source=='captured BIOS font',
+            'font_atlas_source':atlas_source if atlas is not None else None,'palette_alpha_levels':[0,13,14,15],
             'alpha_12_policy':'round up to 13'}
 
 
-def validate_font(original,target,report):
+def validate_font(original,target,report,payload=None):
     cpu=CPU(target)
     allocations=[];uploads=[]
     def allocate():
@@ -336,10 +369,17 @@ def validate_font(original,target,report):
     def bios():
         cpu.r[0]=0x8c700000
     cpu.stubs.update({0x8c0151cc:cpu.wait,0x8c15cf2a:allocate,
+        0x8c16acd4:lambda:cpu.r.__setitem__(0,0xffffffff),
         0x8c1594ec:bios,
         0x8c16dc04:upload,0x8c16c1ca:lambda:cpu.r.__setitem__(0,1),
         0x8c15b892:cpu.wait,
         0x8c15cff8:cpu.wait})
+    if payload is not None:
+        def read_font():
+            assert cpu.r[4:6]==[bizin_font.FONT_SOURCE,bizin_font.ASSET_BYTES]
+            at=bizin_font.FONT_SOURCE-0x8c000000
+            cpu.mem[at:at+len(payload)]=payload;cpu.r[0]=0
+        cpu.stubs.update({0x8c16acd4:cpu.wait,0x8c16ad34:read_font,0x8c16ad2c:cpu.wait})
     cpu.mem[0x800000:0xa00000]=b'\xa5'*FONT_BYTES
     cpu.run(BASE+0x7820,limit=30000000)
     assert cpu.r[0]!=0 and cpu.r[15]==0x8cf00000
@@ -348,6 +388,10 @@ def validate_font(original,target,report):
     assert cpu.read(0x8c2cd63c)==0x8c800000
     assert [cpu.read(0x8c34d6a4+i*4) for i in (1,4,5)]==[0x3020000,1024,1024]
     assert cpu.mem[0x400800:0x400000+VQ_BYTES]==bytes(VQ_BYTES-2048)
+    if payload is not None:
+        at=bizin_font.FONT_SOURCE-0x8c000000
+        assert cpu.mem[at:at+len(payload)]==payload,'Compression scratch overwrote font records'
+        cpu.write(bizin_font.FONT_SOURCE,0) # exercise BIOS fallback below
     for offset in (0x75c8,0x77e4):
         assert cpu.read(BASE+offset)==0x8c800000
     print('Native font initialization: 1024x1024, cleared allocation, matched upload.',flush=True)
@@ -443,6 +487,7 @@ def validate_font(original,target,report):
     assert failed.read(0x8c2cd63c)==0
     assert failed.mem[0x10000+0x8494:0x10000+0x86bc]==target[0x8494:0x86bc]
     return {'native_font_init':True,'cached_coordinate_cases':613,
+        'loaded_asset_survives_native_initialization':payload is not None,
         'native_resampling_cases':sampled,'allocation_failure_verified':True,
         'editable_name_slot_bounds_verified':True,
         'all_destination_pixels_verified':True,'glyph_regeneration_clears_old_ink':True,
@@ -458,29 +503,41 @@ def main():
     disc=Disc();e=next(e for e in disc.files if e['path']=='/1ST_READ.BIN')
     original=disc.read(e['lba'],e['size'])
     target,report=plan(original)
+    payload,font_asset=bizin_font.asset(target)
+    report['font_asset']=font_asset
     print(json.dumps(report['font'],indent=2))
     if args.validate or args.build:
-        report['font_validation']=validate_font(original,target,report)
+        report['font_validation']=validate_font(original,target,report,payload)
+        report['font_validation']['bizin'],atlas,cache_metrics=bizin_font.validate(target,report,payload)
         report['font_validation']['vq_patterns']=validate_vq(target,report)
+        report['font_validation']['vq_bizin_font']=validate_vq(target,report,atlas,'generated Bizin Gothic Bold')
         if args.font_state:
             from inspect_font_state import font_state
             atlas,evidence=font_state(args.font_state)
             report['font_validation']['reported_blank_state']=evidence
             report['font_validation']['vq_captured_font']=validate_vq(target,report,atlas)
-        report['validation']=validate(original,target,report)
+        report['validation']=validate(original,target,report,cache_metrics)
     if args.build:
         folder=ROOT/'work'/'output'/('english-'+VERSION)
         folder.mkdir(parents=True,exist_ok=False)
         track=folder/('Marionette Handler 2 (Japan) (Track 17) English '+VERSION+'.bin')
         write_track(disc,e,original,target,track)
+        import font_disc
+        track3,report['font_disc']=font_disc.embed(disc,payload,folder,track,VERSION)
         name='Marionette Handler 2 English '+VERSION
         gdi(disc,track,folder/(name+'.gdi'))
+        descriptor=folder/(name+'.gdi')
+        text=descriptor.read_text(encoding='utf-8')
+        source3=next(ROOT.glob('*Track 03*.bin'))
+        text=text.replace(Path(os.path.relpath(str(source3),str(folder))).as_posix(),track3.name)
+        descriptor.write_text(text,encoding='utf-8')
         cue=next(ROOT.glob('*.cue')).read_text(encoding='utf-8')
         for source in sorted(ROOT.glob('*Track*.bin')):
-            relative=Path(os.path.relpath(str(track if '(Track 17)' in source.name else source),str(folder))).as_posix()
+            selected=track if '(Track 17)' in source.name else track3 if '(Track 03)' in source.name else source
+            relative=Path(os.path.relpath(str(selected),str(folder))).as_posix()
             cue=cue.replace('"'+source.name+'"','"'+relative+'"')
         (folder/(name+'.cue')).write_text(cue,encoding='utf-8')
-        verify_track(disc,e,original,target,report,folder)
+        report['disc_validation']=font_disc.verify(disc,e,target,track3,track,folder,report)
         for path in (folder/'PATCH-REPORT.json',ROOT/'work'/'ui'/('english_'+VERSION+'_inventory.json')):
             path.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
         print('Saved built-in font test image:',folder)

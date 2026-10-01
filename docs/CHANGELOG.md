@@ -1,5 +1,22 @@
 # Change log
 
+## 0.1.8 — embedded Bizin Gothic Bold — 2026-10-02
+
+- Replaced the large BIOS typeface with the user's selected Bizin Gothic Bold
+  v0.0.4, covering all 613 cached glyphs and 95 editable ASCII characters.
+  Preserved the original TTF, provenance hashes and upstream license notices.
+- Added an on-disc ENFONT.BIN asset and a native loader using the game's file
+  API. Font records use the unused tail of the original static atlas; missing
+  assets and unsupported records retain BIOS fallback. No texture replacement.
+- Retained the 1024×1024 atlas, compact VQ texture, proportional spacing and
+  all 793 English translations. The small ASCII font and artwork are unchanged.
+- Verified every native glyph bitmap and cached metric, loader failure paths,
+  exact compression of the generated atlas and all translated message draws.
+  Added a native-output comparison against the previous BIOS typeface.
+- Added the font to guarded unused ISO space, preserving original file entries.
+  The cumulative Retro Trans Tools package applies to BOTH Track 3 and Track 17.
+  Actual Flycast startup and gameplay still need confirmation after a fresh boot.
+
 ## 0.1.7 — continuous higher-resolution font strokes
 
 - Replaced the BIOS glyph scaler's forward pixel plotting with inverse

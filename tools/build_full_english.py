@@ -14,7 +14,7 @@ from cdrom_sector import regenerate
 from validate_vwf import CPU
 
 
-def validate(original, target, report):
+def validate(original, target, report, cache_metrics=None):
     _, texts, _ = batches()
     # Execute the actual startup clear/copy routine, not a predicted interval.
     startup = CPU(target)
@@ -22,6 +22,11 @@ def validate(original, target, report):
     for a, z in report['changed_regions']:
         assert startup.mem[0x10000 + a:0x10000 + z] == target[a:z]
     template, _, codes, frames = prepare_native_cache(target)
+    if cache_metrics is not None:
+        for i,code in enumerate(codes):
+            bearing,advance=cache_metrics[code]
+            template.write(0x8c34dbb4+i,bearing,1)
+            template.write(0x8c34de28+i,advance,1)
     code_widths = {code: template.read(0x8c34de28 + i, 1) for i, code in enumerate(codes)}
     import re
     printable = set(''.join(re.sub(r'@[a-zA-Z]\d{3}', '', text) for text in texts)) - {'\n'}
@@ -139,7 +144,7 @@ def validate(original, target, report):
             'numeric_composition_cases': numeric, 'default_native_cache_glyphs': len(codes),
             'default_native_cache_frames': frames, 'visible_english_characters_loaded': len(printable) - 1,
             'space_behavior': 'Original blank 20-pixel cache-miss fallback',
-            'bios_ink_metrics_simulated': True, 'emulator_playtest': False,
+            'bios_ink_metrics_simulated': cache_metrics is None, 'emulator_playtest': False,
             'approved_screen_fit_limits': None}
 
 

@@ -3,3 +3,4 @@
 /tools/vendor/
 __pycache__/
 *.pyc
+/incoming/fonts/*.zip

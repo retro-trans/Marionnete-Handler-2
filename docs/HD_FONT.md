@@ -1,66 +1,65 @@
-# Built-in higher-resolution font — 0.1.7
+# Embedded Bizin Gothic Bold — 0.1.8
 
-The user's chosen approach is a font in the game patch, with no Flycast texture
-replacement. The cumulative English test image keeps all 793 translations.
+The game now uses [Bizin Gothic Bold v0.0.4](https://github.com/yuru7/bizin-gothic)
+for the large cached font and editable-name glyphs. The original typeface was
+the Dreamcast BIOS bitmap font. Its strokes remained thin after the missing-row
+sampling bug was corrected in 0.1.7. Bizin Gothic combines Inconsolata Latin
+characters with BIZ UD Gothic Japanese characters; this build uses the upstream
+Bold TTF, preserved unchanged with its source hashes and OFL notices.
 
-The large cached font now uses a 1024×1024 atlas instead of 512×512, with
-40-pixel cells and 38-pixel glyph sampling instead of 20-pixel cells and
-19-pixel sampling. The renderer still displays a 19-pixel quad and uses the
-same normalized texture coordinates. Bearings and advances are converted back
-to display pixels. Editable-name slots use the enlarged atlas's bottom row.
+The game loads `/ENFONT.BIN` from the patched disc. It contains 613 cached glyph
+records, 95 editable ASCII records, and the font license notices. All 708
+characters are covered by the selected font. Latin glyphs are rasterized at 44
+pixels and the other characters at 35 pixels, fitted inside 38×38 cells. The
+native generator reads these bitmaps and computes each cached character's
+bearing and advance. Missing assets, invalid headers, and unsupported records
+fall back to the BIOS font. The small 12-pixel ASCII font and text baked into
+artwork retain their original appearance.
 
-0.1.7 samples each destination texel from the BIOS bitmap. The earlier forward
-plotter left empty rows when enlarged from 24 to 38 pixels, producing the
-user's thin/dotted menu labels in 0.1.6. The replacement fills every output
-pixel and clears old ink when a glyph changes. It preserves the BIOS typeface's
-natural weight, using solid bitmap strokes. Texture filtering may smooth the
-edges at the displayed size. This is a sampling correction, not a new typeface.
+The atlas remains 1024×1024, with 40-pixel cached cells, 38-pixel cached glyphs,
+and 42-pixel editable glyphs. The displayed cached quad is still 19 pixels.
+Binary rasterization gives solid strokes; Flycast's filtering affects smoothing
+at the displayed size. This is a higher-resolution bitmap font inside the game,
+not a vector renderer or an emulator texture replacement.
 
-This keeps the original BIOS bitmap typeface. Its source glyphs are 24×24;
-sampling into the larger atlas preserves more source detail than the previous
-reduction to 19×19. It does not introduce a vector typeface or new detail beyond
-the BIOS source. The small 12-pixel ASCII font is unchanged. Wide blank spaces
-and the pause menu's overflowing Fast-Forward Playback label require separate
-layout changes; this patch does not claim to fix them.
+The persistent atlas and temporary upload buffer each use 2 MiB of RAM. Native
+ARGB4444 VQ compression keeps the video-memory texture at 264,192 bytes. The
+font records occupy 135,952 bytes in the unused tail of the original static
+atlas, beyond the compression scratch space, without another heap allocation.
+The loader uses the game's original file API and loads the records once.
 
-The persistent atlas uses a new 2 MiB heap allocation. The temporary upload
-buffer is also 2 MiB, but the native VQ texture occupies only 264,192 bytes
-(258 KiB) in video memory. The unused original atlas is compression scratch.
-The fixed codebook preserves transparent, D, E and F alpha levels; C rounds
-up to D. The actual captured 613-glyph BIOS atlas uses only transparent/D/F
-and passed an exact pixel round trip. Allocation failure leaves the
-original undersized buffer untouched and returns from initialization. Actual
-heap/VRAM availability during gameplay and performance need Flycast testing.
-This is an experimental test build, not a verified gameplay release.
+The ISO root directory gains one file entry in Track 3. Its data occupies
+guarded all-zero sectors at the end of Track 17. All original ISO entries keep
+their locations and sizes. The cumulative executable keeps all 793 English
+translations. Consequently, the Retro Trans Tools package has TWO patches:
+apply both Track 3 and Track 17 to the original Japanese raw tracks.
 
-The user's 0.1.5 blank-menu state confirmed the uncompressed 2 MiB texture
-failed initialization: the font had ink in RAM but zero hardware texture
-header words and status 0x60000. Subsequent uploads used destination zero.
-0.1.5 is known broken. The compressed atlas introduced in 0.1.6 requires less video memory
-than the original font, and encoded writes are flushed before uploading.
+Build with `python tools/build_hd_font.py --build`; no flags produces a read-only
+plan, and `--validate` executes the checks without writing a disc. Existing
+output folders are refused. The limited SH-4 harness checks the loader's success,
+reuse and failure paths; all 708 record lookups and rendered bitmaps; all 613
+cached metrics; BIOS fallback; font initialization and allocation failure;
+editable bounds; and the complete native VQ encoder. The generated Bizin atlas
+must survive compression with every pixel identical. All 793 messages, numeric
+compositions and aligned rendering are checked with the actual Bizin metrics.
+Platform file I/O, allocation, uploads and BIOS services are simulated.
 
-The original disc and earlier builds remain available. Build with
-`tools/build_hd_font.py --build`; running without flags is a read-only plan.
-Optionally supply `--font-state <path>` to validate against a captured atlas.
-`tools/inspect_font_state.py <path>` reads allocation evidence without exporting
-game RAM or Japanese scripts.
-The builder checks source bytes, executable size, placement in proven free
-translation-bank fragments, native font initialization, clearing, all 613
-cached coordinates, sampled glyph bounds, editable-name bounds and failure
-handling. It also runs the existing validation for all 793 messages, verifies
-the disc sectors and creates ordinary GDI/CUE files. Platform allocation,
-upload and BIOS bitmap inputs are simulated in the limited SH-4 harness;
-descriptor initialization and the VQ encoder execute actual instructions.
-The glyph checks compare every cached/editable destination pixel against the
-source bitmap and simulate the integer helpers' volatile-register clobbering.
-`tools/preview_hd_font.py --bios <dc_boot.bin>` compares the native 0.1.6 and
-0.1.7 generators; add `--write` to save the enlarged Latin-font preview in
-`work/ui/font-strokes-0.1.6-vs-0.1.7.png`. It is an atlas preview, not an emulator
-screenshot or a texture-replacement pack.
+The disc verifier reads the new font through its ISO entry, compares the patched
+executable, verifies every changed sector's EDC/ECC, proves other sectors are
+unchanged, and checks all 17 GDI track references. The release SDK reconstructs
+both complete changed tracks and compares their hashes.
 
-Load `work/output/english-0.1.7/Marionette Handler 2 English 0.1.7.gdi` in
-Flycast to compare the same pause menu with 0.1.4. No texture pack, texture dump
-or custom-texture setting is required. Flycast's existing configuration is not
-modified. Boot this image from scratch: loading an older state restores its
-old renderer. The Retro Trans Tools xdelta package applies to original Track 17,
-as with previous cumulative releases.
+`python tools/preview_hd_font.py --bios <dc_boot.bin> --write` saves a comparison
+in `work/ui/font-BIOS-vs-Bizin-Gothic-Bold-0.1.8.png`. It uses actual native glyph
+output and is labeled as a preview, rather than an in-game screenshot.
+
+Open `work/output/english-0.1.8/Marionette Handler 2 English 0.1.8.gdi` in Flycast
+and boot from scratch. An older save state restores the older renderer and font.
+No texture dump, custom texture pack or Flycast setting change is needed.
+Flycast appearance, file loading during startup, gameplay memory availability
+and screen fit still need a real playtest. The known pause-menu label overflow
+and the native wide blank spaces are separate layout issues.
+
+Earlier builds remain available. 0.1.5 is known broken: the uncompressed 2 MiB
+VRAM texture failed initialization, leaving blank menus. 0.1.6 introduced VQ
+compression; 0.1.7 fixed empty rows in the enlarged BIOS font.
