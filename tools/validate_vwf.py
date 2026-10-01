@@ -146,6 +146,9 @@ class CPU:
         elif op & 0xf0ff == 0x4000:
             self.t = bool(r[n] & 0x80000000)
             r[n] <<= 1
+        elif op & 0xf0ff == 0x4001:
+            self.t = bool(r[n] & 1)
+            r[n] >>= 1
         elif op & 0xf0ff == 0x4010:
             r[n] -= 1
             self.t = (r[n] & 0xffffffff) == 0
@@ -180,6 +183,8 @@ class CPU:
                 self.t = (r[n] & r[m]) == 0
             elif low == 0xb:
                 r[n] |= r[m]
+            elif low == 9:
+                r[n] &= r[m]
             else:
                 raise ValueError('Unsupported 2xxx {:04x}'.format(op))
         elif high == 0x3:
@@ -195,6 +200,8 @@ class CPU:
                 self.t = signed(r[n]) > signed(r[m])
             elif low == 0xc:
                 r[n] += r[m]
+            elif low == 8:
+                r[n] -= r[m]
             else:
                 raise ValueError('Unsupported 3xxx {:04x}'.format(op))
         elif high == 0 and low in (0xc, 0xd, 0xe):
@@ -231,6 +238,8 @@ class CPU:
                 self.fpul = int(self.f[n])
             elif low == 0xd and m == 8:
                 self.f[n] = 0.0
+            elif low == 0xd and m == 9:
+                self.f[n] = 1.0
             else:
                 raise ValueError('Unsupported float {:04x}'.format(op))
         else:

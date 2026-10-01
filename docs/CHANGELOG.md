@@ -1,5 +1,19 @@
 # Change log
 
+## 0.1.5 — experimental built-in higher-resolution font — 2026-10-01
+
+- Enlarged the cached font atlas from 512×512 to 1024×1024 and glyph sampling
+  from 19 to 38 pixels, retaining the original displayed size and BIOS typeface.
+- Added a cleared heap allocation, enlarged upload/VRAM dimensions and native
+  bearing/advance conversion. Kept the editable-name slots within the atlas.
+- Preserved all 793 English records and earlier builds. No Flycast texture
+  replacement, texture dump or emulator configuration change is used.
+- Added native allocation/failure, placement and glyph-bound checks alongside
+  the existing translation and raw-disc validation. Added an ordinary test
+  image and Retro Trans Tools package.
+- Actual Flycast appearance, gameplay memory availability and speed remain
+  unverified. Small-font resolution and pause-menu text overflow are unchanged.
+
 ## 0.1.4 — all 793 inventoried game messages — 2026-10-01
 
 - Added the remaining 633 English records and independent meaning reviews,

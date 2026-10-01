@@ -1,0 +1,52 @@
+{
+  "image": "pause-menu-user-reference.png",
+  "source": "User-provided cropped screenshot",
+  "image_size": [
+    857,
+    303
+  ],
+  "coordinate_space": "screenshot pixels, not game coordinates",
+  "observations": [
+    "Jagged large-font strokes",
+    "Fast-Forward Playback extends beyond the purple button"
+  ],
+  "font_build_in_screenshot": "not reported",
+  "labels": [
+    {
+      "text": "Resume",
+      "image_region": [
+        27,
+        30,
+        431,
+        93
+      ]
+    },
+    {
+      "text": "Fast-Forward Playback",
+      "image_region": [
+        27,
+        96,
+        831,
+        159
+      ]
+    },
+    {
+      "text": "Skip",
+      "image_region": [
+        27,
+        163,
+        431,
+        226
+      ]
+    },
+    {
+      "text": "Stop Battle",
+      "image_region": [
+        27,
+        229,
+        454,
+        291
+      ]
+    }
+  ]
+}

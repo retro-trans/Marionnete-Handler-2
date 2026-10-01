@@ -1,0 +1,308 @@
+"""Built-in 2x cached font atlas, preserving the 0.1.4 English text.
+
+This retains the BIOS typeface, but samples it into 38-pixel glyphs rather
+than reducing it to 19 pixels. It is a ROM patch, not a Flycast texture pack.
+Default is a plan; --validate runs the limited native harness; --build writes.
+"""
+import argparse
+import json
+import os
+from pathlib import Path
+import struct
+
+from inspect_disc_text import Disc, ROOT
+from full_english import plan as english_plan, digest, merged
+from sh4_patch import Assembler, pc_load
+from build_vwf import BASE, write_track, gdi
+from build_full_english import validate, verify_track
+from validate_vwf import CPU
+
+VERSION='0.1.5'
+FONT_BYTES=0x200000
+
+
+def initialize(address):
+    a=Assembler(address)
+    # Entered by JMP while the original font init's PR is already on its stack.
+    a.load(4,FONT_BYTES)
+    a.load(0,0x8c15cf2a)
+    a.emit(0x400b,0x0009,0x2008)
+    a.branch(0x8900,'failed')
+    a.emit(0x6503)
+    for dest in (0x8c2cd63c,BASE+0x75c8,BASE+0x77e4,BASE+0x86a8):
+        a.load(1,dest)
+        a.emit(0x2102)
+    # Clear the full persistent atlas, including the 24-pixel right/bottom gap.
+    a.emit(0x6303,0xe100)
+    a.load(2,FONT_BYTES//4)
+    a.label('clear')
+    a.emit(0x2312,0x7304,0x4210)
+    a.branch(0x8b00,'clear')
+    a.load(0,0x8c2cd640)
+    a.emit(0x6402)
+    a.load(6,1024)
+    a.load(0,0x8c16dc04)
+    a.emit(0x400b,0x0009)
+    a.load(1,BASE+0x793e)
+    a.emit(0x412b,0x0009)
+    a.label('failed')
+    a.emit(0xe000)
+    a.load(1,BASE+0x7992)
+    a.emit(0x412b,0x0009)
+    return a.finish()
+
+
+def coordinates(address):
+    a=Assembler(address)
+    a.emit(0x4f22,0x2f86,0x2f96,0x6843)
+    a.load(0,0x8c010234)
+    a.emit(0xe519,0x400b,0x0009,0x6903,0x6403)
+    # x = (index % 25) * 40.
+    a.emit(0x4908,0x394c,0x4908,0x4900,0x6483)
+    a.load(0,0x8c0100fc)
+    a.emit(0xe519,0x400b,0x0009,0x6103,0x4108,0x310c,0x4108,0x4100)
+    a.emit(0x6093,0x69f6,0x68f6,0x4f26,0x000b,0x0009)
+    return a.finish()
+
+
+def metrics(address):
+    a=Assembler(address)
+    # r4=min x, r5=max x, r6=cache index. Convert ink extents to UI pixels.
+    a.emit(0x3548,0x4501,0x7504,0x4401)
+    a.load(0,0x8c34dbb4)
+    a.emit(0x0644)
+    a.load(0,0x8c34de28)
+    a.emit(0x0654,0x000b,0x0009)
+    return a.finish()
+
+
+def plan(original):
+    target,report=english_plan(original)
+    b=bytearray(target)
+    free=[list(s) for s in report['allocation']['free_fragments']]
+    changes=list(report['changed_regions'])
+    helpers={}
+    for name,build in [('initialize',initialize),('coordinates',coordinates),('metrics',metrics)]:
+        choices=[]
+        for i,(start,end) in enumerate(free):
+            aligned=(start+3)&~3
+            blob=build(BASE+aligned)
+            if aligned+len(blob)<=end:
+                choices.append((end-aligned-len(blob),i,aligned,blob))
+        if not choices:
+            raise ValueError('No verified translation-bank fragment fits '+name)
+        _,i,at,blob=min(choices)
+        b[at:at+len(blob)]=blob
+        free[i][0]=at+len(blob)
+        changes.append((at,at+len(blob)))
+        helpers[name]={'offset':at,'bytes':len(blob)}
+    def patch(at,old,new):
+        if b[at:at+len(old)]!=old:
+            raise ValueError('Font source guard failed at '+hex(at))
+        if len(old)!=len(new):
+            raise ValueError('Patch changes executable size')
+        b[at:at+len(new)]=new
+        changes.append((at,at+len(new)))
+    def word(at,old,new):
+        patch(at,struct.pack('<H',old),struct.pack('<H',new))
+    def literal(at,old,new):
+        patch(at,struct.pack('<I',old),struct.pack('<I',new))
+    # All three font upload buffers and texture dimensions, including VRAM init.
+    for at in (0x75bc,0x77d8,0x79a0):
+        literal(at,0x80000,FONT_BYTES)
+    for at in (0x75c4,0x77e0,0x79a8):
+        literal(at,512,1024)
+    entry=0x7930
+    hook=struct.pack('<4HI',pc_load(0,BASE+entry,BASE+entry+8),0x402b,0x0009,0x0009,BASE+helpers['initialize']['offset'])
+    patch(entry,target[entry:entry+12],hook)
+    # Replace the two /25 coordinate expressions; BIOS pointer/dimensions follow.
+    entry=0x84b4
+    a=Assembler(BASE+entry)
+    a.emit(0x54f1)
+    a.load(0,BASE+helpers['coordinates']['offset'])
+    a.emit(0x400b,0x0009,0x1f03,0x1f12)
+    a.load(1,BASE+0x84d8)
+    a.emit(0x412b,0x0009)
+    blob=a.finish()
+    patch(entry,target[entry:0x84d8],blob+b'\x09\x00'*((0x84d8-entry-len(blob))//2))
+    word(0x84ee,0xed13,0xed26) # 19 -> 38; cached glyphs
+    word(0x84f8,0xe016,0xe02c) # 22 -> 44; live character slots
+    word(0x8516,0xed15,0xed2a) # 21 -> 42; live character slots
+    word(0x85c8,0x8813,0x8826)
+    word(0x863a,0x8813,0x8826)
+    literal(0x869c,300,600)
+    literal(0x86a0,480,960)
+    literal(0x86a4,1024,2048) # byte row pitch for glyph clearing
+    # Shared pixel helper uses 512-pixel addressing: double it to 1024.
+    # Its two shifts are SHLL8 then SHLL2; prepend one shift in a trampoline.
+    # A separate trampoline keeps the original compare/pz branch intact.
+    # Allocate a small remaining fragment for the relocated prologue.
+    slot=None
+    for i,(start,end) in enumerate(free):
+        at=(start+3)&~3
+        trampoline=Assembler(BASE+at)
+        trampoline.emit(0x2fe6,0x2fd6,0x4f22,0x4600,0x4511)
+        trampoline.load(0,BASE+0x8418)
+        trampoline.emit(0x402b,0x0009)
+        data=trampoline.finish()
+        if at+len(data)<=end:
+            slot=(i,at,data);break
+    if slot is None:
+        raise ValueError('No pixel-helper trampoline space')
+    i,at,data=slot;b[at:at+len(data)]=data;free[i][0]=at+len(data);changes.append((at,at+len(data)))
+    # Preserve the original conditional branch at 8418; use a nearby literal
+    # in the coordinate block's verified unused padding.
+    word(0x8410,0x2fe6,pc_load(0,BASE+0x8410,BASE+0x84d0))
+    word(0x8412,0x2fd6,0x402b)
+    word(0x8414,0x4f22,0x0009)
+    word(0x8416,0x4511,0x0009)
+    patch(0x84d0,b'\x09\x00'*2,struct.pack('<I',BASE+at))
+    helpers['pixel']={'offset':at,'bytes':len(data)}
+    # Replace the cached bearing/width stores with a helper returning UI units.
+    entry=0x863e
+    a=Assembler(BASE+entry)
+    a.emit(0x54f5,0x55f4,0x56f1)
+    a.load(0,BASE+helpers['metrics']['offset'])
+    a.emit(0x400b,0x0009)
+    a.load(0,BASE+0x8672)
+    a.emit(0x402b,0x0009)
+    blob=a.finish()
+    patch(entry,target[entry:0x8672],blob+b'\x09\x00'*((0x8672-entry-len(blob))//2))
+    report.update(version=VERSION,target_program_sha256=digest(b),changed_regions=merged(changes))
+    report['allocation']['remaining_fragment_bytes']=sum(z-a for a,z in free)
+    report['allocation']['free_fragments']=free
+    report['allocation']['font_helper_bytes']=sum(h['bytes'] for h in helpers.values())
+    report['font']={'type':'built_in_BIOS_supersampling','texture_before':[512,512],
+        'texture_after':[1024,1024],'cached_cell_before':20,'cached_cell_after':40,
+        'glyph_before':19,'glyph_after':38,'display_quad_pixels':19,
+        'original_source_font':'BIOS 24x24 bitmap; no new vector typeface',
+        'persistent_ram_added_bytes':FONT_BYTES,'temporary_upload_bytes':FONT_BYTES,
+        'vram_texture_bytes':FONT_BYTES,'helpers':helpers,
+        'small_font':'unchanged 12-pixel font','texture_replacement':False,
+        'allocation_failure':'font init returns failure and retries; no writes to original undersized buffer'}
+    return bytes(b),report
+
+
+def validate_font(original,target,report):
+    cpu=CPU(target)
+    allocations=[];uploads=[]
+    def allocate():
+        assert cpu.r[4]==FONT_BYTES
+        cpu.r[0]=0x8c400000 if not allocations else 0x8c800000
+        allocations.append(cpu.r[0])
+    def upload():
+        assert (cpu.r[4],cpu.r[5],cpu.r[6])==(0x8c400000,0x8c800000,1024)
+        uploads.append(tuple(cpu.r[4:7]))
+    def bios():
+        cpu.r[0]=0x8c700000
+    cpu.stubs.update({0x8c0151cc:cpu.wait,0x8c15cf2a:allocate,
+        0x8c168254:cpu.wait,0x8c168262:cpu.wait,0x8c1594ec:bios,
+        0x8c16dc04:upload,0x8c16c1ca:lambda:cpu.r.__setitem__(0,1),
+        0x8c15cff8:cpu.wait})
+    cpu.mem[0x800000:0xa00000]=b'\xa5'*FONT_BYTES
+    cpu.run(BASE+0x7820,limit=3000000)
+    assert cpu.r[0]!=0 and cpu.r[15]==0x8cf00000
+    assert cpu.mem[0x800000:0xa00000]==bytes(FONT_BYTES)
+    assert allocations==[0x8c400000,0x8c800000] and len(uploads)==1,(allocations,uploads)
+    assert cpu.read(0x8c2cd63c)==0x8c800000
+    for offset in (0x75c8,0x77e4,0x86a8):
+        assert cpu.read(BASE+offset)==0x8c800000
+    print('Native font initialization: 1024x1024, cleared allocation, matched upload.',flush=True)
+    # Real BIOS lookup is stubbed; real cache placement/resampling/pixel writer run.
+    def dimensions():
+        size=32 if cpu.r[4]==6 else 24
+        cpu.write(cpu.r[6],size,1);cpu.write(cpu.r[6]+1,size,1)
+    cpu.stubs.update({0x8c159340:dimensions,0x8c159088:cpu.wait})
+    bitmap=bytearray(72)
+    for y in range(24):
+        for x in range(24):
+            if x in (4,5,16,17) or (y in (4,5,12,13) and 4<=x<=17):
+                bit=y*24+x;bitmap[bit//8]|=128>>(bit%8)
+    cpu.mem[0x700000:0x700048]=bitmap
+    writes=[]
+    original_write=cpu.write
+    def guarded(address,value,size=4):
+        if 0x8c800000<=address<0x8ca00000:
+            writes.append(address)
+        else:
+            assert (0x8c34dbb4<=address<0x8c34dbb4+613 or
+                    0x8c34de28<=address<0x8c34de28+613 or
+                    0x8cefff00<=address<=0x8cf00000),hex(address)
+        original_write(address,value,size)
+    cpu.write=guarded
+    sampled=[]
+    for index in (0,24,25,612):
+        writes.clear();cpu.r[4]=0x8c700000;cpu.r[5]=0x8260;cpu.r[6]=index
+        cpu.pr=0x8cfffffc
+        cpu.run(BASE+0x8494,limit=1000000)
+        assert cpu.r[15]==0x8cf00000 and writes
+        x0=(index%25)*40;y0=(index//25)*40
+        for address in writes:
+            pixel=(address-0x8c800000)//2
+            y,x=divmod(pixel,1024)
+            assert x0<=x<=x0+38 and y0<=y<=y0+38,(index,x,y,x0,y0)
+        bearing=cpu.read(0x8c34dbb4+index,1);advance=cpu.read(0x8c34de28+index,1)
+        assert 0<=bearing<19 and 4<=advance<=23
+        sampled.append({'index':index,'bearing':bearing,'advance':advance,'pixel_writes':len(writes)})
+    print('Native glyph resampling: first/last columns and last cache slot stay in bounds.',flush=True)
+    # The eight editable-name slots share this atlas's bottom row.
+    writes.clear();cpu.r[4]=0x8c700000;cpu.r[5]=65;cpu.r[6]=7
+    cpu.pr=0x8cfffffc;cpu.run(BASE+0x8494,limit=1000000)
+    for address in writes:
+        y,x=divmod((address-0x8c800000)//2,1024)
+        assert 908<=x<=950 and 960<=y<=1002,(x,y)
+    assert writes and cpu.r[15]==0x8cf00000
+    # Exhaust every indexed coordinate without rendering every BIOS bitmap.
+    coords=BASE+report['font']['helpers']['coordinates']['offset']
+    for index in range(613):
+        cpu.r[4]=index;cpu.pr=0x8cfffffc;cpu.run(coords)
+        assert (cpu.r[0],cpu.r[1])==((index%25)*40,(index//25)*40)
+        assert cpu.r[15]==0x8cf00000
+    # Allocation failure must not touch an undersized font buffer.
+    failed=CPU(target)
+    failed.stubs[0x8c15cf2a]=failed.wait
+    helper=BASE+report['font']['helpers']['initialize']['offset']
+    failed.r[15]-=4;failed.write(failed.r[15],failed.pr)
+    failed.run(helper)
+    assert failed.r[0]==0 and failed.r[15]==0x8cf00000
+    assert failed.read(BASE+0x86a8)==0x8c2cd644
+    return {'native_font_init':True,'cached_coordinate_cases':613,
+        'native_resampling_cases':sampled,'allocation_failure_verified':True,
+        'editable_name_slot_bounds_verified':True,
+        'bios_bitmap_simulated':True,'actual_Flycast_playtest':False}
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--validate',action='store_true')
+    p.add_argument('--build',action='store_true')
+    args=p.parse_args()
+    disc=Disc();e=next(e for e in disc.files if e['path']=='/1ST_READ.BIN')
+    original=disc.read(e['lba'],e['size'])
+    target,report=plan(original)
+    print(json.dumps(report['font'],indent=2))
+    if args.validate or args.build:
+        report['font_validation']=validate_font(original,target,report)
+        report['validation']=validate(original,target,report)
+    if args.build:
+        folder=ROOT/'work'/'output'/('english-'+VERSION)
+        folder.mkdir(parents=True,exist_ok=False)
+        track=folder/('Marionette Handler 2 (Japan) (Track 17) English '+VERSION+'.bin')
+        write_track(disc,e,original,target,track)
+        name='Marionette Handler 2 English '+VERSION
+        gdi(disc,track,folder/(name+'.gdi'))
+        cue=next(ROOT.glob('*.cue')).read_text(encoding='utf-8')
+        for source in sorted(ROOT.glob('*Track*.bin')):
+            relative=Path(os.path.relpath(str(track if '(Track 17)' in source.name else source),str(folder))).as_posix()
+            cue=cue.replace('"'+source.name+'"','"'+relative+'"')
+        (folder/(name+'.cue')).write_text(cue,encoding='utf-8')
+        verify_track(disc,e,original,target,report,folder)
+        for path in (folder/'PATCH-REPORT.json',ROOT/'work'/'ui'/('english_'+VERSION+'_inventory.json')):
+            path.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+        print('Saved built-in font test image:',folder)
+    else:
+        print('Dry run; no image written.')
+
+
+if __name__=='__main__':
+    main()
