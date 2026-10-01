@@ -1,5 +1,24 @@
 # Change log
 
+## 0.1.6 — compressed higher-resolution font — 2026-10-01
+
+- Investigated the user's blank top menu using their Flycast save state.
+  The 0.1.5 atlas contained ink, but its 2 MiB texture failed initialization:
+  status `0x60000`, zero hardware size/address words. Later uploads went to
+  address zero, so 0.1.5 is a known broken build and should not be used.
+- Added a native ARGB4444 VQ encoder for the 1024×1024 atlas. It needs 264,192
+  VRAM bytes, less than the original 524,288-byte font. Retained 38-pixel glyph
+  sampling, the displayed size, all 793 translations and ordinary GDI/CUE files.
+- Reused the original atlas as compression scratch, flushed the encoded upload
+  buffer and doubled the glyph metric seed extents along with the sampling.
+- Added full native encoder checks for all 256 codebook entries and all 262,144
+  blocks, plus an exact pixel round trip of the actual captured BIOS atlas.
+  Its transparent/D/F alpha pixels survive unchanged. The unused C alpha level
+  rounds to D if a future glyph produces it. Native texture descriptors are
+  executed in the harness instead of simulated.
+- The corrected disc and Retro Trans Tools package still need a fresh Flycast
+  boot and visual confirmation; the saved 0.1.5 state contains the broken code.
+
 ## 0.1.5 — experimental built-in higher-resolution font — 2026-10-01
 
 - Enlarged the cached font atlas from 512×512 to 1024×1024 and glyph sampling

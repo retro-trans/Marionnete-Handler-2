@@ -1,0 +1,27 @@
+{
+  "save_state": "Marionette Handler 2 English 0.1.5.state",
+  "atlas_pointer": "0x8cbfff20",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "cache_count": 613,
+  "atlas_nonzero_pixels": 95139,
+  "texture_object": "0x8c1b6e58",
+  "hardware_size_bits": 0,
+  "hardware_texture_word": "0x0",
+  "texture_bytes": 2097152,
+  "vram_address": "0x0",
+  "texture_status": "0x60000",
+  "render_header_valid": false,
+  "build": "0.1.5",
+  "screen": "top menu",
+  "reported_issue": "blank labels",
+  "screenshot": "top-menu-0.1.5-blank.png",
+  "screenshot_dimensions": [
+    2560,
+    1369
+  ],
+  "coordinates": "Screenshot pixels; no menu crop geometry inferred",
+  "corrective_build": "0.1.6"
+}

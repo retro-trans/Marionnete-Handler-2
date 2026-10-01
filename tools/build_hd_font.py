@@ -17,11 +17,66 @@ from build_vwf import BASE, write_track, gdi
 from build_full_english import validate, verify_track
 from validate_vwf import CPU
 
-VERSION='0.1.5'
+VERSION='0.1.6'
 FONT_BYTES=0x200000
+VQ_BYTES=2048+1024*1024//4
 
 
-def initialize(address):
+def vq_upload(address):
+    """Twiddle, then encode a fixed 256-entry ARGB4444 VQ codebook.
+
+    The unused original atlas is scratch. Zero/D/E/F alpha levels are kept;
+    C alpha rounds up to D. The captured 613-glyph atlas uses only 0/D/F.
+    """
+    a=Assembler(address)
+    a.emit(0x4f22,0x2f86,0x2f96,0x2fa6,0x2fb6,0x6843)
+    a.load(0,0x8c16dc04)
+    a.emit(0x400b,0x0009)
+    a.load(3,0x8c2cd644)
+    color_marker=0xc010a17a
+    a.load(2,color_marker)
+    a.emit(0xeb00)
+    a.label('palette')
+    a.emit(0x66b3,0xe704)
+    a.label('color')
+    a.emit(0x6063,0xc903,0x4000,0x012d,0x2311,0x7302,
+           0x4601,0x4601,0x4710)
+    a.branch(0x8b00,'color')
+    a.emit(0x7b01)
+    a.load(1,256)
+    a.emit(0x3b10)
+    a.branch(0x8b00,'palette')
+    a.emit(0x6983,0x7906,0x6a33,0x7208)
+    a.load(11,1024*1024//4)
+    a.label('block')
+    a.emit(0xe600,0xe704)
+    a.label('pixel')
+    a.emit(0x6091,0x79fe)
+    # Word sign-extension is removed before extracting the two alpha bits.
+    a.emit(0x600d,0x4019,0x4009,0x4009,0x002c)
+    a.emit(0x4608,0x260b,0x4710)
+    a.branch(0x8b00,'pixel')
+    a.emit(0x2a60,0x7a01,0x7910,0x4b10)
+    a.branch(0x8b00,'block')
+    a.load(9,0x8c2cd644)
+    a.load(11,VQ_BYTES//4)
+    a.emit(0x6383)
+    a.label('copy')
+    a.emit(0x6196,0x2312,0x7304,0x4b10)
+    a.branch(0x8b00,'copy')
+    a.emit(0x6483)
+    a.load(5,VQ_BYTES)
+    a.load(0,0x8c15b892)
+    a.emit(0x400b,0x0009)
+    a.emit(0x6bf6,0x6af6,0x69f6,0x68f6,0x4f26,0x000b,0x0009)
+    # Reserve the color table after the literal pool; repair the load fixup.
+    first=a.finish()
+    assert first.count(struct.pack('<I',color_marker))==1
+    return first.replace(struct.pack('<I',color_marker),
+                         struct.pack('<I',address+len(first)))+struct.pack('<4H',0,0xdfff,0xefff,0xffff)+bytes([0]+[1]*13+[2,3])
+
+
+def initialize(address,encoder=0x8c16dc04):
     a=Assembler(address)
     # Entered by JMP while the original font init's PR is already on its stack.
     a.load(4,FONT_BYTES)
@@ -41,7 +96,7 @@ def initialize(address):
     a.load(0,0x8c2cd640)
     a.emit(0x6402)
     a.load(6,1024)
-    a.load(0,0x8c16dc04)
+    a.load(0,encoder)
     a.emit(0x400b,0x0009)
     a.load(1,BASE+0x793e)
     a.emit(0x412b,0x0009)
@@ -82,7 +137,9 @@ def plan(original):
     free=[list(s) for s in report['allocation']['free_fragments']]
     changes=list(report['changed_regions'])
     helpers={}
-    for name,build in [('initialize',initialize),('coordinates',coordinates),('metrics',metrics)]:
+    for name,build in [('vq_upload',vq_upload),
+                       ('initialize',lambda address:initialize(address,BASE+helpers['vq_upload']['offset'])),
+                       ('coordinates',coordinates),('metrics',metrics)]:
         choices=[]
         for i,(start,end) in enumerate(free):
             aligned=(start+3)&~3
@@ -112,6 +169,10 @@ def plan(original):
         literal(at,0x80000,FONT_BYTES)
     for at in (0x75c4,0x77e0,0x79a8):
         literal(at,512,1024)
+    # Descriptor format: ARGB4444 VQ rather than uncompressed twiddled pixels.
+    literal(0x79ac,0x102,0x302)
+    for at in (0x75cc,0x77e8):
+        literal(at,0x8c16dc04,BASE+helpers['vq_upload']['offset'])
     entry=0x7930
     hook=struct.pack('<4HI',pc_load(0,BASE+entry,BASE+entry+8),0x402b,0x0009,0x0009,BASE+helpers['initialize']['offset'])
     patch(entry,target[entry:entry+12],hook)
@@ -133,6 +194,8 @@ def plan(original):
     literal(0x869c,300,600)
     literal(0x86a0,480,960)
     literal(0x86a4,1024,2048) # byte row pitch for glyph clearing
+    word(0x854e,0xe107,0xe10e) # metric seed extents also use doubled pixels
+    word(0x8556,0xe10b,0xe116)
     # Shared pixel helper uses 512-pixel addressing: double it to 1024.
     # Its two shifts are SHLL8 then SHLL2; prepend one shift in a trampoline.
     # A separate trampoline keeps the original compare/pz branch intact.
@@ -177,10 +240,58 @@ def plan(original):
         'glyph_before':19,'glyph_after':38,'display_quad_pixels':19,
         'original_source_font':'BIOS 24x24 bitmap; no new vector typeface',
         'persistent_ram_added_bytes':FONT_BYTES,'temporary_upload_bytes':FONT_BYTES,
-        'vram_texture_bytes':FONT_BYTES,'helpers':helpers,
+        'vram_texture_bytes':VQ_BYTES,'helpers':helpers,
+        'compression':'native ARGB4444 VQ, fixed 256-entry codebook',
         'small_font':'unchanged 12-pixel font','texture_replacement':False,
         'allocation_failure':'font init returns failure and retries; no writes to original undersized buffer'}
     return bytes(b),report
+
+
+def validate_vq(target,report,atlas=None):
+    cpu=CPU(target)
+    # All 256 fixed codebook patterns, tiled through the complete input buffer.
+    colors=(0,0xdfff,0xefff,0xffff)
+    if atlas is None:
+        twiddled=b''.join(struct.pack('<4H',*(colors[(i>>(2*j))&3] for j in range(4)))
+                          for i in range(256))*1024
+        expected=bytes(range(256))*1024
+    else:
+        assert len(atlas)==FONT_BYTES
+        def spread(v):
+            return sum(((v>>i)&1)<<(2*i) for i in range(10))
+        bits=[spread(v) for v in range(1024)]
+        twiddled=bytearray(FONT_BYTES)
+        for y in range(1024):
+            for x in range(1024):
+                source=(y*1024+x)*2;dest=(bits[y]|bits[x]<<1)*2
+                twiddled[dest:dest+2]=atlas[source:source+2]
+        alpha_codes=[0]+[1]*13+[2,3]
+        expected=bytes(sum(alpha_codes[struct.unpack_from('<H',twiddled,i+j*2)[0]>>12]<<(j*2)
+                           for j in range(4)) for i in range(0,FONT_BYTES,8))
+    cpu.mem[0x400000:0x400000+FONT_BYTES]=twiddled
+    cpu.stubs[0x8c16dc04]=cpu.wait
+    flushed=[]
+    def flush():
+        assert cpu.r[4:6]==[0x8c400000,VQ_BYTES]
+        flushed.append(tuple(cpu.r[4:6]))
+    cpu.stubs[0x8c15b892]=flush
+    cpu.r[4]=0x8c400000;cpu.r[5]=0x8c800000;cpu.r[6]=1024
+    cpu.r[8:12]=[0x1111,0x2222,0x3333,0x4444]
+    cpu.run(BASE+report['font']['helpers']['vq_upload']['offset'],limit=30000000)
+    assert cpu.r[15]==0x8cf00000 and cpu.r[8:12]==[0x1111,0x2222,0x3333,0x4444]
+    assert len(flushed)==1
+    actual=cpu.mem[0x400000:0x400000+VQ_BYTES]
+    assert actual[:2048]==b''.join(struct.pack('<4H',*(colors[(i>>(2*j))&3] for j in range(4)))
+                                   for i in range(256))
+    assert actual[2048:]==expected
+    decoded=b''.join(actual[i*8:i*8+8] for i in actual[2048:])
+    exact=decoded==twiddled
+    if atlas is not None:
+        assert exact,'Captured real font must survive compression without pixel changes'
+    print('Native VQ encoder: complete atlas round trip, '+('captured BIOS font' if atlas is not None else 'all 256 patterns')+'.',flush=True)
+    return {'encoded_bytes':VQ_BYTES,'blocks_verified':262144,'pixels_identical':exact,
+            'captured_font':atlas is not None,'palette_alpha_levels':[0,13,14,15],
+            'alpha_12_policy':'round up to 13'}
 
 
 def validate_font(original,target,report):
@@ -196,15 +307,18 @@ def validate_font(original,target,report):
     def bios():
         cpu.r[0]=0x8c700000
     cpu.stubs.update({0x8c0151cc:cpu.wait,0x8c15cf2a:allocate,
-        0x8c168254:cpu.wait,0x8c168262:cpu.wait,0x8c1594ec:bios,
+        0x8c1594ec:bios,
         0x8c16dc04:upload,0x8c16c1ca:lambda:cpu.r.__setitem__(0,1),
+        0x8c15b892:cpu.wait,
         0x8c15cff8:cpu.wait})
     cpu.mem[0x800000:0xa00000]=b'\xa5'*FONT_BYTES
-    cpu.run(BASE+0x7820,limit=3000000)
+    cpu.run(BASE+0x7820,limit=30000000)
     assert cpu.r[0]!=0 and cpu.r[15]==0x8cf00000
     assert cpu.mem[0x800000:0xa00000]==bytes(FONT_BYTES)
     assert allocations==[0x8c400000,0x8c800000] and len(uploads)==1,(allocations,uploads)
     assert cpu.read(0x8c2cd63c)==0x8c800000
+    assert [cpu.read(0x8c34d6a4+i*4) for i in (1,4,5)]==[0x3020000,1024,1024]
+    assert cpu.mem[0x400800:0x400000+VQ_BYTES]==bytes(VQ_BYTES-2048)
     for offset in (0x75c8,0x77e4,0x86a8):
         assert cpu.read(BASE+offset)==0x8c800000
     print('Native font initialization: 1024x1024, cleared allocation, matched upload.',flush=True)
@@ -243,6 +357,8 @@ def validate_font(original,target,report):
             assert x0<=x<=x0+38 and y0<=y<=y0+38,(index,x,y,x0,y0)
         bearing=cpu.read(0x8c34dbb4+index,1);advance=cpu.read(0x8c34de28+index,1)
         assert 0<=bearing<19 and 4<=advance<=23
+        assert any(cpu.read(0x8c800000+(y*1024+x)*2,2)&0xf000
+                   for y in range(y0,y0+39) for x in range(x0,x0+39))
         sampled.append({'index':index,'bearing':bearing,'advance':advance,'pixel_writes':len(writes)})
     print('Native glyph resampling: first/last columns and last cache slot stay in bounds.',flush=True)
     # The eight editable-name slots share this atlas's bottom row.
@@ -276,6 +392,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--validate',action='store_true')
     p.add_argument('--build',action='store_true')
+    p.add_argument('--font-state',type=Path,help='Validate compression against a captured real BIOS font atlas')
     args=p.parse_args()
     disc=Disc();e=next(e for e in disc.files if e['path']=='/1ST_READ.BIN')
     original=disc.read(e['lba'],e['size'])
@@ -283,6 +400,12 @@ def main():
     print(json.dumps(report['font'],indent=2))
     if args.validate or args.build:
         report['font_validation']=validate_font(original,target,report)
+        report['font_validation']['vq_patterns']=validate_vq(target,report)
+        if args.font_state:
+            from inspect_font_state import font_state
+            atlas,evidence=font_state(args.font_state)
+            report['font_validation']['reported_blank_state']=evidence
+            report['font_validation']['vq_captured_font']=validate_vq(target,report,atlas)
         report['validation']=validate(original,target,report)
     if args.build:
         folder=ROOT/'work'/'output'/('english-'+VERSION)

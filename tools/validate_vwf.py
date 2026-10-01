@@ -112,6 +112,8 @@ class CPU:
             r[n] = self.read(((pc + 4) & ~3) + (op & 255) * 4)
         elif op & 0xff00 == 0xc700:
             r[0] = ((pc + 4) & ~3) + (op & 255) * 4
+        elif op & 0xff00 == 0xc900:
+            r[0] &= op & 255
         elif high in (0xa, 0xb):
             if high == 0xb:
                 self.pr = pc + 4
@@ -152,8 +154,10 @@ class CPU:
         elif op & 0xf0ff == 0x4010:
             r[n] -= 1
             self.t = (r[n] & 0xffffffff) == 0
-        elif op & 0xf0ff in (0x4008, 0x4018):
-            r[n] <<= 2 if op & 255 == 8 else 8
+        elif op & 0xf0ff in (0x4008, 0x4018, 0x4028):
+            r[n] <<= {8:2, 0x18:8, 0x28:16}[op & 255]
+        elif op & 0xf0ff in (0x4009, 0x4019, 0x4029):
+            r[n] >>= {9:2, 0x19:8, 0x29:16}[op & 255]
         elif high == 0x6:
             if low == 3:
                 r[n] = r[m]
