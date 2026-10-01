@@ -1,5 +1,26 @@
 # Change log
 
+## 0.1.4 — all 793 inventoried game messages — 2026-10-01
+
+- Added the remaining 633 English records and independent meaning reviews,
+  completing all 793 inventoried game records. Browser/network and artwork text
+  remain outside this scope. Expanded the glossary to 45 terms.
+- Preserved controls, line counts, full titles and explicit uncertainty notes.
+  Corrected comparative/ongoing-action meanings and live Yes/No/step spacing.
+- Repacked complete strings across shared storage, retargeted 625 menu pointers
+  and added 137 exact-address mappings for relative/static supplemental labels.
+  Preserved executable size, native records and numeric fields.
+- Added lookup to dispatch, width measurement and the independent aligned
+  renderer. Six copied tournament-name handles retain full titles beyond their
+  original 32-byte fields. Corrected cached square-bracket conversion.
+- Validated actual startup clearing, all 793 native message draws, 137 mappings,
+  six copied records, 233 width measurements, 56 aligned-render equivalences and
+  14 numeric compositions using the limited SH-4 harness.
+- Verified 31 changed raw sectors, EDC/ECC, unchanged bytes elsewhere and all
+  17 GDI references. Added the cumulative Retro Trans Tools 0.1.4 release.
+- Emulator/hardware playtesting, real BIOS ink metrics and actual screen fit
+  remain unverified; source/context and display-layout flags are retained.
+
 ## 0.1.3 — second English translation batch — 2026-10-01
 
 - Added 80 reviewed menu/system messages (rows 81–160), bringing the cumulative

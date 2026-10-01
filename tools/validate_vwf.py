@@ -146,6 +146,9 @@ class CPU:
         elif op & 0xf0ff == 0x4000:
             self.t = bool(r[n] & 0x80000000)
             r[n] <<= 1
+        elif op & 0xf0ff == 0x4010:
+            r[n] -= 1
+            self.t = (r[n] & 0xffffffff) == 0
         elif op & 0xf0ff in (0x4008, 0x4018):
             r[n] <<= 2 if op & 255 == 8 else 8
         elif high == 0x6:

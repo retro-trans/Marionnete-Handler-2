@@ -1,5 +1,5 @@
 {
-  "version": "0.1.3",
+  "version": "0.1.4",
   "language": "en",
   "policy": "Use approved spellings. Apply meaning-review fixes before terminology validation. Do not infer character gender or expand unknown acronyms.",
   "research": {
@@ -8,7 +8,10 @@
     "characters": [],
     "locations": [],
     "character_fields_required": ["name", "nickname", "gender", "personality", "position", "sources"],
-    "scope": "The first 160 messages contain system, shop, equipment and hardware terms; no named person or location requires a character record. Research character records before translating any later occurrence."
+    "scope": "All 793 inventoried game records contain UI, programming, equipment and competition terms. Named models are robots, not people. No named person requires gender/personality inference.",
+    "browser_name_source": "https://www.sega.jp/history/hard/dreamcast/",
+    "model_name_evidence": "Original fullwidth Latin model headings in menu rows312-318. Keep Valkyrje and Gryps exactly. No accessible official alternative localization found.",
+    "organizations": [{"name": "Miyata Models", "source": "Original tournament titles", "status": "Project romanization; official English localization unverified"}, {"name": "McNET", "source": "Original fullwidth Latin tournament host", "status": "Source spelling retained"}, {"name": "WMA", "source": "Original rule descriptions and tournament titles", "status": "Acronym retained; expansion unverified"}]
   },
   "terms": [
     {"source": "マリオネット", "target": "Marionette", "type": "robot", "evidence_row": 3, "status": "approved"},
@@ -25,7 +28,7 @@
     {"source": "スタートチップ", "target": "Start Chip", "type": "programming", "evidence_row": 50, "status": "approved"},
     {"source": "大会", "target": "tournament", "type": "competition", "evidence_row": 49, "status": "approved"},
     {"source": "参加費用", "target": "entry fee", "type": "competition", "evidence_row": 33, "status": "approved"},
-    {"source": "バッテリー", "target": "Battery", "type": "part", "evidence_row": 68, "status": "approved"},
+    {"source": "バッテリー", "target": "Battery", "plural": "Batteries", "type": "part", "evidence_row": 68, "status": "approved"},
     {"source": "モーター", "target": "Motor", "type": "part", "evidence_row": 69, "status": "approved"},
     {"source": "バーナーセット", "target": "Burner Set", "type": "part", "evidence_row": 70, "status": "approved"},
     {"source": "バランサー", "target": "Balancer", "type": "part", "evidence_row": 71, "status": "approved"},
@@ -43,7 +46,19 @@
     {"source": "コントローラー", "target": "controller", "type": "hardware", "evidence_row": 113, "status": "approved"},
     {"source": "スタートボタン", "target": "Start button", "type": "hardware", "evidence_row": 111, "status": "approved"},
     {"source": "ポート", "target": "Port", "type": "hardware", "evidence_row": 155, "status": "approved"},
-    {"source": "拡張ソケット", "target": "Expansion Socket", "type": "hardware", "evidence_row": 155, "status": "approved"}
+    {"source": "拡張ソケット", "target": "Expansion Socket", "type": "hardware", "evidence_row": 155, "status": "approved"},
+    {"source": "ドリームパスポート", "target": "Dream Passport", "type": "software_name", "evidence_row": 175, "status": "approved", "source_url": "https://www.sega.jp/history/hard/dreamcast/"},
+    {"source": "ミヤタ模型", "target": "Miyata Models", "type": "organization", "evidence_row": 561, "status": "approved_project_romanization"},
+    {"source": "ＭｃＮＥＴ", "target": "McNET", "type": "organization", "evidence_row": 567, "status": "approved_source_spelling"},
+    {"source": "ＷＭＡ", "target": "WMA", "type": "organization", "evidence_row": 575, "status": "approved_source_acronym"},
+    {"source": "Ｓｔｏｒｍ　Ｇｕｎｎｅｒ", "target": "Storm Gunner", "type": "robot_model", "evidence_row": 312, "status": "approved_source_spelling"},
+    {"source": "Ｓｈｉｅｌｄ　Ｇｕｎｎｅｒ", "target": "Shield Gunner", "type": "robot_model", "evidence_row": 313, "status": "approved_source_spelling"},
+    {"source": "Ｖａｌｋｙｒｊｅ", "target": "Valkyrje", "type": "robot_model", "evidence_row": 314, "status": "approved_source_spelling"},
+    {"source": "Ｄｏｌｌ", "target": "Doll", "type": "robot_model", "evidence_row": 315, "status": "approved_source_spelling"},
+    {"source": "Ｓｎｉｐｅｒ", "target": "Sniper", "type": "robot_model", "evidence_row": 316, "status": "approved_source_spelling"},
+    {"source": "Ｇｒｙｐｓ", "target": "Gryps", "type": "robot_model", "evidence_row": 317, "status": "approved_source_spelling"},
+    {"source": "Ｗｈｉｔｅ　Ｈｏｐｐｅｒ", "target": "White Hopper", "type": "robot_model", "evidence_row": 318, "status": "approved_source_spelling"},
+    {"source": "耐衝撃シート", "target": "Impact-Resistant Sheet", "type": "consumable", "evidence_row": 591, "status": "approved"}
   ],
-  "evidence": "Source terms are short UI elements read directly from /1ST_READ.BIN; row numbers refer to menu inventory order (batch 001 rows 1-80, batch 002 rows 81-160). The official developer page establishes game identity only, not English term spellings. English terms are project translations of disc text."
+  "evidence": "Source terms are short UI elements read directly from /1ST_READ.BIN; row numbers use game_text_rows.game_rows():560menus then233 otherrecords sorted by offset. Official developer page establishes game identity only. Sega confirms Dream Passport spelling. Other English terms are project translations or explicit Latin source spellings."
 }
