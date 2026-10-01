@@ -1,0 +1,581 @@
+{
+  "version": "0.1.1",
+  "source_program_sha256": "4526090cb90840370518beb404fe1ec45c6aa20ef0247c46134573a595a969bf",
+  "native_tracking": 2,
+  "native_font": "/DATAFILE/HANKAKU_P.PVR",
+  "native_cell_pitch": 12,
+  "native_render_height": 12,
+  "large_font": "Existing BIOS glyph cache; runtime ink bounds plus 4 pixels",
+  "glyphs": [
+    {
+      "code": 32,
+      "character": " ",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 33,
+      "character": "!",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 34,
+      "character": "\"",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 35,
+      "character": "#",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 36,
+      "character": "$",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 37,
+      "character": "%",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 38,
+      "character": "&",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 39,
+      "character": "'",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 40,
+      "character": "(",
+      "ink_width": 5,
+      "advance": 7
+    },
+    {
+      "code": 41,
+      "character": ")",
+      "ink_width": 5,
+      "advance": 7
+    },
+    {
+      "code": 42,
+      "character": "*",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 43,
+      "character": "+",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 44,
+      "character": ",",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 45,
+      "character": "-",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 46,
+      "character": ".",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 47,
+      "character": "/",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 48,
+      "character": "0",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 49,
+      "character": "1",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 50,
+      "character": "2",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 51,
+      "character": "3",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 52,
+      "character": "4",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 53,
+      "character": "5",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 54,
+      "character": "6",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 55,
+      "character": "7",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 56,
+      "character": "8",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 57,
+      "character": "9",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 58,
+      "character": ":",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 59,
+      "character": ";",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 60,
+      "character": "<",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 61,
+      "character": "=",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 62,
+      "character": ">",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 63,
+      "character": "?",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 64,
+      "character": "@",
+      "ink_width": 10,
+      "advance": 12
+    },
+    {
+      "code": 65,
+      "character": "A",
+      "ink_width": 10,
+      "advance": 12
+    },
+    {
+      "code": 66,
+      "character": "B",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 67,
+      "character": "C",
+      "ink_width": 10,
+      "advance": 12
+    },
+    {
+      "code": 68,
+      "character": "D",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 69,
+      "character": "E",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 70,
+      "character": "F",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 71,
+      "character": "G",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 72,
+      "character": "H",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 73,
+      "character": "I",
+      "ink_width": 3,
+      "advance": 5
+    },
+    {
+      "code": 74,
+      "character": "J",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 75,
+      "character": "K",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 76,
+      "character": "L",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 77,
+      "character": "M",
+      "ink_width": 10,
+      "advance": 12
+    },
+    {
+      "code": 78,
+      "character": "N",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 79,
+      "character": "O",
+      "ink_width": 11,
+      "advance": 13
+    },
+    {
+      "code": 80,
+      "character": "P",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 81,
+      "character": "Q",
+      "ink_width": 11,
+      "advance": 13
+    },
+    {
+      "code": 82,
+      "character": "R",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 83,
+      "character": "S",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 84,
+      "character": "T",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 85,
+      "character": "U",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 86,
+      "character": "V",
+      "ink_width": 11,
+      "advance": 13
+    },
+    {
+      "code": 87,
+      "character": "W",
+      "ink_width": 11,
+      "advance": 13
+    },
+    {
+      "code": 88,
+      "character": "X",
+      "ink_width": 10,
+      "advance": 12
+    },
+    {
+      "code": 89,
+      "character": "Y",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 90,
+      "character": "Z",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 91,
+      "character": "[",
+      "ink_width": 5,
+      "advance": 7
+    },
+    {
+      "code": 92,
+      "character": "\\",
+      "ink_width": 9,
+      "advance": 11
+    },
+    {
+      "code": 93,
+      "character": "]",
+      "ink_width": 5,
+      "advance": 7
+    },
+    {
+      "code": 94,
+      "character": "^",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 95,
+      "character": "_",
+      "ink_width": 5,
+      "advance": 7
+    },
+    {
+      "code": 96,
+      "character": "`",
+      "ink_width": 11,
+      "advance": 13
+    },
+    {
+      "code": 97,
+      "character": "a",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 98,
+      "character": "b",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 99,
+      "character": "c",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 100,
+      "character": "d",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 101,
+      "character": "e",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 102,
+      "character": "f",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 103,
+      "character": "g",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 104,
+      "character": "h",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 105,
+      "character": "i",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 106,
+      "character": "j",
+      "ink_width": 5,
+      "advance": 7
+    },
+    {
+      "code": 107,
+      "character": "k",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 108,
+      "character": "l",
+      "ink_width": 2,
+      "advance": 4
+    },
+    {
+      "code": 109,
+      "character": "m",
+      "ink_width": 11,
+      "advance": 13
+    },
+    {
+      "code": 110,
+      "character": "n",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 111,
+      "character": "o",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 112,
+      "character": "p",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 113,
+      "character": "q",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 114,
+      "character": "r",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 115,
+      "character": "s",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 116,
+      "character": "t",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 117,
+      "character": "u",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 118,
+      "character": "v",
+      "ink_width": 8,
+      "advance": 10
+    },
+    {
+      "code": 119,
+      "character": "w",
+      "ink_width": 10,
+      "advance": 12
+    },
+    {
+      "code": 120,
+      "character": "x",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 121,
+      "character": "y",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 122,
+      "character": "z",
+      "ink_width": 6,
+      "advance": 8
+    },
+    {
+      "code": 123,
+      "character": "{",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 124,
+      "character": "|",
+      "ink_width": 7,
+      "advance": 9
+    },
+    {
+      "code": 125,
+      "character": "}",
+      "ink_width": 12,
+      "advance": 14
+    },
+    {
+      "code": 126,
+      "character": "~",
+      "ink_width": 12,
+      "advance": 14
+    }
+  ]
+}

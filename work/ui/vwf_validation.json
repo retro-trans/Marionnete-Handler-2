@@ -1,0 +1,25 @@
+{
+  "version": "0.1.1",
+  "passed": true,
+  "checks": [
+    "256 original converter byte inputs",
+    "256 patched converter byte inputs",
+    "95 cached glyph widths match native proportional renderer; missing glyph returns 20",
+    "12 actual string dispatcher cases: fonts 1/4, narrow/wide Latin, mixed CP932, new punctuation, newline, @x and @r positioning",
+    "81 numeric formatter/renderer cases: fonts 0/1/4, negatives, commas, decimals, rounding, alignment and register/stack preservation",
+    "Only eight intended code regions change; string/control parser and executable size retained",
+    "Original EDC/ECC matches regeneration for all 4 edited sectors",
+    "Built track: exact executable read-back, only four sectors differ, valid EDC/ECC, and all 17 GDI track references/offsets verified"
+  ],
+  "source_program_sha256": "4526090cb90840370518beb404fe1ec45c6aa20ef0247c46134573a595a969bf",
+  "target_program_sha256": "b6d5d4e1892a1058a07449aedab7b13fcc9fb988af2122dbae18dd23d81f4880",
+  "edited_sector_lbas": [
+    548203,
+    548204,
+    548205,
+    548206
+  ],
+  "limitations": "Limited SH-4 harness with synthetic BIOS cache; no Dreamcast emulator boot or visual playtest performed. Platform texture submission, wait and integer division stubbed.",
+  "built_track_sha256": "89ab2e8f45d63a6de4be61a88288326630f121372293c541637681228387d43a",
+  "source_track_sha256": "9d550b3a995f68a766f8ea9cdc87fe125441ea4f4a60184a8bf815e0a18809fc"
+}
