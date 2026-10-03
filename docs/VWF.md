@@ -1,6 +1,8 @@
 # Variable-width font — test build 0.1.1
 
-Latest English build: **0.1.13**, with wrapped descriptions and native help
+Latest English build: **0.1.14**, with all 144 editor/palette help messages
+wrapped in a taller native tooltip. See [program help notes](PROGRAM_HELP.md).
+It retains the **0.1.13** wrapped descriptions and native help
 backgrounds across all five shop categories. In **0.1.12**, the earlier claim that all remaining fixed
 cached text was covered missed mode 3 and the scrolling caller; those now use
 the proportional renderer too. ASCII spaces use six pixels in drawing and

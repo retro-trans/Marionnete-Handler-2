@@ -1,0 +1,584 @@
+{
+  "version": "0.1.14",
+  "language": "en",
+  "max_line_advance_px": 320,
+  "space_advance_px": 6,
+  "translations": [
+    {
+      "row": 417,
+      "target": "You can place a chip here."
+    },
+    {
+      "row": 418,
+      "target": "This is the Start Chip. The\nprogram starts here."
+    },
+    {
+      "row": 419,
+      "target": "Your Marionette moves a set\ndistance in the specified\ndirection."
+    },
+    {
+      "row": 420,
+      "target": "Your Marionette moves 1 m in\nthe specified direction."
+    },
+    {
+      "row": 421,
+      "target": "Your Marionette moves 1.5 m\nin the specified direction."
+    },
+    {
+      "row": 422,
+      "target": "Your Marionette moves 2 m in\nthe specified direction."
+    },
+    {
+      "row": 423,
+      "target": "Your Marionette moves 2.5 m\nin the specified direction."
+    },
+    {
+      "row": 424,
+      "target": "Your Marionette moves 3 m in\nthe specified direction."
+    },
+    {
+      "row": 425,
+      "target": "Your Marionette moves 3.5 m\nin the specified direction."
+    },
+    {
+      "row": 426,
+      "target": "Your Marionette moves 4 m in\nthe specified direction."
+    },
+    {
+      "row": 427,
+      "target": "Your Marionette turns in the\nspecified direction."
+    },
+    {
+      "row": 428,
+      "target": "Your Marionette turns left."
+    },
+    {
+      "row": 429,
+      "target": "Your Marionette stops,\ncanceling movement, dashing\nor jumping."
+    },
+    {
+      "row": 430,
+      "target": "Your Marionette jumps in the\nspecified direction."
+    },
+    {
+      "row": 431,
+      "target": "Your Marionette jumps\nforward and right."
+    },
+    {
+      "row": 432,
+      "target": "Your Marionette jumps right."
+    },
+    {
+      "row": 433,
+      "target": "Your Marionette jumps\nbackward and right."
+    },
+    {
+      "row": 434,
+      "target": "Your Marionette jumps\nbackward."
+    },
+    {
+      "row": 435,
+      "target": "Your Marionette jumps\nbackward and left."
+    },
+    {
+      "row": 436,
+      "target": "Your Marionette jumps left."
+    },
+    {
+      "row": 437,
+      "target": "Your Marionette jumps\nforward and left."
+    },
+    {
+      "row": 438,
+      "target": "Your Marionette jumps\nstraight up."
+    },
+    {
+      "row": 439,
+      "target": "Your Marionette dashes in\nthe specified direction."
+    },
+    {
+      "row": 440,
+      "target": "Your Marionette dashes\nforward and right."
+    },
+    {
+      "row": 441,
+      "target": "Your Marionette dashes\nright."
+    },
+    {
+      "row": 442,
+      "target": "Your Marionette dashes\nbackward and right."
+    },
+    {
+      "row": 443,
+      "target": "Your Marionette dashes\nbackward."
+    },
+    {
+      "row": 444,
+      "target": "Your Marionette dashes\nbackward and left."
+    },
+    {
+      "row": 445,
+      "target": "Your Marionette dashes left."
+    },
+    {
+      "row": 446,
+      "target": "Your Marionette dashes\nforward and left."
+    },
+    {
+      "row": 447,
+      "target": "Your Marionette turns right\nwhile dashing."
+    },
+    {
+      "row": 448,
+      "target": "Your Marionette turns left\nwhile dashing."
+    },
+    {
+      "row": 449,
+      "target": "Your Marionette uses the\nburner to accelerate in the\nspecified direction."
+    },
+    {
+      "row": 450,
+      "target": "Your Marionette uses the\nburner to accelerate forward\nand right."
+    },
+    {
+      "row": 451,
+      "target": "Your Marionette uses the\nburner to accelerate right."
+    },
+    {
+      "row": 452,
+      "target": "Your Marionette uses the\nburner to accelerate\nbackward and right."
+    },
+    {
+      "row": 453,
+      "target": "Your Marionette uses the\nburner to accelerate\nbackward."
+    },
+    {
+      "row": 454,
+      "target": "Your Marionette uses the\nburner to accelerate\nbackward and left."
+    },
+    {
+      "row": 455,
+      "target": "Your Marionette uses the\nburner to accelerate left."
+    },
+    {
+      "row": 456,
+      "target": "Your Marionette uses the\nburner to accelerate forward\nand left."
+    },
+    {
+      "row": 457,
+      "target": "Your Marionette uses the\nburner to turn right."
+    },
+    {
+      "row": 458,
+      "target": "Your Marionette uses the\nburner to turn left."
+    },
+    {
+      "row": 459,
+      "target": "Your Marionette uses the\nburner to ascend."
+    },
+    {
+      "row": 460,
+      "target": "Your Marionette uses the\nburner to descend."
+    },
+    {
+      "row": 461,
+      "target": "Your Marionette uses its\nMain Weapon."
+    },
+    {
+      "row": 462,
+      "target": "Your Marionette attacks the\nmarked enemy with its Main\nWeapon."
+    },
+    {
+      "row": 463,
+      "target": "Your Marionette uses its Sub\nWeapon."
+    },
+    {
+      "row": 464,
+      "target": "Your Marionette uses its\nOption equipment."
+    },
+    {
+      "row": 465,
+      "target": "Your Marionette uses its\nOption 2 equipment."
+    },
+    {
+      "row": 466,
+      "target": "If Main Weapon ammunition is\nlow, the program follows the\nblue arrow."
+    },
+    {
+      "row": 467,
+      "target": "If the Option is running low,\nthe program follows the blue\narrow."
+    },
+    {
+      "row": 468,
+      "target": "If Option 2 is running low,\nthe program follows the blue\narrow."
+    },
+    {
+      "row": 469,
+      "target": "If your Marionette has an\nenemy marked, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 470,
+      "target": "If your Marionette is\nmoving, the program follows\nthe blue arrow."
+    },
+    {
+      "row": 471,
+      "target": "If your Marionette is\nstopped, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 472,
+      "target": "If your Marionette is\njumping, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 473,
+      "target": "If your Marionette is\ndashing, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 474,
+      "target": "If your Marionette is\naccelerating, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 475,
+      "target": "If your Marionette is using\nOption 1, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 476,
+      "target": "If your Marionette is using\nOption 2, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 477,
+      "target": "If your Marionette is\ntouching the ground, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 478,
+      "target": "If your Marionette's\naltitude is at least the\nspecified value, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 479,
+      "target": "If your Marionette has been\nhit, the program follows the\nblue arrow."
+    },
+    {
+      "row": 480,
+      "target": "If your Marionette's hit\npoints are low, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 481,
+      "target": "If your Marionette's\nremaining energy is low, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 482,
+      "target": "If your Marionette is marked\nby the enemy, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 483,
+      "target": "If the enemy is moving, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 484,
+      "target": "If the enemy is stopped, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 485,
+      "target": "If the enemy is jumping, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 486,
+      "target": "If the enemy is dashing, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 487,
+      "target": "If the enemy is\naccelerating, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 488,
+      "target": "If the enemy is using its\nMain Weapon, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 489,
+      "target": "If the enemy is using its Sub\nWeapon, the program follows\nthe blue arrow."
+    },
+    {
+      "row": 490,
+      "target": "If the enemy is using Option\n1, the program follows the\nblue arrow."
+    },
+    {
+      "row": 491,
+      "target": "If the enemy is using Option\n2, the program follows the\nblue arrow."
+    },
+    {
+      "row": 492,
+      "target": "If the enemy is on the\nground, the program follows\nthe blue arrow."
+    },
+    {
+      "row": 493,
+      "target": "If the enemy's altitude is at\nleast the set value, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 494,
+      "target": "If the enemy has been hit,\nthe program follows the blue\narrow."
+    },
+    {
+      "row": 495,
+      "target": "If the enemy's hit points are\nlow, the program follows the\nblue arrow."
+    },
+    {
+      "row": 496,
+      "target": "If the match time exceeds\nthe set time, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 497,
+      "target": "The program follows the\nblue arrow with the\nspecified probability."
+    },
+    {
+      "row": 498,
+      "target": "Counter: After every\nspecified number of visits\nto this chip, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 499,
+      "target": "Stopwatch: When the set time\nis exceeded, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 500,
+      "target": "The program pauses for the\nspecified amount of time."
+    },
+    {
+      "row": 501,
+      "target": "This chip does nothing."
+    },
+    {
+      "row": 502,
+      "target": "This is a label. It is the\ndestination for Skip and\nCall chips."
+    },
+    {
+      "row": 503,
+      "target": "The program jumps to the\nlabel of the specified\ncolor."
+    },
+    {
+      "row": 504,
+      "target": "The program jumps\ntemporarily to the\nspecified color label.\nReturn resumes it from this\npoint."
+    },
+    {
+      "row": 505,
+      "target": "Return: The program returns\nto the most recently\nexecuted Call Chip."
+    },
+    {
+      "row": 506,
+      "target": "This is a Test Chip."
+    },
+    {
+      "row": 507,
+      "target": "If an enemy is within the\nspecified range, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 508,
+      "target": "If a projectile is within the\nspecified range, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 509,
+      "target": "If an obstacle is in the\nspecified direction, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 510,
+      "target": "If the arena's outer wall is\nin the specified direction,\nthe program follows the blue\narrow."
+    },
+    {
+      "row": 511,
+      "target": "If the floor is in the\nspecified direction, the\nprogram follows the blue\narrow."
+    },
+    {
+      "row": 512,
+      "target": "Program error. Place a\nProgram Chip."
+    },
+    {
+      "row": 513,
+      "target": "Program error."
+    },
+    {
+      "row": 514,
+      "target": "You cannot place an arrow\nhere."
+    },
+    {
+      "row": 515,
+      "target": "You can place a white arrow."
+    },
+    {
+      "row": 516,
+      "target": "You can place a red or blue\narrow."
+    },
+    {
+      "row": 517,
+      "target": "You can place a white, red or\nblue arrow."
+    },
+    {
+      "row": 518,
+      "target": "If your Marionette is using\nits Main Weapon, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 519,
+      "target": "If your Marionette is using\nits Sub Weapon, the program\nfollows the blue arrow."
+    },
+    {
+      "row": 520,
+      "target": "Move Chip: If your\nMarionette is already\nmoving, it stops before\nmoving again."
+    },
+    {
+      "row": 521,
+      "target": "This is a Turn Chip."
+    },
+    {
+      "row": 522,
+      "target": "Stop Chip: Cancels your\nMarionette's movement,\ndashing and jumping."
+    },
+    {
+      "row": 523,
+      "target": "This is a Jump Chip."
+    },
+    {
+      "row": 524,
+      "target": "This is a Roller Dash Chip."
+    },
+    {
+      "row": 525,
+      "target": "This is a Rapid Acceleration\nChip."
+    },
+    {
+      "row": 526,
+      "target": "This is a Main Attack Chip."
+    },
+    {
+      "row": 527,
+      "target": "Marked Attack Chip: Your\nMarionette attacks the\nmarked enemy."
+    },
+    {
+      "row": 528,
+      "target": "This is a Sub Attack Chip."
+    },
+    {
+      "row": 529,
+      "target": "This is an Option Use Chip."
+    },
+    {
+      "row": 530,
+      "target": "This is a Main Ammo Check\nChip."
+    },
+    {
+      "row": 531,
+      "target": "This is an Option Count\nCheck Chip."
+    },
+    {
+      "row": 532,
+      "target": "Enemy Search Chip: Your\nMarionette scans the\nspecified direction and\nmarks an enemy directly\nahead."
+    },
+    {
+      "row": 533,
+      "target": "This is a Projectile Search\nChip."
+    },
+    {
+      "row": 534,
+      "target": "This is an Obstacle Search\nChip."
+    },
+    {
+      "row": 535,
+      "target": "This is an Outer Wall Search\nChip."
+    },
+    {
+      "row": 536,
+      "target": "This is a Floor Search Chip."
+    },
+    {
+      "row": 537,
+      "target": "--- Delete the chip. ---"
+    },
+    {
+      "row": 538,
+      "target": "This is a Mark Check Chip."
+    },
+    {
+      "row": 539,
+      "target": "This is an Own Unit Action\nCheck Chip."
+    },
+    {
+      "row": 540,
+      "target": "This is an Own Unit Ground\nContact Check Chip."
+    },
+    {
+      "row": 541,
+      "target": "This is an Own Unit Altitude\nCheck Chip."
+    },
+    {
+      "row": 542,
+      "target": "This is an Own Unit Hit Check\nChip."
+    },
+    {
+      "row": 543,
+      "target": "These are Own Unit Hit Point\nCheck and Energy Check\nchips."
+    },
+    {
+      "row": 544,
+      "target": "This is an Enemy Mark Check\nChip."
+    },
+    {
+      "row": 545,
+      "target": "This is an Enemy Action\nCheck Chip."
+    },
+    {
+      "row": 546,
+      "target": "This is an Enemy Ground\nContact Check Chip."
+    },
+    {
+      "row": 547,
+      "target": "This is an Enemy Altitude\nCheck Chip."
+    },
+    {
+      "row": 548,
+      "target": "This is an Enemy Hit Check\nChip."
+    },
+    {
+      "row": 549,
+      "target": "This is an Enemy Hit Point\nCheck Chip."
+    },
+    {
+      "row": 550,
+      "target": "This is a Match Time Check\nChip."
+    },
+    {
+      "row": 551,
+      "target": "This is a Random Chip."
+    },
+    {
+      "row": 552,
+      "target": "This is a Counter Chip."
+    },
+    {
+      "row": 553,
+      "target": "This is a Stopwatch Chip."
+    },
+    {
+      "row": 554,
+      "target": "This is a Program Wait Chip."
+    },
+    {
+      "row": 555,
+      "target": "This is a No-Op Chip."
+    },
+    {
+      "row": 556,
+      "target": "This is a Start Chip."
+    },
+    {
+      "row": 557,
+      "target": "This is a Label Chip."
+    },
+    {
+      "row": 558,
+      "target": "This is a Skip Chip."
+    },
+    {
+      "row": 559,
+      "target": "This is a Subroutine Call\nChip."
+    },
+    {
+      "row": 560,
+      "target": "This is a Subroutine Return\nChip."
+    }
+  ]
+}

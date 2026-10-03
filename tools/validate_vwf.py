@@ -236,6 +236,10 @@ class CPU:
                 self.f[n] = f32((a + b, a - b, a * b, a / b if b else 0)[low])
             elif low in (4, 5):
                 self.t = self.f[n] == self.f[m] if low == 4 else self.f[n] > self.f[m]
+            elif low == 6:
+                self.f[n] = self.read_float(r[0] + r[m])
+            elif low == 7:
+                self.write_float(r[0] + r[n], self.f[m])
             elif low in (8, 9):
                 self.f[n] = self.read_float(r[m])
                 if low == 9:

@@ -81,6 +81,8 @@ def main():
             ('Includes narrower spaces, VWF mode 3, and ' + str(len(report['shop_description_layout']['descriptions'])) + ' wrapped shop descriptions\n'
              'with a taller native shop-help background.\n'
              if report.get('shop_description_layout') else '') +
+            ('Includes all 144 editor/palette help messages wrapped inside a taller native tooltip.\n'
+             if report.get('program_help_layout') else '') +
             'Native glyph/disc checks passed; Flycast gameplay remains unverified.\n',encoding='utf-8')
         sums=['{}  {}'.format(sha256_file(p),p.name) for p in sorted(output.iterdir()) if p.name!='SHA256SUMS.txt']
         (output/'SHA256SUMS.txt').write_text('\n'.join(sums)+'\n',encoding='utf-8')

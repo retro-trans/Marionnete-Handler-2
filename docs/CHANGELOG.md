@@ -1,5 +1,20 @@
 # Change log
 
+## 0.1.14 — program editor help layout — 2026-10-03
+
+- Wrap all 144 distinct editor and chip-palette help messages to 320 pixels,
+  using the embedded Bizin Gothic Bold advances and six-pixel spaces.
+  Preserve all words, punctuation and compiled text lengths; include the
+  enemy-range and Call examples from the user's screenshots.
+- Enlarge the native tooltip from 340 x 58 to 340 x 126 pixels. Clamp its
+  position within the screen and update the existing cursor-avoidance height.
+  Resize an already open tooltip as well as newly created windows.
+- Retain all 793 translations, all five shop-category fixes, account labels,
+  native variable-width rendering and the lowercase t fix.
+- Validate every editor/palette table selection, edge positions, native
+  background geometry, disc integrity and the Retro Trans Tools package.
+  A fresh Flycast visual check remains pending.
+
 ## 0.1.13 — descriptions across all shop categories — 2026-10-03
 
 - Extend the 0.1.12 help background to all five shop categories: Marionette
