@@ -1,5 +1,20 @@
 # Change log
 
+## 0.1.17 — battle help, confirmations and stat panels — 2026-10-03
+
+- Wrap all four enemy-behavior descriptions within a 300 x 132 native help
+  window and clamp it inside the screen. Preserve every description word.
+- Fit all six pause/replay captions across the four menu variants, including
+  Speed Up, End Battle, Photo Mode and Normal.
+- Shorten the return-to-MARCS question and replace Japanese full-width padding
+  with explicit positioning for Yes/No inside the confirmation dialog.
+- Increase detailed stats height to 202 and Equipment height to 92. Keep the
+  final TotalPerformance row above Equipment and the default panels on screen.
+- Verify native help callers/backgrounds, confirmation selection branches,
+  actual stat and Equipment draw routines, and all cumulative translation/font
+  checks. Build a compatible Retro Trans Tools package; Flycast visual checks
+  remain pending.
+
 ## 0.1.16 — Settings and Clock captions — 2026-10-03
 
 - Shorten Display Position to Position in Settings. Use MARCS Bar, Wall Clock

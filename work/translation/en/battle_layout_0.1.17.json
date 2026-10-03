@@ -1,0 +1,72 @@
+{
+  "version": "0.1.17",
+  "language": "en",
+  "translations": [
+    {
+      "row": 98,
+      "full_translation": "Stop the battle and return\nto MARCS?",
+      "target": "Stop battle and return\nto MARCS?",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 229,
+      "full_translation": "Resume",
+      "target": "Resume",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 230,
+      "full_translation": "Fast-Forward Playback",
+      "target": "Speed Up",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 231,
+      "full_translation": "Skip",
+      "target": "Skip",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 232,
+      "full_translation": "Stop Battle",
+      "target": "End Battle",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 233,
+      "full_translation": "Photography Mode",
+      "target": "Photo Mode",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 234,
+      "full_translation": "Normal Playback",
+      "target": "Normal",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 413,
+      "full_translation": "STANDSTILL\nThe enemy stays still\nand does not move.",
+      "target": "STANDSTILL\nThe enemy stays still\nand does not move.",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 414,
+      "full_translation": "MIRROR\nThe enemy mirrors your Marionette's\nmovements, reversing left and right.",
+      "target": "MIRROR\nThe enemy mirrors your\nMarionette's\nmovements, reversing\nleft and right.",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 415,
+      "full_translation": "MIMICRY\nThe enemy performs the same\nmovements as your Marionette.",
+      "target": "MIMICRY\nThe enemy performs the\nsame movements as your\nMarionette.",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    },
+    {
+      "row": 416,
+      "full_translation": "OLD PROGRAM\nThe enemy uses your Marionette's\nprogram from before your edits.",
+      "target": "OLD PROGRAM\nThe enemy uses your\nMarionette's program\nfrom before your edits.",
+      "note": "Preserve all enemy-description words; compact battle captions retain their actions. Confirmation wording is shortened without changing the question."
+    }
+  ]
+}

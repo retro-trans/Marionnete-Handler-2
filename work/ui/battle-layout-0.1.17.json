@@ -1,0 +1,80 @@
+{
+  "version": "0.1.17",
+  "screenshots": [
+    {
+      "file": "work/ui/test-battle-help-user-reference.png",
+      "pixel_size": [
+        2560,
+        1369
+      ],
+      "status": "before reference supplied by user"
+    },
+    {
+      "file": "work/ui/battle-confirmation-user-reference.png",
+      "pixel_size": [
+        2560,
+        1369
+      ],
+      "status": "before reference supplied by user"
+    },
+    {
+      "file": "work/ui/stats-equipment-overlap-user-reference.png",
+      "pixel_size": [
+        846,
+        910
+      ],
+      "status": "before reference supplied by user"
+    }
+  ],
+  "native_layouts": {
+    "enemy_help": {
+      "rows": [
+        413,
+        414,
+        415,
+        416
+      ],
+      "width": 300,
+      "height": 132,
+      "max_line_advance": 268,
+      "text_inset": [
+        16,
+        18
+      ],
+      "window_index_global": "8c1a428c"
+    },
+    "pause_menu": {
+      "rows": [
+        229,
+        230,
+        231,
+        232,
+        233,
+        234
+      ],
+      "width": 142,
+      "text_inset": 16,
+      "native_descriptors": [
+        "8c59c",
+        "8c5b0",
+        "8c5d8",
+        "8c600"
+      ]
+    },
+    "confirmation": {
+      "row": 98,
+      "shared_choices_rows": [
+        675,
+        676
+      ],
+      "prefix_file_offset": "12de38",
+      "choices_x_relative": 150
+    },
+    "stats": {
+      "detailed_height": 202,
+      "equipment_height": 92,
+      "minimum_gap": 4
+    }
+  },
+  "actual_Flycast_playtest": false
+}

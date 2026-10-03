@@ -110,3 +110,7 @@ the entire target track. It is a binary integrity check, not a gameplay test.
 0.1.16 fits Settings and Clock captions; see docs/SETTINGS_LAYOUT.md. All prior
 equipment, shop and editor fixes remain included. Fresh Flycast visual checks
 remain pending.
+
+0.1.17 fits battle enemy help, pause captions, confirmation choices and stacked
+Marionette/Equipment panels. See docs/BATTLE_LAYOUT.md. Prior fixes remain
+included; fresh Flycast visual confirmation remains pending.
