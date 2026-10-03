@@ -1,5 +1,19 @@
 # Change log
 
+## 0.1.10 — improve lowercase t — 2026-10-03
+
+- The user's MARCS menu screenshot shows the Bizin bold font loading, and
+  identifies lowercase t for refinement. Correct its small-size bitmap with a
+  straight stem, smoother lower hook and an ascender two atlas pixels taller.
+- Apply the correction to both cached fullwidth-mapped t and editable ASCII t.
+  Exactly two glyph records change; every other bitmap, executable byte,
+  character bearing and advance remains identical to 0.1.9. The upstream TTF
+  is unchanged. Font-source notices remain included in the disc and patch package.
+- Add a comparison rendered through the native generator in Marionette,
+  Settings and Log Out. Keep all 793 translations and the corrected disc loader.
+  Validate the font asset, native rendering, VQ compression, raw disc and
+  two-track Retro Trans Tools package. The revised t still needs a Flycast check.
+
 ## 0.1.9 — fix Bizin font loading — 2026-10-03
 
 - The user's actual 0.1.8 screenshot and Flycast state confirmed that Bizin

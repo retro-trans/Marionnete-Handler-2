@@ -1,0 +1,41 @@
+{
+  "image": "marcs-menu-Bizin-t-0.1.9.png",
+  "kind": "user_actual_Flycast_screenshot",
+  "dimensions": [
+    621,
+    420
+  ],
+  "build_context": "after 0.1.9 test image; version inferred from conversation",
+  "finding": "Bizin bold menu labels are visible. User requests a correction to lowercase t.",
+  "coordinate_space": "attached cropped screenshot",
+  "recorded_date": "2026-10-03",
+  "elements": [
+    {
+      "label": "Marionette / double t",
+      "bounds": [
+        128,
+        82,
+        344,
+        46
+      ]
+    },
+    {
+      "label": "Settings / double t",
+      "bounds": [
+        129,
+        212,
+        278,
+        46
+      ]
+    },
+    {
+      "label": "Log Out / t",
+      "bounds": [
+        129,
+        278,
+        269,
+        53
+      ]
+    }
+  ]
+}

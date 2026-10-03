@@ -1,4 +1,4 @@
-# Embedded Bizin Gothic Bold — 0.1.9
+# Embedded Bizin Gothic Bold — 0.1.10
 
 The game now uses [Bizin Gothic Bold v0.0.4](https://github.com/yuru7/bizin-gothic)
 for the large cached font and editable-name glyphs. The original typeface was
@@ -6,6 +6,14 @@ the Dreamcast BIOS bitmap font. Its strokes remained thin after the missing-row
 sampling bug was corrected in 0.1.7. Bizin Gothic combines Inconsolata Latin
 characters with BIZ UD Gothic Japanese characters; this build uses the upstream
 Bold TTF, preserved unchanged with its source hashes and OFL notices.
+
+0.1.10 corrects the lowercase t's small-size bitmap: its stem is straight,
+the lower hook is smoother and the ascender extends two atlas pixels farther
+up. Both cached and editable t are updated. All other glyphs, the executable,
+bearings and advances are unchanged from 0.1.9. The source TTF remains intact;
+the adjustment applies only to the derived game bitmaps. The user's cropped
+MARCS menu screenshot after testing 0.1.9 shows the Bizin bold labels loading.
+The new t still needs visual confirmation in Flycast.
 
 The game loads `/ENFONT.BIN` from its fixed patched-disc extent. It contains 613 cached glyph
 records, 95 editable ASCII records, and the font license notices. All 708
@@ -70,7 +78,13 @@ both complete changed tracks and compares their hashes.
 in `work/ui/font-BIOS-vs-Bizin-Gothic-Bold-0.1.8.png`. It uses actual native glyph
 output and is labeled as a preview, rather than an in-game screenshot.
 
-Open `work/output/english-0.1.9/Marionette Handler 2 English 0.1.9.gdi` in Flycast
+`python tools/preview_t_font.py --bios <dc_boot.bin> --write` compares the old
+and corrected t through the native generator, including the three menu labels
+from the user's screenshot. It verifies that only the two t records change
+and that the executable and word advances remain identical. The labeled output
+is `work/ui/font-t-0.1.9-vs-0.1.10.png`.
+
+Open `work/output/english-0.1.10/Marionette Handler 2 English 0.1.10.gdi` in Flycast
 and boot from scratch. An older save state restores the older renderer and font.
 No texture dump, custom texture pack or Flycast setting change is needed.
 Flycast appearance, file loading during startup, gameplay memory availability

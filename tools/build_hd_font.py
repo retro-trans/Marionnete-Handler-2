@@ -18,7 +18,7 @@ from build_full_english import validate
 from validate_vwf import CPU
 import bizin_font
 
-VERSION='0.1.9'
+VERSION='0.1.10'
 FONT_BYTES=0x200000
 VQ_BYTES=2048+1024*1024//4
 

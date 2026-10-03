@@ -105,10 +105,11 @@ python tools/package_vwf.py --retro-trans-tools PATH --build-prefix english --ve
 
 Any changes to compiled game bytes require a new version and change-log entry.
 
-The latest font build is **0.1.9**, with corrected embedded Bizin Gothic Bold loading. All 793
+The latest font build is **0.1.10**, with a refined lowercase t and corrected
+embedded Bizin Gothic Bold loading. All 793
 translations remain complete. Native message checks now use the real generated
 font's cached widths. See `docs/HD_FONT.md` for font coverage and fresh-boot
 instructions. Its Retro Trans Tools package requires both Track 3 and Track 17;
-use `--version 0.1.9` when packaging this cumulative English build. The user's
+use `--version 0.1.10` when packaging this cumulative English build. The user's
 0.1.8 state confirmed that its filename loader fell back to the BIOS font;
 0.1.9 opens the fixed font extent independently of the current directory.

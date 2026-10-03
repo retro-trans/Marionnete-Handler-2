@@ -149,6 +149,22 @@ def covered_characters(data):
     return covered
 
 
+def hint_glyph(image,char):
+    """Small-size bitmap correction; leave the original upstream TTF intact."""
+    if char!='t':return image
+    mask=image.point(lambda value:255 if value>=128 else 0)
+    draw=ImageDraw.Draw(mask)
+    # Retain the crossbar and baseline, lengthen the ascender by one UI pixel.
+    draw.rectangle((10,2,14,8),fill=255)
+    draw.rectangle((0,13,37,28),fill=0)
+    draw.rectangle((10,13,14,23),fill=255)
+    # A continuous stem and stepped curve replace the indented stem / stray tip.
+    for y,left,right in [(24,10,15),(25,11,17),(26,11,22),(27,12,22),(28,14,20)]:
+        draw.line((left,y,right,y),fill=255)
+    draw.rectangle((19,24,22,25),fill=255)
+    return mask
+
+
 def asset(program):
     _,_,codes,frames=prepare_native_cache(program)
     assert len(codes)==CACHED and len(set(codes))==CACHED
@@ -175,6 +191,7 @@ def asset(program):
             if box[1]+baseline<0:baseline=-box[1]
         assert 0<=x+box[0] and x+box[2]<=38 and 0<=baseline+box[1] and baseline+box[3]<=38,(hex(code),box)
         ImageDraw.Draw(image).text((x,baseline),char,font=font,anchor='ls',fill=255)
+        image=hint_glyph(image,char)
         bitmap=bytearray(184)
         for y in range(38):
             for px in range(38):
@@ -192,7 +209,8 @@ def asset(program):
         'asset_sha256':hashlib.sha256(result).hexdigest(),'asset_bytes':len(result),
         'cached_records':CACHED,'editable_ascii_records':ASCII,'cache_frames':frames,
         'missing_glyphs_use_BIOS':fallback,'latin_metrics':metrics,'bitmap_dimensions':[38,38],
-        'latin_raster_size':44,'other_raster_size':35,'threshold':128,'texture_replacement':False}
+        'latin_raster_size':44,'other_raster_size':35,'threshold':128,'texture_replacement':False,
+        'glyph_adjustments':{'t':'straight stem, smooth hook, ascender extended two atlas pixels; crossbar and advance preserved'}}
 
 
 def validate(program,report,payload):

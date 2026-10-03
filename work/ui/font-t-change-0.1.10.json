@@ -1,0 +1,26 @@
+{
+  "version": "0.1.10",
+  "executable_identical_to": "0.1.9",
+  "target_program_sha256": "ffb9df594fcaea50cf2ddd01ba649560fae1db847a337a4b5fab7d6ce6f91b29",
+  "before_font_asset_sha256": "ef87a2aaaf6a80d18448758e7d0f665d6936423cf72d4d743819e14019f87007",
+  "after_font_asset_sha256": "23c996a8dcdfa4e7ce7edd510830cfc33c7df0772a10001bb53140b2ce10b1a0",
+  "changed_record_indices": [
+    45,
+    697
+  ],
+  "changed_characters": [
+    "cached t",
+    "editable ASCII t"
+  ],
+  "all_other_glyph_records_identical": true,
+  "cached_latin_metrics_identical": true,
+  "native_preview_words": [
+    "t",
+    "Marionette",
+    "Settings",
+    "Log Out"
+  ],
+  "word_advances_identical": true,
+  "preview": "font-t-0.1.9-vs-0.1.10.png",
+  "actual_Flycast_screenshot": false
+}
