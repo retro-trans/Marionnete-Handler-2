@@ -1,6 +1,9 @@
 # English translation — 0.1.4
 
-The latest test disc is **0.1.11**. It retains the 793 records described below
+The latest test disc is **0.1.12**. It adds narrower spaces, wrapped parts
+descriptions, an enlarged native help background and the missed mode-3 VWF
+path. See [shop description notes](SHOP_DESCRIPTIONS.md).
+It retains the 793 records described below
 and adds four shop/account labels from the user's screenshots: Buy, Sell,
 Balance and Please wait. The account labels add two native text records; Buy
 and Sell are edited directly in the native PVR atlas. This is 797 reviewed

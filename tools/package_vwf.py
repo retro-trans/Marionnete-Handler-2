@@ -78,6 +78,9 @@ def main():
             'https://github.com/yuru7/bizin-gothic\n'
             + ('Includes native shop artwork labels Buy/Sell and account labels Balance/Please wait.\n'
                if report.get('additional_ui_labels') else '') +
+            ('Includes narrower spaces, VWF mode 3, and eleven wrapped shop descriptions\n'
+             'with a taller native parts-help background.\n'
+             if report.get('shop_description_layout') else '') +
             'Native glyph/disc checks passed; Flycast gameplay remains unverified.\n',encoding='utf-8')
         sums=['{}  {}'.format(sha256_file(p),p.name) for p in sorted(output.iterdir()) if p.name!='SHA256SUMS.txt']
         (output/'SHA256SUMS.txt').write_text('\n'.join(sums)+'\n',encoding='utf-8')

@@ -16,6 +16,8 @@ from validate_vwf import CPU
 
 def validate(original, target, report, cache_metrics=None):
     _, texts, _ = batches()
+    overrides=report.get('layout_overrides',{})
+    texts=[overrides.get(str(i),text) for i,text in enumerate(texts,1)]
     # Execute the actual startup clear/copy routine, not a predicted interval.
     startup = CPU(target)
     startup.run(BASE + 0x141c64, limit=5000000)
@@ -28,6 +30,8 @@ def validate(original, target, report, cache_metrics=None):
             template.write(0x8c34dbb4+i,bearing,1)
             template.write(0x8c34de28+i,advance,1)
     code_widths = {code: template.read(0x8c34de28 + i, 1) for i, code in enumerate(codes)}
+    space_advance=report.get('space_advance_px',20)
+    if space_advance!=20:code_widths[conversion(32)]=space_advance
     import re
     printable = set(''.join(re.sub(r'@[a-zA-Z]\d{3}', '', text) for text in texts)) - {'\n'}
     missing = sorted(c for c in printable if conversion(ord(c)) not in codes)
@@ -143,7 +147,7 @@ def validate(original, target, report, cache_metrics=None):
             'native_width_measure_cases': measured, 'native_aligned_render_equivalence_cases': aligned,
             'numeric_composition_cases': numeric, 'default_native_cache_glyphs': len(codes),
             'default_native_cache_frames': frames, 'visible_english_characters_loaded': len(printable) - 1,
-            'space_behavior': 'Original blank 20-pixel cache-miss fallback',
+            'space_behavior': 'ASCII space advance {} pixels; other missing glyphs retain 20'.format(space_advance),
             'bios_ink_metrics_simulated': cache_metrics is None, 'emulator_playtest': False,
             'approved_screen_fit_limits': None}
 

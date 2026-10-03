@@ -1,5 +1,14 @@
 # Variable-width font — test build 0.1.1
 
+Latest English build: **0.1.12**. The earlier claim that all remaining fixed
+cached text was covered missed mode 3 and the scrolling caller; those now use
+the proportional renderer too. ASCII spaces use six pixels in drawing and
+measurement. The shop already used mode 1; its descriptions now have narrower
+spaces, English line wrapping and a taller native background. See
+[shop description notes](SHOP_DESCRIPTIONS.md). This retains embedded Bizin
+Gothic Bold and all 793 English records. The historical 0.1.1 notes below
+describe the original patch.
+
 This build extends the game's existing proportional fonts to the remaining
 fixed cached-font text mode and to integer/decimal readouts. Numeric measurement
 now uses the same glyph advances as drawing, so right-aligned values retain

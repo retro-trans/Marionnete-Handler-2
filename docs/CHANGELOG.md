@@ -1,5 +1,20 @@
 # Change log
 
+## 0.1.12 — shop description layout and spacing — 2026-10-03
+
+- Wrap all eleven English parts descriptions to a 300-pixel advance limit,
+  preserving every word, punctuation mark and original storage length.
+- Replace the 20-pixel ASCII-space fallback with six pixels in cached font
+  drawing and measurement. Keep Bizin Gothic Bold and the lowercase t fix.
+- Add a taller native background to the parts help overlay, following its
+  existing fade and depth. Verify the actual shop caller and all text bounds.
+- Correct the separately missed fixed cached mode 3 and scrolling caller to
+  use the proportional renderer. The shop caller itself already used mode 1;
+  wide spaces, similar Bizin letter widths and old wrapping caused its issue.
+- Retain all 793 translations and the four shop/account labels. Verify native
+  rendering, original disc integrity and a cumulative Retro Trans Tools package.
+  A fresh Flycast visual check remains pending.
+
 ## 0.1.11 — shop and account labels — 2026-10-03
 
 - Translate the four labels in the user's screenshots: Buy, Sell, Balance

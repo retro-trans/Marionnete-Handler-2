@@ -160,7 +160,8 @@ def validate_account(program, report, metrics):
         cpu.run(BASE + row['draw_pointer_start'], stop=BASE + row['draw_pointer_start'] + 6)
         assert cpu.r[4] == BASE + row['target_offset']
         cpu.run(BASE + row['draw_pointer_start'] + 6, stop=BASE + row['draw_end'], limit=3000000)
-        width = sum(metrics.get(patched_conversion(ord(c)), (0, 20))[1] for c in row['target'])
+        width = sum(report.get('space_advance_px',20) if c==' ' else
+                    metrics.get(patched_conversion(ord(c)), (0, 20))[1] for c in row['target'])
         assert cpu.f[0] == origin + width
         assert cpu.r[15] == 0x8cf00000 and len(cpu.vertices) == len(row['target'].replace(' ', ''))
         ink_left = min(min(v) for v in cpu.vertices)
