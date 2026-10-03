@@ -2,6 +2,9 @@
 
 ## 0.1.17 — battle help, confirmations and stat panels — 2026-10-03
 
+- Separate optional README/font-license checksums from protocol checksums so
+  the Retro Trans Tools automatic catalog can validate its downloaded subset.
+  This metadata correction does not change either patch or target disc track.
 - Wrap all four enemy-behavior descriptions within a 300 x 132 native help
   window and clamp it inside the screen. Preserve every description word.
 - Fit all six pause/replay captions across the four menu variants, including

@@ -90,8 +90,12 @@ def main():
             ('Includes wrapped enemy help, fitted battle captions/choices and separated stat panels.\n'
              if report.get('battle_layout') else '') +
             'Native glyph/disc checks passed; Flycast gameplay remains unverified.\n',encoding='utf-8')
-        sums=['{}  {}'.format(sha256_file(p),p.name) for p in sorted(output.iterdir()) if p.name!='SHA256SUMS.txt']
+        required={p['patch'] for p in config['patches']} | {'BUILD-MANIFEST.json','VALIDATION.json'}
+        sums=['{}  {}'.format(sha256_file(output/name),name) for name in sorted(required)]
         (output/'SHA256SUMS.txt').write_text('\n'.join(sums)+'\n',encoding='utf-8')
+        extras=['{}  {}'.format(sha256_file(p),p.name) for p in sorted(output.iterdir())
+                if p.name not in required | {'SHA256SUMS.txt','SHA256SUMS-EXTRAS.txt'}]
+        (output/'SHA256SUMS-EXTRAS.txt').write_text('\n'.join(extras)+'\n',encoding='utf-8')
     validate_directory(output)
     print('Retro Trans Tools encode/decode round trip and release validation passed:', output)
 
