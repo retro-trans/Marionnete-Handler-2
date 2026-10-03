@@ -1,6 +1,8 @@
 # English translation — 0.1.4
 
-The latest test disc is **0.1.12**. It adds narrower spaces, wrapped parts
+The latest test disc is **0.1.13**. It extends description wrapping and the
+native help background to all five shop categories, covering 23 distinct
+descriptions. The previous **0.1.12** adds narrower spaces, wrapped parts
 descriptions, an enlarged native help background and the missed mode-3 VWF
 path. See [shop description notes](SHOP_DESCRIPTIONS.md).
 It retains the 793 records described below

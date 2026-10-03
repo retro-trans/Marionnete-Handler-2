@@ -1,4 +1,4 @@
-"""Restore native VWF in shop help mode and wrap the eleven part descriptions."""
+"""Native shop help wrapping, backgrounds and proportional spacing."""
 import hashlib
 import json
 import struct
@@ -10,7 +10,7 @@ from sh4_patch import Assembler, pc_load
 from validate_vwf import CPU
 from inspect_disc_text import ROOT
 
-VERSION = '0.1.12'
+VERSION = '0.1.13'
 SPACE = 6
 WIDTH = 300
 
@@ -20,7 +20,50 @@ def hook(result, at, destination):
                                    0x402b, 0x0009, 0x0009, destination)
 
 
-def plan(original, program, report):
+def wrap(source, metrics):
+    def paragraph(text):
+        lines, line = [], ''
+        for word in text.split():
+            assert sum(metrics[c] for c in word) <= WIDTH, word
+            candidate = line + (' ' if line else '') + word
+            if sum(metrics[c] for c in candidate) > WIDTH:
+                lines.append(line)
+                line = word
+            else:
+                line = candidate
+        lines.append(line)
+        return '\n'.join(lines)
+
+    header, body = source.split('\n', 1)
+    leading = len(body) - len(body.lstrip('\n'))
+    trailing = len(body) - len(body.rstrip('\n'))
+    body = body.strip('\n')
+    result = paragraph(header) + '\n' + '\n' * leading
+    result += '\n\n'.join(paragraph(part) for part in body.split('\n\n'))
+    result += '\n' * trailing
+    assert ' '.join(source.split()) == ' '.join(result.split())
+    assert len(source.encode('ascii')) == len(result.encode('ascii'))
+    return result
+
+
+def categories(original, bindings):
+    """Read the game's descriptor table; do not infer coverage from screenshots."""
+    by_source = {row['source_file_offset']: row['row'] for row in bindings}
+    names = ['Marionette Units', 'Modification Parts', 'Weapons / Options',
+             'Maintenance Supplies', 'Used Parts']
+    result = []
+    for category, name in enumerate(names):
+        count, spacing, base, titles, descriptions = struct.unpack_from('<IfIII', original, 0x921d0 + category * 20)
+        assert count == [7, 11, 3, 2, 1][category]
+        rows = [by_source[struct.unpack_from('<I', original, descriptions - BASE + selected * 4)[0] - BASE]
+                for selected in range(count)]
+        result.append({'category': category, 'name': name, 'description_rows': rows,
+                       'description_table': descriptions, 'native_entry_count': count})
+    assert sorted({row for c in result for row in c['description_rows']}) == list(range(312, 335))
+    return result
+
+
+def plan(original, program, report, version=VERSION):
     result = bytearray(program)
     changes = list(report['changed_regions'])
     fixed = struct.pack('<I', BASE + 0x8100)
@@ -81,9 +124,10 @@ def plan(original, program, report):
         a.load(0, marker)
         a.emit(0xf008)
 
-    a.load(0, 0x8c1b20e4)
-    a.emit(0x6002, 0x8801)
-    a.branch(0x8b00, 'font')
+    if version == '0.1.12':
+        a.load(0, 0x8c1b20e4)
+        a.emit(0x6002, 0x8801)
+        a.branch(0x8b00, 'font')
     a.emit(0x4f22)
     for global_at, add, low, high, span in (
             (0x8c36b06c, 7, 0x8c1a34e4, 0x8c1a34ec, 320),
@@ -132,29 +176,18 @@ def plan(original, program, report):
     changes += [(0x8100, 0x82a4), (0x7f64, 0x7f70), (0x83b8, 0x83c4), (0x58b90, 0x58b9c)]
     metrics = {r['character']: r['advance'] for r in report['font_asset']['latin_metrics']}
     metrics[' '] = SPACE
-    policy = json.loads((ROOT / 'work/translation/en/shop_description_layout.json').read_text())
-    assert policy['version'] == VERSION and policy['space_advance_px'] == SPACE
+    filename = 'shop_description_layout.json' if version == '0.1.12' else 'shop_description_layout_' + version + '.json'
+    policy = json.loads((ROOT / 'work/translation/en' / filename).read_text())
+    assert policy['version'] == version and policy['space_advance_px'] == SPACE
     assert policy['max_line_advance_px'] == WIDTH
     approved = {row['row']: row['target'] for row in policy['translations']}
     _, texts, _ = batches()
     overrides, layouts = {}, []
-    for ordinal in range(324, 335):
+    coverage = categories(original, report['bindings'])
+    ordinals = range(324, 335) if version == '0.1.12' else sorted({row for c in coverage for row in c['description_rows']})
+    for ordinal in ordinals:
         source = texts[ordinal - 1]
-        header, body = source.split('\n', 1)
-        assert '\n\n' not in body
-        lines, line = [], ''
-        for word in body.split():
-            assert sum(metrics[c] for c in word) <= WIDTH, word
-            candidate = line + (' ' if line else '') + word
-            if sum(metrics[c] for c in candidate) > WIDTH:
-                lines.append(line)
-                line = word
-            else:
-                line = candidate
-        lines.append(line)
-        text = header + '\n' + '\n'.join(lines)
-        if source.endswith('\n'):
-            text += '\n'
+        text = wrap(source, metrics)
         assert text == approved[ordinal], 'Layout policy and compiled wrapping differ'
         assert ' '.join(source.split()) == ' '.join(text.split())
         assert len(source.encode('ascii')) == len(text.encode('ascii'))
@@ -169,10 +202,12 @@ def plan(original, program, report):
         layouts.append({'row': ordinal, 'id': binding['id'], 'target': text,
                         'line_advances': [sum(metrics[c] for c in line) for line in text.split('\n')],
                         'words_preserved': True})
-    report.update(version=VERSION, space_advance_px=SPACE, layout_overrides=overrides,
+    report.update(version=version, space_advance_px=SPACE, layout_overrides=overrides,
                   shop_description_layout={'max_line_advance': WIDTH, 'panel_width': 320,
                                            'text_origin_x': 12, 'descriptions': layouts,
-                                           'background': {'caller_hook': 0x58b90, 'parts_category': 1,
+                                           'categories': coverage,
+                                           'background': {'caller_hook': 0x58b90,
+                                                          'enabled_categories': [1] if version == '0.1.12' else list(range(5)),
                                                           'relative_rect': [7, 75, 327, 327],
                                                           'depth_above_window': 29, 'follows_help_fade': True},
                                            'renderer_call_literals': refs},
@@ -229,7 +264,13 @@ def validate(program, report, metrics):
         evidence.append({'row': row['row'], 'quad_bounds': [left, 154, right, bottom],
                          'line_count': binding['line_count']})
     popup_cases = []
-    for category, fade, selected in [(1, 0, i) for i in range(11)] + [(1, 128, 0), (1, 255, 0)] + [(i, 0, 0) for i in (0, 2, 3, 4)]:
+    coverage = report['shop_description_layout']['categories']
+    enabled = report['shop_description_layout']['background']['enabled_categories']
+    popup_inputs = [(c['category'], 0, i) for c in coverage
+                    for i in range(c['native_entry_count']) if c['category'] in enabled]
+    popup_inputs += [(category, fade, 0) for category in enabled for fade in (128, 255)]
+    popup_inputs += [(c['category'], 0, 0) for c in coverage if c['category'] not in enabled]
+    for category, fade, selected in popup_inputs:
         cpu = setup()
         cpu.write(0x8c1b20e4, category)
         cpu.write(0x8c1b20e0, selected)
@@ -247,18 +288,24 @@ def validate(program, report, metrics):
         cpu.run(BASE + 0x58b8e, stop=BASE + 0x58b9c)
         assert cpu.r[15] == 0x8cf00000 and cpu.read(0x8c13d75c) == 1
         assert cpu.r[4] == 255 - fade
-        if category != 1:
+        if category not in enabled:
             assert not backgrounds
             continue
         assert backgrounds == [{'vertices': [70, 150, 70, 402, 390, 402, 390, 150],
                                 'depth': 129, 'color': ((255 - fade) << 24) | 0x101010}]
-        cpu.run(BASE + 0x58b9c, stop=BASE + 0x58bf0, limit=3000000)
+        row = coverage[category]['description_rows'][selected]
+        binding = report['bindings'][row - 1]
+        cpu.run(BASE + 0x58b9c, stop=BASE + 0x58bec)
+        cpu.run(BASE + 0x58bec, stop=BASE + 0x6090)
+        assert cpu.r[4] == BASE + binding['target_file_offset'], (category, selected, row)
+        cpu.run(BASE + 0x6090, stop=BASE + 0x58bf0, limit=3000000)
         assert cpu.r[15] == 0x8cf00000
         assert 70 <= min(min(v) for v in cpu.vertices) <= max(max(v) for v in cpu.vertices) <= 390
-        text = report['layout_overrides'][str(324 + selected)]
+        text = report['layout_overrides'][str(row)]
         assert cpu.read_float(0x8c34e0c8) == 154 + 22 * (len(text.split('\n')) - 1)
         assert cpu.read_float(0x8c34e0c8) + (0 if text.endswith('\n') else 19) <= 402
-        popup_cases.append({'row': 324 + selected, 'fade': fade, 'bounds': [70, 150, 390, 402],
+        popup_cases.append({'category': category, 'category_name': coverage[category]['name'],
+                            'selected': selected, 'row': row, 'fade': fade, 'bounds': [70, 150, 390, 402],
                             'actual_native_caller_verified': True})
     measured = []
     for char in ('W', 'i', 'l', ' ', '\u3000'):
@@ -283,7 +330,8 @@ def validate(program, report, metrics):
     for char in sample:
         cpu.run(BASE + 0x6994, stop=BASE + 0x69cc, limit=100000)
     assert cpu.f[15] == 50 + width(sample) and len(cpu.vertices) == 4, (cpu.f[15], width(sample), cpu.vertices)
-    print('Shop: all 11 mode-3 descriptions fit; VWF drawing, measurement and scrolling verified.', flush=True)
+    print('Shop: {} descriptions fit; {} categories, native callers, fades and VWF verified.'.format(len(evidence), len(enabled)), flush=True)
     return {'descriptions': evidence, 'glyph_advances': measured,
-            'native_popup_cases': popup_cases, 'other_categories_no_background': 4,
+            'native_popup_cases': popup_cases, 'categories_with_background': enabled,
+            'other_categories_no_background': 5 - len(enabled),
             'scrolling_native_draw_verified': True, 'actual_Flycast_playtest': False}

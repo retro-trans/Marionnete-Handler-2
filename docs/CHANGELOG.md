@@ -1,5 +1,20 @@
 # Change log
 
+## 0.1.13 — descriptions across all shop categories — 2026-10-03
+
+- Extend the 0.1.12 help background to all five shop categories: Marionette
+  Units, Modification Parts, Weapons / Options, Maintenance Supplies and
+  Used Parts. Follow the existing shop-window position, fade and draw depth.
+- Read coverage from the game's native descriptor table: 24 selections refer
+  to 23 distinct descriptions. Wrap all 23, including Option from the user's
+  screenshot, within the same 300-pixel advance limit. Preserve every word,
+  punctuation mark, paragraph break and original storage length.
+- Verify every category selection through the actual shop caller, including
+  its description pointer, font setup, drawing bounds and three fade levels.
+  Retain the complete translation, Bizin font, six-pixel spaces and prior fixes.
+- Validate the rebuilt disc and cumulative Retro Trans Tools package. Fresh
+  Flycast visual checks of the new category coverage remain pending.
+
 ## 0.1.12 — shop description layout and spacing — 2026-10-03
 
 - Wrap all eleven English parts descriptions to a 300-pixel advance limit,

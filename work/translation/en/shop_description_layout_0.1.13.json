@@ -1,0 +1,342 @@
+{
+  "version": "0.1.13",
+  "language": "en",
+  "space_advance_px": 6,
+  "max_line_advance_px": 300,
+  "translations": [
+    {
+      "row": 312,
+      "id": "/1ST_READ.BIN:00132463",
+      "target": "Storm Gunner\nA standard-type unit.",
+      "line_advances": [
+        139,
+        241
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 313,
+      "id": "/1ST_READ.BIN:0013249b",
+      "target": "Shield Gunner\nA unit with excellent\ndefense.",
+      "line_advances": [
+        150,
+        236,
+        96
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 314,
+      "id": "/1ST_READ.BIN:001324d7",
+      "target": "Valkyrje\nA lightweight unit with\nexcellent performance in\naerial combat.",
+      "line_advances": [
+        98,
+        261,
+        278,
+        161
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 315,
+      "id": "/1ST_READ.BIN:00132516",
+      "target": "Doll\nA lightweight unit with\nexcellent mobility.",
+      "line_advances": [
+        50,
+        261,
+        223
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 316,
+      "id": "/1ST_READ.BIN:00132547",
+      "target": "Sniper\nA unit with excellent load\ncapacity.",
+      "line_advances": [
+        71,
+        292,
+        107
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 317,
+      "id": "/1ST_READ.BIN:00132578",
+      "target": "Gryps\nA highly agile unit that\nexcels in close combat.",
+      "line_advances": [
+        62,
+        265,
+        260
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 318,
+      "id": "/1ST_READ.BIN:001325b5",
+      "target": "White Hopper\nA rabbit-shaped unit with\nexcellent jumping\nability.",
+      "line_advances": [
+        141,
+        285,
+        201,
+        94
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 319,
+      "id": "/1ST_READ.BIN:00132669",
+      "target": "MAIN WEAPON (Main Weapon)\nA weapon for ranged\nattacks.",
+      "line_advances": [
+        293,
+        217,
+        95
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 320,
+      "id": "/1ST_READ.BIN:001326af",
+      "target": "SUB WEAPON (Sub Weapon)\nA weapon for close combat.",
+      "line_advances": [
+        268,
+        296
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 321,
+      "id": "/1ST_READ.BIN:001326ef",
+      "target": "Option\nAdditional equipment such\nas bombs, shields and\nexpansion batteries.",
+      "line_advances": [
+        74,
+        292,
+        237,
+        233
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 322,
+      "id": "/1ST_READ.BIN:0013274b",
+      "target": "Material\nUsed to strengthen a\nMarionette's frame and\nArmor. Stick materials\noffer high strength, while\nsheets resist special\nattacks.",
+      "line_advances": [
+        95,
+        224,
+        251,
+        250,
+        295,
+        238,
+        95
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 323,
+      "id": "/1ST_READ.BIN:00132805",
+      "target": "Maintenance Kit\n\nIncludes grease to keep\nmoving parts running\nsmoothly, and Repair Kits\nfor damaged parts. Perform\nregular maintenance to\nkeep your Marionette's\nperformance from\ndeclining.",
+      "line_advances": [
+        174,
+        0,
+        262,
+        230,
+        285,
+        299,
+        252,
+        252,
+        190,
+        118
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 324,
+      "id": "/1ST_READ.BIN:00132913",
+      "target": "CPU\nInterprets the program and\nsends commands to each\npart. The last three\nmodel-number digits\nindicate clock speed. If\nyou want to create complex\nprograms, choose a CPU\nwith the highest\nperformance you can.",
+      "line_advances": [
+        38,
+        296,
+        252,
+        220,
+        226,
+        272,
+        296,
+        250,
+        181,
+        230
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 325,
+      "id": "/1ST_READ.BIN:001329fb",
+      "target": "P-Card\nA card for storing\nprograms. Larger-capacity\ncards can store a greater\nnumber of Program Chips.\nRegulations allow you to\ncarry no more than four\nspare cards!\n",
+      "line_advances": [
+        74,
+        200,
+        294,
+        275,
+        274,
+        278,
+        254,
+        136,
+        0
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 326,
+      "id": "/1ST_READ.BIN:00132ad1",
+      "target": "Battery\nA hybrid battery that\nsupplies a Marionette's\nenergy. Its energy is\nconverted to electricity,\nbut is used directly as\nfuel when the Burner fires.\nIf you use the Burner\noften, choose a Battery\nwith high combustion\nefficiency.",
+      "line_advances": [
+        85,
+        237,
+        262,
+        233,
+        287,
+        253,
+        299,
+        230,
+        261,
+        232,
+        131
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 327,
+      "id": "/1ST_READ.BIN:00132bcd",
+      "target": "Motor\nThe main Motor that powers\na Marionette. The number in\nits model name indicates\nMotor power. More power\nenables more agile\nmovement, but low rotation\nspeed reduces top speed.",
+      "line_advances": [
+        62,
+        294,
+        299,
+        272,
+        265,
+        206,
+        300,
+        274
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 328,
+      "id": "/1ST_READ.BIN:00132caf",
+      "target": "Burner\nA Burner Set used for\njumping, acceleration and\ndeceleration. There are\nvarious types emphasizing\njumping,\nacceleration/deceleration\nor fuel economy. Choose\none that suits your\ntactics.",
+      "line_advances": [
+        71,
+        230,
+        288,
+        261,
+        291,
+        96,
+        299,
+        264,
+        211,
+        93
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 329,
+      "id": "/1ST_READ.BIN:00132d8d",
+      "target": "Balancer\nMemory containing a\nMarionette's\nposture-control patterns.\nThese patterns affect how\nlong each action takes to\ncomplete. Choose one to\nsuit the actions you want\nto prioritize.",
+      "line_advances": [
+        96,
+        219,
+        141,
+        294,
+        288,
+        280,
+        264,
+        279,
+        158
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 330,
+      "id": "/1ST_READ.BIN:00132e6c",
+      "target": "Damper\nAbsorbs shocks to the\nlegs. Greater rebound\nforce enables more agile\nmovements. Greater\ndamping absorbs shock to\nthe parts and reduces the\nmotions needed for\nlandings.\n",
+      "line_advances": [
+        74,
+        240,
+        240,
+        273,
+        211,
+        278,
+        277,
+        209,
+        107,
+        0
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 331,
+      "id": "/1ST_READ.BIN:00132f59",
+      "target": "Dash Gear\nA device for dash\nmovement. A lower gear\nratio provides a higher\ntop speed. A higher gear\nratio lowers top speed but\nreduces the time needed to\nreach it.",
+      "line_advances": [
+        103,
+        190,
+        251,
+        258,
+        266,
+        294,
+        291,
+        98
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 332,
+      "id": "/1ST_READ.BIN:0013302c",
+      "target": "Brake\nA gas brake for slowing\ndown during dash\nmovement. Three types are\navailable: Soft,\nIntermediate and Hard.\nSoft offers high braking\npower; Hard offers high\nwear resistance.",
+      "line_advances": [
+        61,
+        259,
+        185,
+        285,
+        185,
+        251,
+        275,
+        261,
+        183
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 333,
+      "id": "/1ST_READ.BIN:001330f5",
+      "target": "Radar\nDetects enemies,\nobstacles and other\nobjects. A wider\nenemy-detection range\nmakes enemies easier to\nfind. However, a narrow\nmarking range makes it\nharder to hit enemies, so\nkeep this in mind.",
+      "line_advances": [
+        61,
+        185,
+        219,
+        182,
+        249,
+        259,
+        259,
+        248,
+        274,
+        197
+      ],
+      "words_preserved": true
+    },
+    {
+      "row": 334,
+      "id": "/1ST_READ.BIN:001331bb",
+      "target": "Armor\nProtective plating\nagainst enemy attacks. You\nmust purchase Armor that\nfits the Marionette you\nwill use. Select that\nMarionette before making\nyour purchase.",
+      "line_advances": [
+        61,
+        212,
+        297,
+        272,
+        260,
+        233,
+        280,
+        161
+      ],
+      "words_preserved": true
+    }
+  ]
+}

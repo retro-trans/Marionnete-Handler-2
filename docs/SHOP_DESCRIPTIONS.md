@@ -1,4 +1,39 @@
-# Shop descriptions — 0.1.12
+# Shop descriptions — 0.1.13
+
+## All shop categories
+
+Build 0.1.13 applies the same native help background and wrapping to all five
+shop categories, including the Option description shown in the user's new
+screenshot. Coverage comes from the five native descriptors at `0x921d0`, each
+20 bytes long. Their description table pointers resolve to these reviewed rows:
+
+| Category | Description rows | Native selections |
+| --- | --- | --- |
+| Marionette Units | 312–318 | 7 |
+| Modification Parts | 324–334 | 11 |
+| Weapons / Options | 319–321 | 3 |
+| Maintenance Supplies | 322–323 | 2 |
+| Used Parts | 312 (shared existing descriptor) | 1 |
+
+There are 24 selections and 23 distinct descriptions. The existing shared
+mapping in the fifth descriptor is retained. The translated targets are in
+`work/translation/en/shop_description_layout_0.1.13.json`. Wrapping preserves
+all words, punctuation, leading/trailing newlines and paragraph breaks,
+including the blank line in Maintenance Kit. Headers are checked too.
+
+Every category uses the 320×252 native background at the shop window's position,
+with the existing fade and draw depth. All 24 selections are executed through
+the actual shop caller; additional cases test half and fully faded descriptions
+in each category. All 23 descriptions are also drawn through mode 3. Checks
+verify source-table coverage, compiled pointers and text bounds. Bizin glyph
+records and the six-pixel space remain unchanged from 0.1.12.
+
+Boot `work/output/english-0.1.13/Marionette Handler 2 English 0.1.13.gdi`
+from scratch. The cumulative Retro Trans Tools package is in
+`work/output/release-0.1.13/`. Native and disc verification are automated;
+fresh Flycast visual confirmation of the new coverage remains pending.
+
+## Original parts-only fix in 0.1.12
 
 The user's CPU screenshot shows the English description extending into the
 account card. The actual shop caller at executable offset `0x58b8e` selects

@@ -1,0 +1,840 @@
+{
+  "version": "0.1.13",
+  "reference": "shop-equipment-description-user-reference.png",
+  "reference_size": [
+    2560,
+    1369
+  ],
+  "font": "Bizin Gothic Bold",
+  "categories": [
+    {
+      "category": 0,
+      "name": "Marionette Units",
+      "description_rows": [
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318
+      ],
+      "description_table": 2350115972,
+      "native_entry_count": 7
+    },
+    {
+      "category": 1,
+      "name": "Modification Parts",
+      "description_rows": [
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334
+      ],
+      "description_table": 2350116088,
+      "native_entry_count": 11
+    },
+    {
+      "category": 2,
+      "name": "Weapons / Options",
+      "description_rows": [
+        319,
+        320,
+        321
+      ],
+      "description_table": 2350116056,
+      "native_entry_count": 3
+    },
+    {
+      "category": 3,
+      "name": "Maintenance Supplies",
+      "description_rows": [
+        322,
+        323
+      ],
+      "description_table": 2350116076,
+      "native_entry_count": 2
+    },
+    {
+      "category": 4,
+      "name": "Used Parts",
+      "description_rows": [
+        312
+      ],
+      "description_table": 2350115972,
+      "native_entry_count": 1
+    }
+  ],
+  "background": {
+    "caller_hook": 363408,
+    "enabled_categories": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_rect": [
+      7,
+      75,
+      327,
+      327
+    ],
+    "depth_above_window": 29,
+    "follows_help_fade": true
+  },
+  "max_line_advance_px": 300,
+  "native_validation": {
+    "descriptions": [
+      {
+        "row": 312,
+        "quad_bounds": [
+          10.0,
+          154,
+          257.0,
+          195.0
+        ],
+        "line_count": 2
+      },
+      {
+        "row": 313,
+        "quad_bounds": [
+          10.0,
+          154,
+          252.0,
+          217.0
+        ],
+        "line_count": 3
+      },
+      {
+        "row": 314,
+        "quad_bounds": [
+          10.0,
+          154,
+          295.0,
+          239.0
+        ],
+        "line_count": 4
+      },
+      {
+        "row": 315,
+        "quad_bounds": [
+          10.0,
+          154,
+          278.0,
+          217.0
+        ],
+        "line_count": 3
+      },
+      {
+        "row": 316,
+        "quad_bounds": [
+          10.0,
+          154,
+          308.0,
+          217.0
+        ],
+        "line_count": 3
+      },
+      {
+        "row": 317,
+        "quad_bounds": [
+          10.0,
+          154,
+          281.0,
+          217.0
+        ],
+        "line_count": 3
+      },
+      {
+        "row": 318,
+        "quad_bounds": [
+          10.0,
+          154,
+          302.0,
+          239.0
+        ],
+        "line_count": 4
+      },
+      {
+        "row": 319,
+        "quad_bounds": [
+          10.0,
+          154,
+          309.0,
+          217.0
+        ],
+        "line_count": 3
+      },
+      {
+        "row": 320,
+        "quad_bounds": [
+          10.0,
+          154,
+          312.0,
+          195.0
+        ],
+        "line_count": 2
+      },
+      {
+        "row": 321,
+        "quad_bounds": [
+          10.0,
+          154,
+          309.0,
+          239.0
+        ],
+        "line_count": 4
+      },
+      {
+        "row": 322,
+        "quad_bounds": [
+          10.0,
+          154,
+          312.0,
+          305.0
+        ],
+        "line_count": 7
+      },
+      {
+        "row": 323,
+        "quad_bounds": [
+          9.0,
+          154,
+          315.0,
+          371.0
+        ],
+        "line_count": 10
+      },
+      {
+        "row": 324,
+        "quad_bounds": [
+          9.0,
+          154,
+          312.0,
+          371.0
+        ],
+        "line_count": 10
+      },
+      {
+        "row": 325,
+        "quad_bounds": [
+          10.0,
+          154,
+          310.0,
+          327.0
+        ],
+        "line_count": 9
+      },
+      {
+        "row": 326,
+        "quad_bounds": [
+          9.0,
+          154,
+          315.0,
+          393.0
+        ],
+        "line_count": 11
+      },
+      {
+        "row": 327,
+        "quad_bounds": [
+          9.0,
+          154,
+          317.0,
+          327.0
+        ],
+        "line_count": 8
+      },
+      {
+        "row": 328,
+        "quad_bounds": [
+          9.0,
+          154,
+          316.0,
+          371.0
+        ],
+        "line_count": 10
+      },
+      {
+        "row": 329,
+        "quad_bounds": [
+          9.0,
+          154,
+          310.0,
+          349.0
+        ],
+        "line_count": 9
+      },
+      {
+        "row": 330,
+        "quad_bounds": [
+          9.0,
+          154,
+          294.0,
+          349.0
+        ],
+        "line_count": 10
+      },
+      {
+        "row": 331,
+        "quad_bounds": [
+          9.0,
+          154,
+          310.0,
+          327.0
+        ],
+        "line_count": 8
+      },
+      {
+        "row": 332,
+        "quad_bounds": [
+          9.0,
+          154,
+          302.0,
+          349.0
+        ],
+        "line_count": 9
+      },
+      {
+        "row": 333,
+        "quad_bounds": [
+          10.0,
+          154,
+          290.0,
+          371.0
+        ],
+        "line_count": 10
+      },
+      {
+        "row": 334,
+        "quad_bounds": [
+          10.0,
+          154,
+          314.0,
+          327.0
+        ],
+        "line_count": 8
+      }
+    ],
+    "glyph_advances": [
+      {
+        "character": "W",
+        "advance": 14
+      },
+      {
+        "character": "i",
+        "advance": 11
+      },
+      {
+        "character": "l",
+        "advance": 12
+      },
+      {
+        "character": " ",
+        "advance": 6
+      },
+      {
+        "character": "\u3000",
+        "advance": 15
+      }
+    ],
+    "native_popup_cases": [
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 0,
+        "row": 312,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 1,
+        "row": 313,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 2,
+        "row": 314,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 3,
+        "row": 315,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 4,
+        "row": 316,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 5,
+        "row": 317,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 6,
+        "row": 318,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 0,
+        "row": 324,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 1,
+        "row": 325,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 2,
+        "row": 326,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 3,
+        "row": 327,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 4,
+        "row": 328,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 5,
+        "row": 329,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 6,
+        "row": 330,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 7,
+        "row": 331,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 8,
+        "row": 332,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 9,
+        "row": 333,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 10,
+        "row": 334,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 2,
+        "category_name": "Weapons / Options",
+        "selected": 0,
+        "row": 319,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 2,
+        "category_name": "Weapons / Options",
+        "selected": 1,
+        "row": 320,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 2,
+        "category_name": "Weapons / Options",
+        "selected": 2,
+        "row": 321,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 3,
+        "category_name": "Maintenance Supplies",
+        "selected": 0,
+        "row": 322,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 3,
+        "category_name": "Maintenance Supplies",
+        "selected": 1,
+        "row": 323,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 4,
+        "category_name": "Used Parts",
+        "selected": 0,
+        "row": 312,
+        "fade": 0,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 0,
+        "row": 312,
+        "fade": 128,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 0,
+        "category_name": "Marionette Units",
+        "selected": 0,
+        "row": 312,
+        "fade": 255,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 0,
+        "row": 324,
+        "fade": 128,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 1,
+        "category_name": "Modification Parts",
+        "selected": 0,
+        "row": 324,
+        "fade": 255,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 2,
+        "category_name": "Weapons / Options",
+        "selected": 0,
+        "row": 319,
+        "fade": 128,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 2,
+        "category_name": "Weapons / Options",
+        "selected": 0,
+        "row": 319,
+        "fade": 255,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 3,
+        "category_name": "Maintenance Supplies",
+        "selected": 0,
+        "row": 322,
+        "fade": 128,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 3,
+        "category_name": "Maintenance Supplies",
+        "selected": 0,
+        "row": 322,
+        "fade": 255,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 4,
+        "category_name": "Used Parts",
+        "selected": 0,
+        "row": 312,
+        "fade": 128,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      },
+      {
+        "category": 4,
+        "category_name": "Used Parts",
+        "selected": 0,
+        "row": 312,
+        "fade": 255,
+        "bounds": [
+          70,
+          150,
+          390,
+          402
+        ],
+        "actual_native_caller_verified": true
+      }
+    ],
+    "categories_with_background": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "other_categories_no_background": 0,
+    "scrolling_native_draw_verified": true,
+    "actual_Flycast_playtest": false
+  },
+  "font_records_identical_to_0.1.12": true,
+  "actual_Flycast_playtest": false
+}
