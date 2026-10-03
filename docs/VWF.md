@@ -1,6 +1,8 @@
 # Variable-width font — test build 0.1.1
 
-Latest English build: **0.1.14**, with all 144 editor/palette help messages
+Latest English build: **0.1.15**, with compact equipment stat, type and
+maintenance display labels. See [equipment layout notes](EQUIPMENT_LAYOUT.md).
+It retains the **0.1.14** fixes for all 144 editor/palette help messages
 wrapped in a taller native tooltip. See [program help notes](PROGRAM_HELP.md).
 It retains the **0.1.13** wrapped descriptions and native help
 backgrounds across all five shop categories. In **0.1.12**, the earlier claim that all remaining fixed

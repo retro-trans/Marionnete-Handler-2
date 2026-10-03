@@ -1,5 +1,21 @@
 # Change log
 
+## 0.1.15 — equipment statistics and maintenance captions — 2026-10-03
+
+- Fit all sixteen equipment/program stat templates in their original label
+  columns. Use compact English display labels such as Attack, Ammo, Pwr Use,
+  and E.Use; retain every stat, positioning control and line break.
+- Fit all nine maintenance captions in the native 152-pixel buttons, including
+  Swap Parts, Clock Tune, Output Tune, Brake Tune, Reinforce and Lighten.
+- Use compact equipment-type names in the narrow comparison column. Retain
+  full reviewed translations in the original batch files and document each
+  display alias in the versioned equipment layout policy.
+- Verify native label bounds, five-digit numeric values and all 25 current/
+  selected main-weapon type combinations through the actual comparison callers.
+  Retain the 793 messages, Bizin font and all shop/editor help fixes.
+- Rebuild the test disc and cumulative Retro Trans Tools package. Fresh Flycast
+  visual checks remain pending.
+
 ## 0.1.14 — program editor help layout — 2026-10-03
 
 - Wrap all 144 distinct editor and chip-palette help messages to 320 pixels,

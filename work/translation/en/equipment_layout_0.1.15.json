@@ -1,0 +1,187 @@
+{
+  "version": "0.1.15",
+  "language": "en",
+  "scope": "Native equipment stat, comparison and maintenance display labels; full translations retained in batches",
+  "translations": [
+    {
+      "row": 208,
+      "full_translation": "Replace Parts",
+      "target": "Swap Parts",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 209,
+      "full_translation": "Clock Adjustment",
+      "target": "Clock Tune",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 210,
+      "full_translation": "Output Adjustment",
+      "target": "Output Tune",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 211,
+      "full_translation": "Brake Adjustment",
+      "target": "Brake Tune",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 212,
+      "full_translation": "Reinforcement",
+      "target": "Reinforce",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 213,
+      "full_translation": "Weight Reduction",
+      "target": "Lighten",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 214,
+      "full_translation": "Coloring",
+      "target": "Coloring",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 215,
+      "full_translation": "Maintenance",
+      "target": "Service",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 216,
+      "full_translation": "Repair",
+      "target": "Repair",
+      "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair."
+    },
+    {
+      "row": 740,
+      "full_translation": "@x200\nClock Rate:@x200\nCapacity:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nClock:@x200\nCap.:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 762,
+      "full_translation": "Normal",
+      "target": "Norm.",
+      "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic."
+    },
+    {
+      "row": 763,
+      "full_translation": "Light/Heat",
+      "target": "Lt/Ht",
+      "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic."
+    },
+    {
+      "row": 764,
+      "full_translation": "Electromagnetic",
+      "target": "EM",
+      "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic."
+    },
+    {
+      "row": 765,
+      "full_translation": "Electrical/Thermal",
+      "target": "E/Ht",
+      "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic."
+    },
+    {
+      "row": 766,
+      "full_translation": "Super-electromagnetic",
+      "target": "S-EM",
+      "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic."
+    },
+    {
+      "row": 767,
+      "full_translation": "@x200\nCartridge:@x200\nRange:@x200\nWeight:",
+      "target": "@x200\nCart.:@x200\nRange:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 768,
+      "full_translation": "@x200\nType:@x200\nAttack Power:@x200\nAmmo Count:@x200\nWeight:",
+      "target": "@x200\nType:@x200\nAttack:@x200\nAmmo:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 769,
+      "full_translation": "@x200\nType:@x200\nAttack Power:@x200\nReach:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nType:@x200\nAttack:@x200\nReach:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 770,
+      "full_translation": "@x200\nType:@x200\nAttack Power:@x200\nDefense:@x200\nUses:@x200\nEnergy:@x200\nWeight:",
+      "target": "@x200\nType:@x200\nAttack:@x200\nDefense:@x200\nUses:@x200\nEnergy:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 771,
+      "full_translation": "@x200\nClock Rate:@x200\nMovement Processing:@x200\nAttack Processing:@x200\nEnemy Search Processing:@x200\nBranch Processing:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nClock:@x200\nMove Pr:@x200\nAtk Pr.:@x200\nScan Pr.:@x200\nBr. Pr.:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 772,
+      "full_translation": "@x200\nClock Rate:@x200\nCapacity:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nClock:@x200\nCap.:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 773,
+      "full_translation": "@x200\nElectrical Capacity:@x200\nCombustion Efficiency:@x200\nWeight:",
+      "target": "@x200\nElecCap:@x200\nFuelEff:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 774,
+      "full_translation": "@x200\nTorque:@x200\nRotational Speed:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nTorque:@x200\nSpin:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 775,
+      "full_translation": "@x200\nOutput:@x200\nMaximum Output:@x200\nEnergy Consumption:\n@x200\nMaximum Energy Consumption:\n@x200\nWeight:",
+      "target": "@x200\nOutput:@x200\nMax Out:@x200\nE.Use:\n@x200\nMax Use:\n@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 776,
+      "full_translation": "@x200\nType:@x200\nWeight:",
+      "target": "@x200\nType:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 777,
+      "full_translation": "@x200\nRebound Force:@x200\nDamping Force:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nRebound:@x200\nDamping:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 778,
+      "full_translation": "@x200\nGear Ratio:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nGear:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 779,
+      "full_translation": "@x200\nType:@x200\nBraking Force:@x200\nWear Resistance:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nType:@x200\nBrake:@x200\nWearRes:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 780,
+      "full_translation": "@x200\nEnemy Search Angle:@x200\nEnemy Search Range:@x200\nMark Angle:@x200\nMark Range:@x200\nPower Consumption:@x200\nWeight:",
+      "target": "@x200\nScanArc:@x200\nScanRng:@x200\nMarkArc:@x200\nMarkRng:@x200\nPwr Use:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    },
+    {
+      "row": 781,
+      "full_translation": "@x200\nCompatible Types:@x200\n\nImpact Resistance:@x200\nHeat Resistance:@x200\nElectromagnetic Resistance:@x200\nWeight:",
+      "target": "@x200\nFits:@x200\n\nHit Res:@x200\nHeatRes:@x200\nEM Res:@x200\nWeight:",
+      "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained."
+    }
+  ]
+}

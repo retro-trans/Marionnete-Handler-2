@@ -6,6 +6,7 @@ from pathlib import Path
 
 import bizin_font
 import font_disc
+import equipment_layout as equipment
 import program_help_layout as help_layout
 import shop_account_ui as ui
 import shop_description_layout as descriptions
@@ -19,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--build', action='store_true')
     parser.add_argument('--validate', action='store_true')
-    parser.add_argument('--version', choices=['0.1.11', '0.1.12', '0.1.13', '0.1.14'], default='0.1.14')
+    parser.add_argument('--version', choices=['0.1.11', '0.1.12', '0.1.13', '0.1.14', '0.1.15'], default='0.1.15')
     args = parser.parse_args()
     disc = Disc()
     entry = next(e for e in disc.files if e['path'] == '/1ST_READ.BIN')
@@ -30,10 +31,12 @@ def main():
     payload, report['font_asset'] = bizin_font.asset(target)
     baseline_payload, _ = bizin_font.asset(base)
     assert payload == baseline_payload, 'Account translation changed font glyph records'
-    if args.version in ('0.1.12', '0.1.13', '0.1.14'):
-        target = descriptions.plan(original, target, report, '0.1.13' if args.version == '0.1.14' else args.version)
-    if args.version == '0.1.14':
+    if args.version in ('0.1.12', '0.1.13', '0.1.14', '0.1.15'):
+        target = descriptions.plan(original, target, report, '0.1.13' if args.version in ('0.1.14', '0.1.15') else args.version)
+    if args.version in ('0.1.14', '0.1.15'):
         target = help_layout.plan(original, target, report)
+    if args.version == '0.1.15':
+        target = equipment.plan(original, target, report)
     texture_entry, texture, metadata, before, after = ui.shop_plan(disc)
     report['ui_texture_patches'] = [metadata]
     print(json.dumps({'version': args.version, 'account_labels': report['account_ui_bindings'],
@@ -45,10 +48,12 @@ def main():
         report['font_validation']['vq_bizin_font'] = validate_vq(target, report, atlas, 'Bizin Gothic Bold')
         report['validation'] = validate(original, target, report, metrics)
         report['account_ui_validation'] = ui.validate_account(target, report, metrics)
-        if args.version in ('0.1.12', '0.1.13', '0.1.14'):
+        if args.version in ('0.1.12', '0.1.13', '0.1.14', '0.1.15'):
             report['shop_description_validation'] = descriptions.validate(target, report, metrics)
-        if args.version == '0.1.14':
+        if args.version in ('0.1.14', '0.1.15'):
             report['program_help_validation'] = help_layout.validate(target, report, metrics)
+        if args.version == '0.1.15':
+            report['equipment_validation'] = equipment.validate(target, report, metrics)
     if not args.build:
         print('Read-only plan; no test disc written.')
         return

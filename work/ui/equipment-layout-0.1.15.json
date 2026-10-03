@@ -1,0 +1,927 @@
+{
+  "version": "0.1.15",
+  "native_screen_size": [
+    640,
+    480
+  ],
+  "font": "Bizin Gothic Bold v0.0.4",
+  "renderer": "native proportional cached mode 1",
+  "screenshots": [
+    {
+      "file": "equipment-stats-user-reference.png",
+      "size": [
+        624,
+        505
+      ],
+      "status": "user-provided before reference; cropped screen"
+    },
+    {
+      "file": "equipment-comparison-user-reference.png",
+      "size": [
+        904,
+        409
+      ],
+      "status": "user-provided before reference; cropped screen"
+    },
+    {
+      "file": "equipment-subweapon-user-reference.png",
+      "size": [
+        1042,
+        481
+      ],
+      "status": "user-provided before reference; cropped screen"
+    },
+    {
+      "file": "maintenance-menu-user-reference.png",
+      "size": [
+        890,
+        931
+      ],
+      "status": "user-provided before reference; cropped screen"
+    }
+  ],
+  "maintenance_descriptor_file_offset": 574996,
+  "maintenance_button_width": 152,
+  "maintenance_text_inset_used_for_validation": 16,
+  "equipment_label_origin_relative_to_category_window": [
+    152,
+    32
+  ],
+  "comparison_test_fixture": {
+    "current_text_origin": [
+      172,
+      80
+    ],
+    "selected_text_origin": [
+      348,
+      80
+    ],
+    "synthetic_values_with_actual_native_callers": true
+  },
+  "layout": {
+    "entries": [
+      {
+        "row": 208,
+        "full_translation": "Replace Parts",
+        "target": "Swap Parts",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          117
+        ]
+      },
+      {
+        "row": 209,
+        "full_translation": "Clock Adjustment",
+        "target": "Clock Tune",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          118
+        ]
+      },
+      {
+        "row": 210,
+        "full_translation": "Output Adjustment",
+        "target": "Output Tune",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          129
+        ]
+      },
+      {
+        "row": 211,
+        "full_translation": "Brake Adjustment",
+        "target": "Brake Tune",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          116
+        ]
+      },
+      {
+        "row": 212,
+        "full_translation": "Reinforcement",
+        "target": "Reinforce",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          109
+        ]
+      },
+      {
+        "row": 213,
+        "full_translation": "Weight Reduction",
+        "target": "Lighten",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          84
+        ]
+      },
+      {
+        "row": 214,
+        "full_translation": "Coloring",
+        "target": "Coloring",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          98
+        ]
+      },
+      {
+        "row": 215,
+        "full_translation": "Maintenance",
+        "target": "Service",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          83
+        ]
+      },
+      {
+        "row": 216,
+        "full_translation": "Repair",
+        "target": "Repair",
+        "note": "Compact maintenance caption; Clock Tune refers to CPU tuning, Service retains maintenance distinct from Repair.",
+        "line_advances": [
+          72
+        ]
+      },
+      {
+        "row": 740,
+        "full_translation": "@x200\nClock Rate:@x200\nCapacity:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nClock:@x200\nCap.:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          73,
+          58,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 762,
+        "full_translation": "Normal",
+        "target": "Norm.",
+        "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic.",
+        "line_advances": [
+          60
+        ]
+      },
+      {
+        "row": 763,
+        "full_translation": "Light/Heat",
+        "target": "Lt/Ht",
+        "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic.",
+        "line_advances": [
+          60
+        ]
+      },
+      {
+        "row": 764,
+        "full_translation": "Electromagnetic",
+        "target": "EM",
+        "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic.",
+        "line_advances": [
+          25
+        ]
+      },
+      {
+        "row": 765,
+        "full_translation": "Electrical/Thermal",
+        "target": "E/Ht",
+        "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic.",
+        "line_advances": [
+          48
+        ]
+      },
+      {
+        "row": 766,
+        "full_translation": "Super-electromagnetic",
+        "target": "S-EM",
+        "note": "Compact equipment type: Norm.=Normal; Lt/Ht=Light/Heat; EM=Electromagnetic; E/Ht=Electrical/Thermal; S-EM=Super-electromagnetic.",
+        "line_advances": [
+          49
+        ]
+      },
+      {
+        "row": 767,
+        "full_translation": "@x200\nCartridge:@x200\nRange:@x200\nWeight:",
+        "target": "@x200\nCart.:@x200\nRange:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          68,
+          72,
+          84
+        ]
+      },
+      {
+        "row": 768,
+        "full_translation": "@x200\nType:@x200\nAttack Power:@x200\nAmmo Count:@x200\nWeight:",
+        "target": "@x200\nType:@x200\nAttack:@x200\nAmmo:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          61,
+          84,
+          62,
+          84
+        ]
+      },
+      {
+        "row": 769,
+        "full_translation": "@x200\nType:@x200\nAttack Power:@x200\nReach:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nType:@x200\nAttack:@x200\nReach:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          61,
+          84,
+          71,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 770,
+        "full_translation": "@x200\nType:@x200\nAttack Power:@x200\nDefense:@x200\nUses:@x200\nEnergy:@x200\nWeight:",
+        "target": "@x200\nType:@x200\nAttack:@x200\nDefense:@x200\nUses:@x200\nEnergy:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          61,
+          84,
+          96,
+          58,
+          83,
+          84
+        ]
+      },
+      {
+        "row": 771,
+        "full_translation": "@x200\nClock Rate:@x200\nMovement Processing:@x200\nAttack Processing:@x200\nEnemy Search Processing:@x200\nBranch Processing:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nClock:@x200\nMove Pr:@x200\nAtk Pr.:@x200\nScan Pr.:@x200\nBr. Pr.:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          73,
+          91,
+          88,
+          98,
+          84,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 772,
+        "full_translation": "@x200\nClock Rate:@x200\nCapacity:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nClock:@x200\nCap.:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          73,
+          58,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 773,
+        "full_translation": "@x200\nElectrical Capacity:@x200\nCombustion Efficiency:@x200\nWeight:",
+        "target": "@x200\nElecCap:@x200\nFuelEff:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          96,
+          96,
+          84
+        ]
+      },
+      {
+        "row": 774,
+        "full_translation": "@x200\nTorque:@x200\nRotational Speed:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nTorque:@x200\nSpin:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          84,
+          58,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 775,
+        "full_translation": "@x200\nOutput:@x200\nMaximum Output:@x200\nEnergy Consumption:\n@x200\nMaximum Energy Consumption:\n@x200\nWeight:",
+        "target": "@x200\nOutput:@x200\nMax Out:@x200\nE.Use:\n@x200\nMax Use:\n@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          84,
+          91,
+          68,
+          0,
+          90,
+          0,
+          84
+        ]
+      },
+      {
+        "row": 776,
+        "full_translation": "@x200\nType:@x200\nWeight:",
+        "target": "@x200\nType:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          61,
+          84
+        ]
+      },
+      {
+        "row": 777,
+        "full_translation": "@x200\nRebound Force:@x200\nDamping Force:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nRebound:@x200\nDamping:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          98,
+          97,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 778,
+        "full_translation": "@x200\nGear Ratio:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nGear:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          58,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 779,
+        "full_translation": "@x200\nType:@x200\nBraking Force:@x200\nWear Resistance:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nType:@x200\nBrake:@x200\nWearRes:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          61,
+          71,
+          96,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 780,
+        "full_translation": "@x200\nEnemy Search Angle:@x200\nEnemy Search Range:@x200\nMark Angle:@x200\nMark Range:@x200\nPower Consumption:@x200\nWeight:",
+        "target": "@x200\nScanArc:@x200\nScanRng:@x200\nMarkArc:@x200\nMarkRng:@x200\nPwr Use:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          94,
+          96,
+          95,
+          97,
+          90,
+          84
+        ]
+      },
+      {
+        "row": 781,
+        "full_translation": "@x200\nCompatible Types:@x200\n\nImpact Resistance:@x200\nHeat Resistance:@x200\nElectromagnetic Resistance:@x200\nWeight:",
+        "target": "@x200\nFits:@x200\n\nHit Res:@x200\nHeatRes:@x200\nEM Res:@x200\nWeight:",
+        "note": "Compact stat labels in the original columns. Pr.=Processing, Pwr Use=Power Consumption, Spin=Rotational Speed, Fuel Eff=Combustion Efficiency, Scan=Enemy Search, Hit Res=Impact Resistance. Original positioning controls and line breaks retained.",
+        "line_advances": [
+          0,
+          57,
+          0,
+          88,
+          95,
+          78,
+          84
+        ]
+      }
+    ],
+    "stat_rows": [
+      740,
+      767,
+      768,
+      769,
+      770,
+      771,
+      772,
+      773,
+      774,
+      775,
+      776,
+      777,
+      778,
+      779,
+      780,
+      781
+    ],
+    "menu_rows": [
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216
+    ],
+    "type_rows": [
+      762,
+      763,
+      764,
+      765,
+      766
+    ],
+    "menu_button_width": 152,
+    "stat_label_max_advance": 98,
+    "type_max_advance": 64,
+    "native_value_field_widths": [
+      180,
+      80
+    ],
+    "native_controls_preserved": true
+  },
+  "validation": {
+    "labels": [
+      {
+        "row": 208,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          138.0,
+          19.0
+        ]
+      },
+      {
+        "row": 209,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          139.0,
+          19.0
+        ]
+      },
+      {
+        "row": 210,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          150.0,
+          19.0
+        ]
+      },
+      {
+        "row": 211,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          137.0,
+          19.0
+        ]
+      },
+      {
+        "row": 212,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          130.0,
+          19.0
+        ]
+      },
+      {
+        "row": 213,
+        "quad_bounds": [
+          13.0,
+          0.0,
+          105.0,
+          19.0
+        ]
+      },
+      {
+        "row": 214,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          118.0,
+          19.0
+        ]
+      },
+      {
+        "row": 215,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          104.0,
+          19.0
+        ]
+      },
+      {
+        "row": 216,
+        "quad_bounds": [
+          14.0,
+          0.0,
+          93.0,
+          19.0
+        ]
+      },
+      {
+        "row": 740,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          94.0,
+          107.0
+        ]
+      },
+      {
+        "row": 762,
+        "quad_bounds": [
+          18.0,
+          0.0,
+          84.0,
+          19.0
+        ]
+      },
+      {
+        "row": 763,
+        "quad_bounds": [
+          17.0,
+          0.0,
+          84.0,
+          19.0
+        ]
+      },
+      {
+        "row": 764,
+        "quad_bounds": [
+          53.0,
+          0.0,
+          84.0,
+          19.0
+        ]
+      },
+      {
+        "row": 765,
+        "quad_bounds": [
+          30.0,
+          0.0,
+          84.0,
+          19.0
+        ]
+      },
+      {
+        "row": 766,
+        "quad_bounds": [
+          29.0,
+          0.0,
+          84.0,
+          19.0
+        ]
+      },
+      {
+        "row": 767,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          88.0,
+          85.0
+        ]
+      },
+      {
+        "row": 768,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          88.0,
+          107.0
+        ]
+      },
+      {
+        "row": 769,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          94.0,
+          129.0
+        ]
+      },
+      {
+        "row": 770,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          100.0,
+          151.0
+        ]
+      },
+      {
+        "row": 771,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          102.0,
+          173.0
+        ]
+      },
+      {
+        "row": 772,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          94.0,
+          107.0
+        ]
+      },
+      {
+        "row": 773,
+        "quad_bounds": [
+          -3.0,
+          22.0,
+          100.0,
+          85.0
+        ]
+      },
+      {
+        "row": 774,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          94.0,
+          107.0
+        ]
+      },
+      {
+        "row": 775,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          95.0,
+          173.0
+        ]
+      },
+      {
+        "row": 776,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          88.0,
+          63.0
+        ]
+      },
+      {
+        "row": 777,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          102.0,
+          107.0
+        ]
+      },
+      {
+        "row": 778,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          94.0,
+          85.0
+        ]
+      },
+      {
+        "row": 779,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          100.0,
+          129.0
+        ]
+      },
+      {
+        "row": 780,
+        "quad_bounds": [
+          -2.0,
+          22.0,
+          101.0,
+          151.0
+        ]
+      },
+      {
+        "row": 781,
+        "quad_bounds": [
+          -3.0,
+          22.0,
+          99.0,
+          151.0
+        ]
+      }
+    ],
+    "numeric_value_cases": [
+      {
+        "value": 0,
+        "quad_bounds": [
+          166.0,
+          0.0,
+          185.0,
+          19.0
+        ]
+      },
+      {
+        "value": 130,
+        "quad_bounds": [
+          141.0,
+          0.0,
+          185.0,
+          19.0
+        ]
+      },
+      {
+        "value": 250,
+        "quad_bounds": [
+          142.0,
+          0.0,
+          185.0,
+          19.0
+        ]
+      },
+      {
+        "value": 1000,
+        "quad_bounds": [
+          119.0,
+          0.0,
+          185.0,
+          19.0
+        ]
+      },
+      {
+        "value": 65535,
+        "quad_bounds": [
+          108.0,
+          0.0,
+          184.0,
+          19.0
+        ]
+      }
+    ],
+    "native_main_weapon_comparisons": [
+      {
+        "current_type": 0,
+        "selected_type": 0,
+        "current_right": 356.0,
+        "selected_left": 389.0
+      },
+      {
+        "current_type": 0,
+        "selected_type": 1,
+        "current_right": 356.0,
+        "selected_left": 366.0
+      },
+      {
+        "current_type": 0,
+        "selected_type": 2,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 0,
+        "selected_type": 3,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 0,
+        "selected_type": 4,
+        "current_right": 356.0,
+        "selected_left": 401.0
+      },
+      {
+        "current_type": 1,
+        "selected_type": 0,
+        "current_right": 356.0,
+        "selected_left": 389.0
+      },
+      {
+        "current_type": 1,
+        "selected_type": 1,
+        "current_right": 356.0,
+        "selected_left": 366.0
+      },
+      {
+        "current_type": 1,
+        "selected_type": 2,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 1,
+        "selected_type": 3,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 1,
+        "selected_type": 4,
+        "current_right": 356.0,
+        "selected_left": 401.0
+      },
+      {
+        "current_type": 2,
+        "selected_type": 0,
+        "current_right": 356.0,
+        "selected_left": 389.0
+      },
+      {
+        "current_type": 2,
+        "selected_type": 1,
+        "current_right": 356.0,
+        "selected_left": 366.0
+      },
+      {
+        "current_type": 2,
+        "selected_type": 2,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 2,
+        "selected_type": 3,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 2,
+        "selected_type": 4,
+        "current_right": 356.0,
+        "selected_left": 401.0
+      },
+      {
+        "current_type": 3,
+        "selected_type": 0,
+        "current_right": 356.0,
+        "selected_left": 389.0
+      },
+      {
+        "current_type": 3,
+        "selected_type": 1,
+        "current_right": 356.0,
+        "selected_left": 366.0
+      },
+      {
+        "current_type": 3,
+        "selected_type": 2,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 3,
+        "selected_type": 3,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 3,
+        "selected_type": 4,
+        "current_right": 356.0,
+        "selected_left": 401.0
+      },
+      {
+        "current_type": 4,
+        "selected_type": 0,
+        "current_right": 356.0,
+        "selected_left": 389.0
+      },
+      {
+        "current_type": 4,
+        "selected_type": 1,
+        "current_right": 356.0,
+        "selected_left": 366.0
+      },
+      {
+        "current_type": 4,
+        "selected_type": 2,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 4,
+        "selected_type": 3,
+        "current_right": 356.0,
+        "selected_left": 365.0
+      },
+      {
+        "current_type": 4,
+        "selected_type": 4,
+        "current_right": 356.0,
+        "selected_left": 401.0
+      }
+    ],
+    "all_template_controls_retained": true,
+    "actual_Flycast_playtest": false
+  }
+}

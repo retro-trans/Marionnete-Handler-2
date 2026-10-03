@@ -1,6 +1,8 @@
 # English translation — 0.1.4
 
-The latest test disc is **0.1.14**. It wraps all 144 editor/palette help
+The latest test disc is **0.1.15**. It fits equipment stat labels, comparison
+types and maintenance captions in the original columns and buttons.
+See [equipment layout notes](EQUIPMENT_LAYOUT.md). **0.1.14** wraps all 144 editor/palette help
 messages inside a taller native tooltip and keeps the box within the screen.
 See [program help notes](PROGRAM_HELP.md). **0.1.13** extends description wrapping and the
 native help background to all five shop categories, covering 23 distinct
