@@ -110,6 +110,8 @@ class CPU:
             r[n] += signed(op & 255, 8)
         elif high == 0xd:
             r[n] = self.read(((pc + 4) & ~3) + (op & 255) * 4)
+        elif high == 0x9:
+            r[n] = signed(self.read(pc + 4 + (op & 255) * 2,2),16)
         elif op & 0xff00 == 0xc700:
             r[0] = ((pc + 4) & ~3) + (op & 255) * 4
         elif op & 0xff00 == 0xc900:
@@ -158,6 +160,14 @@ class CPU:
             r[n] <<= {8:2, 0x18:8, 0x28:16}[op & 255]
         elif op & 0xf0ff in (0x4009, 0x4019, 0x4029):
             r[n] >>= {9:2, 0x19:8, 0x29:16}[op & 255]
+        elif high == 4 and low in (0xc,0xd):
+            shift=signed(r[m])
+            if shift>=0:
+                r[n] <<= shift&31
+            else:
+                amount=(-shift)&31
+                value=signed(r[n]) if low==0xc else r[n]
+                r[n]=value>>(amount or 32)
         elif high == 0x6:
             if low == 3:
                 r[n] = r[m]

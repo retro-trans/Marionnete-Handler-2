@@ -18,7 +18,7 @@ from build_full_english import validate
 from validate_vwf import CPU
 import bizin_font
 
-VERSION='0.1.8'
+VERSION='0.1.9'
 FONT_BYTES=0x200000
 VQ_BYTES=2048+1024*1024//4
 
@@ -242,7 +242,8 @@ def plan(original):
     free=[list(s) for s in report['allocation']['free_fragments']]
     changes=list(report['changed_regions'])
     helpers={}
-    for name,build in [('vq_upload',vq_upload),('bizin_loader',bizin_font.loader),
+    for name,build in [('vq_upload',vq_upload),('bizin_open_sectors',bizin_font.open_sectors),
+                       ('bizin_loader',lambda address:bizin_font.loader(address,BASE+helpers['bizin_open_sectors']['offset'])),
                        ('bizin_lookup',bizin_font.lookup),
                        ('initialize',lambda address:initialize(address,BASE+helpers['vq_upload']['offset'],BASE+helpers['bizin_loader']['offset'])),
                        ('coordinates',coordinates),('metrics',metrics)]:
@@ -299,6 +300,7 @@ def plan(original):
         'glyph_before':19,'glyph_after':38,'display_quad_pixels':19,
         'original_source_font':'Dreamcast BIOS bitmap',
         'source_font':'Bizin Gothic Bold v0.0.4',
+        'font_asset_access':'native gdFsOpenBySector; FAD '+str(bizin_font.FONT_LBA+150),
         'persistent_ram_added_bytes':FONT_BYTES,'temporary_upload_bytes':FONT_BYTES,
         'vram_texture_bytes':VQ_BYTES,'helpers':helpers,
         'compression':'native ARGB4444 VQ, fixed 256-entry codebook',
@@ -369,7 +371,7 @@ def validate_font(original,target,report,payload=None):
     def bios():
         cpu.r[0]=0x8c700000
     cpu.stubs.update({0x8c0151cc:cpu.wait,0x8c15cf2a:allocate,
-        0x8c16acd4:lambda:cpu.r.__setitem__(0,0xffffffff),
+        0x8c154f04:cpu.wait,
         0x8c1594ec:bios,
         0x8c16dc04:upload,0x8c16c1ca:lambda:cpu.r.__setitem__(0,1),
         0x8c15b892:cpu.wait,
@@ -379,7 +381,12 @@ def validate_font(original,target,report,payload=None):
             assert cpu.r[4:6]==[bizin_font.FONT_SOURCE,bizin_font.ASSET_BYTES]
             at=bizin_font.FONT_SOURCE-0x8c000000
             cpu.mem[at:at+len(payload)]=payload;cpu.r[0]=0
-        cpu.stubs.update({0x8c16acd4:cpu.wait,0x8c16ad34:read_font,0x8c16ad2c:cpu.wait})
+        def open_font():
+            assert cpu.r[4:6]==[bizin_font.FONT_LBA+150,(bizin_font.ASSET_BYTES+2047)//2048]
+            handle=0x8c600000
+            cpu.write(handle+76,1,2);cpu.write(handle+12,((bizin_font.ASSET_BYTES+2047)//2048)*2048)
+            cpu.r[0]=handle
+        cpu.stubs.update({0x8c154f04:open_font,0x8c16ad34:read_font,0x8c16ad2c:cpu.wait})
     cpu.mem[0x800000:0xa00000]=b'\xa5'*FONT_BYTES
     cpu.run(BASE+0x7820,limit=30000000)
     assert cpu.r[0]!=0 and cpu.r[15]==0x8cf00000
@@ -499,6 +506,7 @@ def main():
     p.add_argument('--validate',action='store_true')
     p.add_argument('--build',action='store_true')
     p.add_argument('--font-state',type=Path,help='Validate compression against a captured real BIOS font atlas')
+    p.add_argument('--loader-state',type=Path,help='Exercise native GDFS open/read/close using a captured 0.1.8 state')
     args=p.parse_args()
     disc=Disc();e=next(e for e in disc.files if e['path']=='/1ST_READ.BIN')
     original=disc.read(e['lba'],e['size'])
@@ -508,6 +516,9 @@ def main():
     print(json.dumps(report['font'],indent=2))
     if args.validate or args.build:
         report['font_validation']=validate_font(original,target,report,payload)
+        if args.loader_state:
+            from validate_font_loader import validate as validate_loader
+            report['font_validation']['native_loader_with_captured_GDFS']=validate_loader(args.loader_state)
         report['font_validation']['bizin'],atlas,cache_metrics=bizin_font.validate(target,report,payload)
         report['font_validation']['vq_patterns']=validate_vq(target,report)
         report['font_validation']['vq_bizin_font']=validate_vq(target,report,atlas,'generated Bizin Gothic Bold')

@@ -8,7 +8,7 @@ from pathlib import Path
 from inspect_disc_text import Disc
 
 
-def font_state(path):
+def read_ram(path):
     data=Path(path).read_bytes()
     offset=24+struct.unpack_from('<I',data,20)[0] if data[:8]==b'FLYSAVE1' else 0
     if data[offset:offset+8]!=b'#RZIPv\x01#':
@@ -29,6 +29,13 @@ def font_state(path):
         raise ValueError('Cannot uniquely locate game RAM')
     start=blob.index(signature)-0x10000
     ram=blob[start:start+0x1000000]
+    if len(ram)!=0x1000000:
+        raise ValueError('Captured RAM is truncated')
+    return ram
+
+
+def font_state(path):
+    ram=read_ram(path)
     def u(address):
         return struct.unpack_from('<I',ram,address-0x8c000000)[0]
     pointer=u(0x8c2cd63c)

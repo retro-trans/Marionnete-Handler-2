@@ -7,8 +7,9 @@ from PIL import Image,ImageDraw,ImageFont
 from build_english import prepare_native_cache
 from build_vwf import patched_conversion
 from sh4_patch import Assembler
+from font_disc import FONT_LBA
 
-FONT_SOURCE=0x8c30e644 # unused tail of the original atlas, beyond VQ scratch
+FONT_SOURCE=0x8c30e660 # 32-byte aligned tail of original atlas, beyond VQ scratch
 MAGIC=0x4e5a4942
 CACHED=613
 ASCII=95
@@ -53,7 +54,40 @@ def lookup(address):
     return a.finish()
 
 
-def loader(address):
+def open_sectors(address):
+    """Open the fixed font extent by FAD, independent of GDFS's current folder."""
+    a=Assembler(address)
+    a.emit(0x4f22,0x2f86)
+    a.load(4,FONT_LBA+150)
+    a.emit(0xe500|((ASSET_BYTES+2047)//2048))
+    a.load(0,0x8c154f04) # gdFsOpenBySector; native dispatcher
+    a.emit(0x400b,0x0009)
+    a.load(1,0x8c38f640)
+    a.emit(0x2102,0x2008)
+    a.branch(0x8900,'failed')
+    a.emit(0x6803,0x6483)
+    a.load(5,0x8c19feec)
+    a.load(0,0x8c15462c) # native handle file size
+    a.emit(0x400b,0x0009,0x2008)
+    a.branch(0x8900,'close_failed')
+    a.load(0,0x8c19fee4)
+    a.emit(0xe100,0x2012)
+    a.emit(0x1013,0x1014,0x1015,0x1016)
+    a.emit(0xe100|((ASSET_BYTES+2047)//2048),0x1011)
+    a.branch(0xa000,'done')
+    a.emit(0xe000)
+    a.label('close_failed')
+    a.emit(0x6483)
+    a.load(0,0x8c1545f4)
+    a.emit(0x400b,0x0009)
+    a.label('failed')
+    a.emit(0xe0fe)
+    a.label('done')
+    a.emit(0x68f6,0x4f26,0x000b,0x0009)
+    return a.finish()
+
+
+def loader(address,opener):
     a=Assembler(address)
     a.emit(0x4f22,0x2f86)
     a.load(8,FONT_SOURCE)
@@ -61,9 +95,7 @@ def loader(address):
     a.emit(0x6082,0x3010)
     a.branch(0x8900,'done')
     a.emit(0xe000,0x2802)
-    marker=0xc010c17c
-    a.load(4,marker)
-    a.load(0,0x8c16acd4)
+    a.load(0,opener)
     a.emit(0x400b,0x0009,0x4011)
     a.branch(0x8b00,'done')
     a.emit(0x6483)
@@ -87,8 +119,7 @@ def loader(address):
     a.emit(0xe000,0x2802)
     a.label('done')
     a.emit(0x68f6,0x4f26,0x000b,0x0009)
-    code=a.finish()
-    return code.replace(struct.pack('<I',marker),struct.pack('<I',address+len(code)))+b'\\ENFONT.BIN\0'
+    return a.finish()
 
 
 def covered_characters(data):
@@ -171,23 +202,23 @@ def validate(program,report,payload):
     cpu=CPU(program);events=[]
     entry=BASE+report['font']['helpers']['bizin_loader']['offset']
     def open_file():
-        pos=cpu.r[4]-0x8c000000
-        name=bytes(cpu.mem[pos:pos+12]).split(b'\0')[0]
-        assert name==b'\\ENFONT.BIN',name
-        events.append('open');cpu.r[0]=0
+        assert cpu.r[4:6]==[FONT_LBA+150,(ASSET_BYTES+2047)//2048]
+        handle=0x8c600000
+        cpu.write(handle+76,1,2);cpu.write(handle+12,((ASSET_BYTES+2047)//2048)*2048)
+        events.append('open');cpu.r[0]=handle
     def read_file():
         assert cpu.r[4:6]==[FONT_SOURCE,ASSET_BYTES]
         cpu.mem[FONT_SOURCE-0x8c000000:FONT_SOURCE-0x8c000000+len(payload)]=payload
         events.append('read');cpu.r[0]=0
     def close_file():events.append('close');cpu.r[0]=0
-    cpu.stubs.update({0x8c16acd4:open_file,0x8c16ad34:read_file,0x8c16ad2c:close_file})
+    cpu.stubs.update({0x8c154f04:open_file,0x8c16ad34:read_file,0x8c16ad2c:close_file})
     cpu.r[8]=0x12345678;cpu.run(entry)
     assert events==['open','read','close'] and cpu.r[8]==0x12345678 and cpu.r[15]==0x8cf00000
     cpu.pr=0x8cfffffc;cpu.run(entry);assert len(events)==3
     # Open failure, read failure and bad header cannot leave a valid font.
     for failure in ('open','read','header'):
         cpu.write(FONT_SOURCE,0)
-        cpu.stubs[0x8c16acd4]=lambda:cpu.r.__setitem__(0,0xffffffff if failure=='open' else 0)
+        cpu.stubs[0x8c154f04]=(lambda:cpu.r.__setitem__(0,0)) if failure=='open' else open_file
         def fail_read():
             read_file()
             if failure=='read':cpu.r[0]=0xffffffff

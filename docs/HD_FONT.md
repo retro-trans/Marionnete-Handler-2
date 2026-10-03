@@ -1,4 +1,4 @@
-# Embedded Bizin Gothic Bold — 0.1.8
+# Embedded Bizin Gothic Bold — 0.1.9
 
 The game now uses [Bizin Gothic Bold v0.0.4](https://github.com/yuru7/bizin-gothic)
 for the large cached font and editable-name glyphs. The original typeface was
@@ -7,7 +7,7 @@ sampling bug was corrected in 0.1.7. Bizin Gothic combines Inconsolata Latin
 characters with BIZ UD Gothic Japanese characters; this build uses the upstream
 Bold TTF, preserved unchanged with its source hashes and OFL notices.
 
-The game loads `/ENFONT.BIN` from the patched disc. It contains 613 cached glyph
+The game loads `/ENFONT.BIN` from its fixed patched-disc extent. It contains 613 cached glyph
 records, 95 editable ASCII records, and the font license notices. All 708
 characters are covered by the selected font. Latin glyphs are rasterized at 44
 pixels and the other characters at 35 pixels, fitted inside 38×38 cells. The
@@ -26,7 +26,15 @@ The persistent atlas and temporary upload buffer each use 2 MiB of RAM. Native
 ARGB4444 VQ compression keeps the video-memory texture at 264,192 bytes. The
 font records occupy 135,952 bytes in the unused tail of the original static
 atlas, beyond the compression scratch space, without another heap allocation.
-The loader uses the game's original file API and loads the records once.
+The loader opens FAD 549150 (LBA 549000) through the native GDFS sector-open
+dispatcher, initializes the stream globals and reads the records once through
+the game's original reader. Its buffer is 32-byte aligned for DMA. It works
+independently of the current GDFS directory.
+
+The user's 0.1.8 screenshot and saved state showed that its font records never
+loaded: that loader handed a full path to a basename-only lookup API. The
+compressed texture itself was valid but contained fallback BIOS glyphs. The
+earlier file-I/O simulation missed that integration defect. 0.1.9 corrects it.
 
 The ISO root directory gains one file entry in Track 3. Its data occupies
 guarded all-zero sectors at the end of Track 17. All original ISO entries keep
@@ -44,6 +52,15 @@ must survive compression with every pixel identical. All 793 messages, numeric
 compositions and aligned rendering are checked with the actual Bizin metrics.
 Platform file I/O, allocation, uploads and BIOS services are simulated.
 
+For stronger loader validation, add `--loader-state <0.1.8.state>` or run
+`python tools/validate_font_loader.py <0.1.8.state> --report`. This executes the
+actual GDFS dispatcher, handle allocation, size query, stream reader and close
+against the user's captured directory/device/handle structures. Only the
+physical sector transfer and leaf copy/division helpers are simulated. The
+check proves that all 135,952 bytes arrive intact, the native close releases the
+handle, the aligned bulk destination is correct and a repeated load reads
+nothing. The report saves no game RAM or Japanese scripts.
+
 The disc verifier reads the new font through its ISO entry, compares the patched
 executable, verifies every changed sector's EDC/ECC, proves other sectors are
 unchanged, and checks all 17 GDI track references. The release SDK reconstructs
@@ -53,7 +70,7 @@ both complete changed tracks and compares their hashes.
 in `work/ui/font-BIOS-vs-Bizin-Gothic-Bold-0.1.8.png`. It uses actual native glyph
 output and is labeled as a preview, rather than an in-game screenshot.
 
-Open `work/output/english-0.1.8/Marionette Handler 2 English 0.1.8.gdi` in Flycast
+Open `work/output/english-0.1.9/Marionette Handler 2 English 0.1.9.gdi` in Flycast
 and boot from scratch. An older save state restores the older renderer and font.
 No texture dump, custom texture pack or Flycast setting change is needed.
 Flycast appearance, file loading during startup, gameplay memory availability

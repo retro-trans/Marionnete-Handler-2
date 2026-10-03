@@ -1,0 +1,47 @@
+{
+  "saved_state_before": {
+    "save_state": "Marionette Handler 2 English 0.1.8.state",
+    "atlas_pointer": "0x8cbfff20",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "cache_count": 613,
+    "atlas_nonzero_pixels": 135636,
+    "texture_object": "0x8c1b6e58",
+    "hardware_size_bits": 63,
+    "hardware_texture_word": "0x500cc900",
+    "texture_bytes": 264192,
+    "vram_address": "0x664800",
+    "texture_status": "0x1",
+    "render_header_valid": true,
+    "bizin_header_before": "00000000000000000000000000000000",
+    "bizin_header_address_before": "0x8c30e644",
+    "font_asset_loaded_before": false
+  },
+  "native_GDFS_dispatcher": "0x8c154f04",
+  "native_GDFS_open_handle_and_size": true,
+  "native_stream_reader": true,
+  "native_close_frees_handle": true,
+  "asset_bytes_identical": true,
+  "current_directory_independent": true,
+  "DMA_destination_alignment": 32,
+  "physical_disc_reads_simulated": [
+    {
+      "sector_offset": 0,
+      "sectors": 1,
+      "destination": "0x8c3c90c0"
+    },
+    {
+      "sector_offset": 1,
+      "sectors": 65,
+      "destination": "0x8c30ee60"
+    },
+    {
+      "sector_offset": 66,
+      "sectors": 1,
+      "destination": "0x8c3c90c0"
+    }
+  ],
+  "target_program_sha256": "ffb9df594fcaea50cf2ddd01ba649560fae1db847a337a4b5fab7d6ce6f91b29"
+}

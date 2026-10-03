@@ -1,0 +1,32 @@
+{
+  "image": "top-menu-font-fallback-0.1.8.png",
+  "kind": "user_actual_Flycast_screenshot",
+  "build": "0.1.8",
+  "dimensions": [
+    640,
+    480
+  ],
+  "finding": "Menu and hint text still use the thin BIOS font. The corresponding saved state has no Bizin font records loaded.",
+  "related_state": "Marionette Handler 2 English 0.1.8.state",
+  "recorded_date": "2026-10-03",
+  "elements": [
+    {
+      "label": "top menu labels",
+      "bounds": [
+        43,
+        50,
+        163,
+        115
+      ]
+    },
+    {
+      "label": "selected-item hint",
+      "bounds": [
+        229,
+        91,
+        250,
+        62
+      ]
+    }
+  ]
+}

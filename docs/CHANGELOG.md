@@ -1,5 +1,23 @@
 # Change log
 
+## 0.1.9 — fix Bizin font loading — 2026-10-03
+
+- The user's actual 0.1.8 screenshot and Flycast state confirmed that Bizin
+  records never loaded; the valid compressed texture still contained BIOS ink.
+  The filename loader passed a full path to a basename lookup in the current
+  GDFS directory. Earlier checks simulated that API and missed this failure.
+- Open the font's fixed disc extent with the native GDFS sector-open dispatcher,
+  then initialize the game's stream state and use its existing reader/close.
+  Loading now works independently of the current directory. Align the font
+  buffer to 32 bytes for the native reader's DMA path.
+- Execute the real GDFS dispatcher, handle allocation, file-size query, stream
+  reader and close against the user's captured runtime structures. Simulate only
+  physical sector transfer, memory copying and integer division at their leaf
+  boundaries; verify every loaded asset byte and handle release.
+- Retain Bizin Gothic Bold, all 793 translations, the compact VQ atlas and the
+  two-track Retro Trans Tools format. Keep 0.1.8 as evidence of the loader defect.
+  The corrected build still needs a fresh Flycast boot and visual confirmation.
+
 ## 0.1.8 — embedded Bizin Gothic Bold — 2026-10-02
 
 - Replaced the large BIOS typeface with the user's selected Bizin Gothic Bold
