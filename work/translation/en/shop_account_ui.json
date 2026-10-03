@@ -1,0 +1,51 @@
+{
+  "language": "en",
+  "version": "0.1.11",
+  "scope": "Four labels in the user's shop and account screenshots, outside the original 793 records",
+  "translations": [
+    {
+      "id": "shop_buy",
+      "source": "購入",
+      "target": "Buy",
+      "file": "/DATAFILE/SHOP_00.PVR",
+      "rectangle": [180, 24, 212, 40]
+    },
+    {
+      "id": "shop_sell",
+      "source": "売却",
+      "target": "Sell",
+      "file": "/DATAFILE/SHOP_00.PVR",
+      "rectangle": [212, 24, 244, 40]
+    },
+    {
+      "id": "account_balance",
+      "source": "現在の残高",
+      "target": "Balance",
+      "file": "/1ST_READ.BIN",
+      "source_offset": 1301246,
+      "relative_pointer_literal": 371632,
+      "draw_start": 371454,
+      "draw_pointer_start": 371488,
+      "draw_end": 371500,
+      "x_literal": 371628,
+      "original_x": 24.0,
+      "target_x": 37.0,
+      "note": "Natural English account heading for the current balance. Center within the original 159-unit card."
+    },
+    {
+      "id": "account_wait",
+      "source": "待機中です",
+      "target": "Please wait.",
+      "file": "/1ST_READ.BIN",
+      "source_offset": 1301180,
+      "relative_pointer_literal": 370812,
+      "draw_start": 370728,
+      "draw_pointer_start": 370762,
+      "draw_end": 370774,
+      "x_literal": 370792,
+      "original_x": 18.0,
+      "target_x": 3.0,
+      "note": "Retain the complete waiting message; move it left to fit the original card."
+    }
+  ]
+}

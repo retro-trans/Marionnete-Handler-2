@@ -29,6 +29,17 @@ def change_sector(disc,path,lba,payload):
         stream.seek(offset);stream.write(regenerate(sector))
 
 
+def replace_file(disc,entry,path,content):
+    """Patch a same-length ISO asset, preserving its last-sector padding."""
+    assert len(content)==entry['size']
+    for offset in range(0,len(content),2048):
+        lba=entry['lba']+offset//2048
+        chunk=content[offset:offset+2048]
+        old=disc.read(lba,2048)
+        payload=chunk+old[len(chunk):]
+        if payload!=old:change_sector(disc,path,lba,payload)
+
+
 def embed(disc,payload,folder,track17,version):
     # Include the original notices with the glyph data inside the disc image.
     notices=b'\nFont source: Bizin Gothic Bold v0.0.4\nhttps://github.com/yuru7/bizin-gothic\n'
@@ -76,6 +87,11 @@ def verify(disc,entry,program,track3,track17,folder,report):
     font=next(e for e in files if e['path']=='/ENFONT.BIN')
     assert patched.read(font['lba'],font['size'])==(folder/'ENFONT.BIN').read_bytes()
     assert patched.read(entry['lba'],entry['size'])==program
+    textures=report.get('ui_texture_patches',[])
+    for texture in textures:
+        asset=old[texture['file']]
+        assert asset['lba']==texture['lba'] and asset['size']==texture['size']
+        assert hashlib.sha256(patched.read(asset['lba'],asset['size'])).hexdigest()==texture['target_sha256']
     summaries=[]
     for number,path in replacements.items():
         start,_,source=next(t for t in disc.tracks if int(__import__('re').search(r'Track (\d+)',t[2].name).group(1))==number)
@@ -97,7 +113,13 @@ def verify(disc,entry,program,track3,track17,folder,report):
                             offset=(lba-entry['lba'])*2048;chunk=program[offset:offset+2048]
                             assert second[16:16+len(chunk)]==chunk
                             assert second[16+len(chunk):2064]==first[16+len(chunk):2064]
-                        else:assert FONT_LBA<=lba<FONT_LBA+report['font_disc']['sectors']
+                        elif FONT_LBA<=lba<FONT_LBA+report['font_disc']['sectors']:
+                            pass
+                        else:
+                            asset=next((t for t in textures if t['lba']<=lba<t['lba']+(t['size']+2047)//2048),None)
+                            assert asset is not None,(number,lba)
+                            remaining=min(2048,asset['size']-(lba-asset['lba'])*2048)
+                            assert second[16+remaining:2064]==first[16+remaining:2064]
                 index+=len(a)//2352
         summaries.append({'track':number,'changed_sectors':len(changed),'changed_lbas':changed,
                           'unchanged_sectors_byte_identical':True,'EDC_ECC_verified':True,
@@ -108,5 +130,5 @@ def verify(disc,entry,program,track3,track17,folder,report):
         fields=shlex.split(row);number=int(fields[0]);path=(folder/fields[4]).resolve()
         expected=replacements.get(number,next(p for p in ROOT.glob('*Track*.bin') if int(__import__('re').search(r'Track (\d+)',p.name).group(1))==number))
         assert path==expected.resolve() and path.is_file()
-    print('Disc verification: font file, original ISO entries, both changed tracks and 17 GDI references passed.',flush=True)
+    print('Disc verification: font, UI assets, original ISO entries, both changed tracks and 17 GDI references passed.',flush=True)
     return {'tracks':summaries,'original_files_preserved':len(old),'gdi_references_verified':17}

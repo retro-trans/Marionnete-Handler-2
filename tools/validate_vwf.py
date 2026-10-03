@@ -250,6 +250,8 @@ class CPU:
                 self.f[n] = f32(self.fpul)
             elif low == 0xd and m == 3:
                 self.fpul = int(self.f[n])
+            elif low == 0xd and m == 4:
+                self.f[n] = f32(-self.f[n])
             elif low == 0xd and m == 8:
                 self.f[n] = 0.0
             elif low == 0xd and m == 9:

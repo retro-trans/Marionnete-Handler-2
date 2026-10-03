@@ -1,0 +1,105 @@
+{
+  "version": "0.1.11",
+  "references": [
+    {
+      "screenshot": "shop-buy-sell-user-reference.png",
+      "size": [
+        432,
+        432
+      ],
+      "coordinate_basis": "cropped user screenshot; approximate text bounds",
+      "labels": [
+        {
+          "id": "shop_buy",
+          "bounds": [
+            188,
+            193,
+            277,
+            236
+          ],
+          "target": "Buy"
+        },
+        {
+          "id": "shop_sell",
+          "bounds": [
+            188,
+            266,
+            277,
+            307
+          ],
+          "target": "Sell"
+        }
+      ]
+    },
+    {
+      "screenshot": "account-balance-wait-user-reference.png",
+      "size": [
+        530,
+        615
+      ],
+      "coordinate_basis": "cropped user screenshot; approximate text bounds",
+      "labels": [
+        {
+          "id": "account_balance",
+          "bounds": [
+            96,
+            317,
+            354,
+            362
+          ],
+          "target": "Balance"
+        },
+        {
+          "id": "account_wait",
+          "bounds": [
+            80,
+            489,
+            331,
+            534
+          ],
+          "target": "Please wait."
+        }
+      ]
+    }
+  ],
+  "native_texture_slots": {
+    "file": "/DATAFILE/SHOP_00.PVR",
+    "size": [
+      256,
+      256
+    ],
+    "shop_buy": [
+      180,
+      24,
+      212,
+      40
+    ],
+    "shop_sell": [
+      212,
+      24,
+      244,
+      40
+    ]
+  },
+  "native_account_card": {
+    "left_x": 0,
+    "right_x": 159,
+    "width_literal_offset": "0x5a3f8",
+    "account_balance": {
+      "x": 37,
+      "source_text_offset": "0x13dafe",
+      "relative_pointer_literal": "0x5abb0"
+    },
+    "account_wait": {
+      "x": 3,
+      "source_text_offset": "0x13dabc",
+      "relative_pointer_literal": "0x5a87c"
+    }
+  },
+  "preview": "shop-labels-English-0.1.11.png",
+  "preview_type": "original and translated native atlas slots; not an emulator screenshot",
+  "translation_file": "work/translation/en/shop_account_ui.json",
+  "validation_report": "work/ui/english_0.1.11_inventory.json",
+  "texture_replacement": false,
+  "actual_Flycast_playtest": false
+}

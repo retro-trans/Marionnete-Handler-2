@@ -1,5 +1,12 @@
 # English translation — 0.1.4
 
+The latest test disc is **0.1.11**. It retains the 793 records described below
+and adds four shop/account labels from the user's screenshots: Buy, Sell,
+Balance and Please wait. The account labels add two native text records; Buy
+and Sell are edited directly in the native PVR atlas. This is 797 reviewed
+translation units across the original inventory and the new screenshot scope,
+not a census of all game text. See [shop/account notes](SHOP_ACCOUNT_UI.md).
+
 **All 793 inventoried game records are translated into English (100%).**
 This release adds the remaining 633 records to the earlier 160. It includes
 menus, programming help, training labels, equipment statistics, battle results,

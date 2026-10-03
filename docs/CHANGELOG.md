@@ -1,5 +1,22 @@
 # Change log
 
+## 0.1.11 — shop and account labels — 2026-10-03
+
+- Translate the four labels in the user's screenshots: Buy, Sell, Balance
+  (current account balance), and Please wait. These are additional to the
+  original 793 reviewed records; two were baked into artwork and two were in
+  a separate account string pool.
+- Render Buy and Sell with Bizin Gothic Bold inside the original SHOP_00.PVR
+  atlas slots. Preserve its ARGB4444 format, transparency, file length, header
+  and every pixel outside those two rectangles. No emulator texture pack.
+- Store complete account labels in a verified free text bank and retarget the
+  two native relative-address literals. Center Balance and place Please wait.
+  within the original card. Preserve money rendering and other account states.
+- Retain all 793 English records, VWF, embedded Bizin Bold and the corrected
+  lowercase t. Verify native account callers, glyph advances, raw disc integrity
+  and the cumulative two-track Retro Trans Tools package. Flycast visual checks
+  remain pending after a fresh boot.
+
 ## 0.1.10 — improve lowercase t — 2026-10-03
 
 - The user's MARCS menu screenshot shows the Bizin bold font loading, and

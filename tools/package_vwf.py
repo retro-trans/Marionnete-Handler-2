@@ -76,6 +76,8 @@ def main():
             'Boot the patched disc from scratch; an older save state restores old code.\n'
             'Embedded font: Bizin Gothic Bold v0.0.4. No Flycast texture pack required.\n'
             'https://github.com/yuru7/bizin-gothic\n'
+            + ('Includes native shop artwork labels Buy/Sell and account labels Balance/Please wait.\n'
+               if report.get('additional_ui_labels') else '') +
             'Native glyph/disc checks passed; Flycast gameplay remains unverified.\n',encoding='utf-8')
         sums=['{}  {}'.format(sha256_file(p),p.name) for p in sorted(output.iterdir()) if p.name!='SHA256SUMS.txt']
         (output/'SHA256SUMS.txt').write_text('\n'.join(sums)+'\n',encoding='utf-8')
