@@ -1,0 +1,73 @@
+{
+  "version": "0.1.16",
+  "screenshots": [
+    {
+      "file": "work/ui/parts-radar-user-reference.png",
+      "pixel_size": [
+        2560,
+        1369
+      ],
+      "status": "user screenshot from earlier build or restored state; before reference"
+    },
+    {
+      "file": "work/ui/parts-armor-user-reference.png",
+      "pixel_size": [
+        2560,
+        1369
+      ],
+      "status": "user screenshot from earlier build or restored state; before reference"
+    },
+    {
+      "file": "work/ui/clock-options-user-reference.png",
+      "pixel_size": [
+        873,
+        476
+      ],
+      "status": "user screenshot from earlier build or restored state; before reference"
+    },
+    {
+      "file": "work/ui/settings-menu-user-reference.png",
+      "pixel_size": [
+        865,
+        665
+      ],
+      "status": "user screenshot from earlier build or restored state; before reference"
+    }
+  ],
+  "native_menus": [
+    {
+      "id": "settings",
+      "descriptor_file_offset": 574756,
+      "rows": [
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205
+      ],
+      "button_width": 190,
+      "row_height": 22,
+      "text_inset": 16
+    },
+    {
+      "id": "clock",
+      "descriptor_file_offset": 575436,
+      "rows": [
+        299,
+        300,
+        301
+      ],
+      "button_width": 186,
+      "row_height": 22,
+      "text_inset": 16
+    }
+  ],
+  "parts_coverage": {
+    "radar_row": 780,
+    "armor_row": 781,
+    "included_since": "0.1.15"
+  },
+  "actual_Flycast_playtest": false
+}

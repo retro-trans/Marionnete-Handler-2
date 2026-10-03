@@ -1,5 +1,17 @@
 # Change log
 
+## 0.1.16 — Settings and Clock captions — 2026-10-03
+
+- Shorten Display Position to Position in Settings. Use MARCS Bar, Wall Clock
+  and Clock Style in the Clock options, retaining their adjacent values.
+- Verify all seven Settings captions and three Clock captions against their
+  native 190- and 186-pixel buttons, with the original text inset.
+- Keep the compact labels for all eleven Parts Change categories, including
+  radar and armor, and all prior equipment, shop and editor fixes.
+- Rebuild the test disc and cumulative Retro Trans Tools package. Native
+  checks and patch round-trip validation are required; Flycast visual checks
+  remain pending.
+
 ## 0.1.15 — equipment statistics and maintenance captions — 2026-10-03
 
 - Fit all sixteen equipment/program stat templates in their original label

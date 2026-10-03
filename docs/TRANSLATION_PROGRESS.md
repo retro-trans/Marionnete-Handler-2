@@ -129,3 +129,7 @@ instructions. Its Retro Trans Tools package requires both Track 3 and Track 17;
 use `--version 0.1.10` when packaging this cumulative English build. The user's
 0.1.8 state confirmed that its filename loader fell back to the BIOS font;
 0.1.9 opens the fixed font extent independently of the current directory.
+
+0.1.16 fits Settings and Clock captions; see docs/SETTINGS_LAYOUT.md. All prior
+equipment, shop and editor fixes remain included. Fresh Flycast visual checks
+remain pending.

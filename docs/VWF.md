@@ -106,3 +106,7 @@ not an emulator or hardware compatibility guarantee.
 
 The separate Retro Trans Tools `VALIDATION.json` proves the patch reproduces
 the entire target track. It is a binary integrity check, not a gameplay test.
+
+0.1.16 fits Settings and Clock captions; see docs/SETTINGS_LAYOUT.md. All prior
+equipment, shop and editor fixes remain included. Fresh Flycast visual checks
+remain pending.

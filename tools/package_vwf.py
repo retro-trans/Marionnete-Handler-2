@@ -85,6 +85,8 @@ def main():
              if report.get('program_help_layout') else '') +
             ('Includes compact equipment stat/type labels and fitted maintenance buttons.\n'
              if report.get('equipment_layout') else '') +
+            ('Includes fitted Settings and Clock captions beside their native value columns.\n'
+             if report.get('settings_layout') else '') +
             'Native glyph/disc checks passed; Flycast gameplay remains unverified.\n',encoding='utf-8')
         sums=['{}  {}'.format(sha256_file(p),p.name) for p in sorted(output.iterdir()) if p.name!='SHA256SUMS.txt']
         (output/'SHA256SUMS.txt').write_text('\n'.join(sums)+'\n',encoding='utf-8')

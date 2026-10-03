@@ -1,0 +1,67 @@
+{
+  "version": "0.1.16",
+  "language": "en",
+  "scope": "Settings menu and Clock option captions; full translations retained in reviewed batches",
+  "translations": [
+    {
+      "row": 199,
+      "full_translation": "Rename",
+      "target": "Rename",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 200,
+      "full_translation": "Change Design",
+      "target": "Change Design",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 201,
+      "full_translation": "Clock",
+      "target": "Clock",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 202,
+      "full_translation": "Screen Saver",
+      "target": "Screen Saver",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 203,
+      "full_translation": "Timer",
+      "target": "Timer",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 204,
+      "full_translation": "Display Position",
+      "target": "Position",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 205,
+      "full_translation": "Sound",
+      "target": "Sound",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 299,
+      "full_translation": "Show MARCS Bar",
+      "target": "MARCS Bar",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 300,
+      "full_translation": "Show Wall Clock",
+      "target": "Wall Clock",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    },
+    {
+      "row": 301,
+      "full_translation": "Wall Clock Design",
+      "target": "Clock Style",
+      "note": "Clock toggles retain the MARCS bar and wall-clock meanings; values show On/Off. Clock Style selects the wall-clock design. Position opens display-position adjustment."
+    }
+  ]
+}
